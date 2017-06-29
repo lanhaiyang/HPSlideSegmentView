@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6505E5261EECE4F500AE4120 /* HPSlideSegmentControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6505E5251EECE4F500AE4120 /* HPSlideSegmentControllerView.m */; };
+		650C66C31F03D6F30028FC18 /* HPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C66C21F03D6F30028FC18 /* HPScrollView.m */; };
+		651301D31F04CD7800DEF81F /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 651301CC1F04CD7800DEF81F /* AViewController.m */; };
+		651301D41F04CD7800DEF81F /* DemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 651301CE1F04CD7800DEF81F /* DemoTableViewCell.m */; };
+		651301D51F04CD7800DEF81F /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 651301D01F04CD7800DEF81F /* DemoViewController.m */; };
+		651301D61F04CD7800DEF81F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 651301D21F04CD7800DEF81F /* ViewController.m */; };
 		65374CFC1EEC3D94005B5C38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374CFB1EEC3D94005B5C38 /* main.m */; };
 		65374CFF1EEC3D94005B5C38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374CFE1EEC3D94005B5C38 /* AppDelegate.m */; };
-		65374D021EEC3D94005B5C38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374D011EEC3D94005B5C38 /* ViewController.m */; };
 		65374D051EEC3D94005B5C38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65374D031EEC3D94005B5C38 /* Main.storyboard */; };
 		65374D071EEC3D94005B5C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65374D061EEC3D94005B5C38 /* Assets.xcassets */; };
 		65374D0A1EEC3D94005B5C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65374D081EEC3D94005B5C38 /* LaunchScreen.storyboard */; };
 		65374D151EEC3D94005B5C38 /* HPSlideSegmentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374D141EEC3D94005B5C38 /* HPSlideSegmentViewTests.m */; };
 		65374D201EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374D1F1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m */; };
+		658F596D1EF27810001E864A /* UIView+HPSlideSegmentRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 658F596C1EF27810001E864A /* UIView+HPSlideSegmentRect.m */; };
+		659BDF411EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDF401EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m */; };
+		65D2AC7C1EF0D5AA004398AD /* HPSlideSegmentManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D2AC7B1EF0D5AA004398AD /* HPSlideSegmentManage.m */; };
+		65D2AC7F1EF0D7E7004398AD /* HPSlideSegmentLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D2AC7E1EF0D7E7004398AD /* HPSlideSegmentLogic.m */; };
+		65EAC5791EEE83BB0092CB50 /* HPSlideSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EAC5781EEE83BB0092CB50 /* HPSlideSegmentView.m */; };
+		65EAC57C1EEE85910092CB50 /* HPSlideModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EAC57B1EEE85910092CB50 /* HPSlideModuleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +46,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6505E5241EECE4F500AE4120 /* HPSlideSegmentControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentControllerView.h; path = HPSlideSegmenView/HPSlideSegmentControllerView.h; sourceTree = "<group>"; };
+		6505E5251EECE4F500AE4120 /* HPSlideSegmentControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentControllerView.m; path = HPSlideSegmenView/HPSlideSegmentControllerView.m; sourceTree = "<group>"; };
+		650C66C11F03D6F30028FC18 /* HPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPScrollView.h; path = HPSlideSegmenView/HPScrollView.h; sourceTree = "<group>"; };
+		650C66C21F03D6F30028FC18 /* HPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPScrollView.m; path = HPSlideSegmenView/HPScrollView.m; sourceTree = "<group>"; };
+		651301CB1F04CD7800DEF81F /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
+		651301CC1F04CD7800DEF81F /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
+		651301CD1F04CD7800DEF81F /* DemoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewCell.h; sourceTree = "<group>"; };
+		651301CE1F04CD7800DEF81F /* DemoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewCell.m; sourceTree = "<group>"; };
+		651301CF1F04CD7800DEF81F /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		651301D01F04CD7800DEF81F /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		651301D11F04CD7800DEF81F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		651301D21F04CD7800DEF81F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		65374CF71EEC3D94005B5C38 /* HPSlideSegmentView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HPSlideSegmentView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65374CFB1EEC3D94005B5C38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		65374CFD1EEC3D94005B5C38 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65374CFE1EEC3D94005B5C38 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		65374D001EEC3D94005B5C38 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		65374D011EEC3D94005B5C38 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		65374D041EEC3D94005B5C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65374D061EEC3D94005B5C38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65374D091EEC3D94005B5C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +72,18 @@
 		65374D1B1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HPSlideSegmentViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65374D1F1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentViewUITests.m; sourceTree = "<group>"; };
 		65374D211EEC3D94005B5C38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		658F596B1EF27810001E864A /* UIView+HPSlideSegmentRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HPSlideSegmentRect.h"; path = "HPSlideSegmenView/Tool/UIView+HPSlideSegmentRect.h"; sourceTree = "<group>"; };
+		658F596C1EF27810001E864A /* UIView+HPSlideSegmentRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HPSlideSegmentRect.m"; path = "HPSlideSegmenView/Tool/UIView+HPSlideSegmentRect.m"; sourceTree = "<group>"; };
+		659BDF3F1EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentBackgroundView.h; path = HPSlideSegmenView/HPSlideSegmentBackgroundView.h; sourceTree = "<group>"; };
+		659BDF401EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentBackgroundView.m; path = HPSlideSegmenView/HPSlideSegmentBackgroundView.m; sourceTree = "<group>"; };
+		65D2AC7A1EF0D5AA004398AD /* HPSlideSegmentManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentManage.h; path = HPSlideSegmenView/HPSlideSegmentManage.h; sourceTree = "<group>"; };
+		65D2AC7B1EF0D5AA004398AD /* HPSlideSegmentManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentManage.m; path = HPSlideSegmenView/HPSlideSegmentManage.m; sourceTree = "<group>"; };
+		65D2AC7D1EF0D7E7004398AD /* HPSlideSegmentLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentLogic.h; path = HPSlideSegmenView/HPSlideSegmentLogic.h; sourceTree = "<group>"; };
+		65D2AC7E1EF0D7E7004398AD /* HPSlideSegmentLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentLogic.m; path = HPSlideSegmenView/HPSlideSegmentLogic.m; sourceTree = "<group>"; };
+		65EAC5771EEE83BB0092CB50 /* HPSlideSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentView.h; path = HPSlideSegmenView/HPSlideSegmentView.h; sourceTree = "<group>"; };
+		65EAC5781EEE83BB0092CB50 /* HPSlideSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentView.m; path = HPSlideSegmenView/HPSlideSegmentView.m; sourceTree = "<group>"; };
+		65EAC57A1EEE85910092CB50 /* HPSlideModuleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideModuleView.h; path = HPSlideSegmenView/HPSlideModuleView.h; sourceTree = "<group>"; };
+		65EAC57B1EEE85910092CB50 /* HPSlideModuleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideModuleView.m; path = HPSlideSegmenView/HPSlideModuleView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +111,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6505E5231EECE4D300AE4120 /* HPSlideSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				658F596A1EF277BE001E864A /* Tool */,
+				6505E5241EECE4F500AE4120 /* HPSlideSegmentControllerView.h */,
+				6505E5251EECE4F500AE4120 /* HPSlideSegmentControllerView.m */,
+				650C66C11F03D6F30028FC18 /* HPScrollView.h */,
+				650C66C21F03D6F30028FC18 /* HPScrollView.m */,
+				659BDF3F1EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.h */,
+				659BDF401EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m */,
+				65EAC5771EEE83BB0092CB50 /* HPSlideSegmentView.h */,
+				65EAC5781EEE83BB0092CB50 /* HPSlideSegmentView.m */,
+				65EAC57A1EEE85910092CB50 /* HPSlideModuleView.h */,
+				65EAC57B1EEE85910092CB50 /* HPSlideModuleView.m */,
+				65D2AC7D1EF0D7E7004398AD /* HPSlideSegmentLogic.h */,
+				65D2AC7E1EF0D7E7004398AD /* HPSlideSegmentLogic.m */,
+				65D2AC7A1EF0D5AA004398AD /* HPSlideSegmentManage.h */,
+				65D2AC7B1EF0D5AA004398AD /* HPSlideSegmentManage.m */,
+			);
+			name = HPSlideSegmentView;
+			sourceTree = "<group>";
+		};
+		651301CA1F04CD7800DEF81F /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				651301CB1F04CD7800DEF81F /* AViewController.h */,
+				651301CC1F04CD7800DEF81F /* AViewController.m */,
+				651301CD1F04CD7800DEF81F /* DemoTableViewCell.h */,
+				651301CE1F04CD7800DEF81F /* DemoTableViewCell.m */,
+				651301CF1F04CD7800DEF81F /* DemoViewController.h */,
+				651301D01F04CD7800DEF81F /* DemoViewController.m */,
+				651301D11F04CD7800DEF81F /* ViewController.h */,
+				651301D21F04CD7800DEF81F /* ViewController.m */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		65374CEE1EEC3D94005B5C38 = {
 			isa = PBXGroup;
 			children = (
@@ -103,8 +173,8 @@
 			children = (
 				65374CFD1EEC3D94005B5C38 /* AppDelegate.h */,
 				65374CFE1EEC3D94005B5C38 /* AppDelegate.m */,
-				65374D001EEC3D94005B5C38 /* ViewController.h */,
-				65374D011EEC3D94005B5C38 /* ViewController.m */,
+				6505E5231EECE4D300AE4120 /* HPSlideSegmentView */,
+				651301CA1F04CD7800DEF81F /* Demo */,
 				65374D031EEC3D94005B5C38 /* Main.storyboard */,
 				65374D061EEC3D94005B5C38 /* Assets.xcassets */,
 				65374D081EEC3D94005B5C38 /* LaunchScreen.storyboard */,
@@ -138,6 +208,15 @@
 				65374D211EEC3D94005B5C38 /* Info.plist */,
 			);
 			path = HPSlideSegmentViewUITests;
+			sourceTree = "<group>";
+		};
+		658F596A1EF277BE001E864A /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				658F596B1EF27810001E864A /* UIView+HPSlideSegmentRect.h */,
+				658F596C1EF27810001E864A /* UIView+HPSlideSegmentRect.m */,
+			);
+			name = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +286,7 @@
 				TargetAttributes = {
 					65374CF61EEC3D94005B5C38 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P35S4B7K46;
 						ProvisioningStyle = Automatic;
 					};
 					65374D0F1EEC3D94005B5C38 = {
@@ -273,8 +353,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65374D021EEC3D94005B5C38 /* ViewController.m in Sources */,
+				651301D61F04CD7800DEF81F /* ViewController.m in Sources */,
 				65374CFF1EEC3D94005B5C38 /* AppDelegate.m in Sources */,
+				65D2AC7F1EF0D7E7004398AD /* HPSlideSegmentLogic.m in Sources */,
+				651301D41F04CD7800DEF81F /* DemoTableViewCell.m in Sources */,
+				651301D31F04CD7800DEF81F /* AViewController.m in Sources */,
+				651301D51F04CD7800DEF81F /* DemoViewController.m in Sources */,
+				658F596D1EF27810001E864A /* UIView+HPSlideSegmentRect.m in Sources */,
+				65EAC5791EEE83BB0092CB50 /* HPSlideSegmentView.m in Sources */,
+				650C66C31F03D6F30028FC18 /* HPScrollView.m in Sources */,
+				6505E5261EECE4F500AE4120 /* HPSlideSegmentControllerView.m in Sources */,
+				65D2AC7C1EF0D5AA004398AD /* HPSlideSegmentManage.m in Sources */,
+				65EAC57C1EEE85910092CB50 /* HPSlideModuleView.m in Sources */,
+				659BDF411EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m in Sources */,
 				65374CFC1EEC3D94005B5C38 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,7 +515,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P35S4B7K46;
 				INFOPLIST_FILE = HPSlideSegmentView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hepeng.HPSlideSegmentView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,7 +528,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P35S4B7K46;
 				INFOPLIST_FILE = HPSlideSegmentView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hepeng.HPSlideSegmentView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +602,7 @@
 				65374D261EEC3D94005B5C38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65374D271EEC3D94005B5C38 /* Build configuration list for PBXNativeTarget "HPSlideSegmentViewTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +611,7 @@
 				65374D291EEC3D94005B5C38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65374D2A1EEC3D94005B5C38 /* Build configuration list for PBXNativeTarget "HPSlideSegmentViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +620,7 @@
 				65374D2C1EEC3D94005B5C38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
