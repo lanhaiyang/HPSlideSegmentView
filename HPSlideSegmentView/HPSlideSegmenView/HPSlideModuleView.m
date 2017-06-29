@@ -36,7 +36,14 @@
 
 -(void)updateLayout
 {
+    for (int i=0; i<self.arrayButtons.count; i++) {
+        
+        UIButton *button=_arrayButtons[i];
+        [button removeFromSuperview];
+        
+    }
     [self.arrayButtons removeAllObjects];
+    self.scrollView.contentSize=CGSizeMake(0, 0);
     [self layoutSlideModule];
 }
 
@@ -153,9 +160,14 @@
                            delegateContent:delegate
                               moduleHeight:height];
         
-        CGFloat widthAddY=module.width+module.y+moduleView.scrollView.contentSize.width;
+
+        if (count-1==i) {
+            CGFloat widthAddY=module.width+module.x+10;
+            
+            moduleView.scrollView.contentSize=CGSizeMake(widthAddY, 0);
+            
+        }
         
-        moduleView.scrollView.contentSize=CGSizeMake(widthAddY, 0);
         moduleView.backgroundView.frame=CGRectMake(0, 0, moduleView.scrollView.contentSize.width,moduleView.scrollView.height);
         [moduleView.backgroundView addSubview:module];
         module.index=i;

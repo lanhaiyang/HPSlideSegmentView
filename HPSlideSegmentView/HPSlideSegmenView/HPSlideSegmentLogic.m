@@ -276,10 +276,10 @@
         slideModuleWith=nowPoint.width;
     }
     
-    CGFloat nowX=nowPoint.x+((nowPoint.width-slideModuleWith)/2);
+    CGFloat nowX=nowPoint.x;//+((nowPoint.width-slideModuleWith)/2);
     CGFloat nowWidth=nowPoint.width;
     
-    CGFloat readyX=readyPoint.x+((readyPoint.width-slideModuleWith)/2);
+    CGFloat readyX=readyPoint.x;//+((readyPoint.width-slideModuleWith)/2);
     CGFloat readyWidth=readyPoint.width;
 
     
@@ -290,15 +290,22 @@
         
         movePercent=movePercent/0.5;
         
-        CGFloat move=((speace-nowWidth)+readyWidth)*movePercent;
-        CGFloat width=nowWidth+move;
         
-        CGFloat slideNowX=nowPoint.x;
+        CGFloat move=0;
+        CGFloat width=0;
+        CGFloat slideNowX=0;
         
         if (nowX>readyX) {
-            slideNowX=slideNowX-move;
+            move=(nowX-readyX)*movePercent;
+            slideNowX=nowPoint.x-move;
+        }
+        else
+        {
+            move=((speace-nowWidth)+readyWidth)*movePercent;
+            slideNowX=nowPoint.x;
         }
         
+        width=nowWidth+move;
         
         slideModule.frame=CGRectMake(slideNowX, slideModule.y, width, slideModule.height);
         
