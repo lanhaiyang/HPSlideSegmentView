@@ -62,6 +62,13 @@ HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgro
 
 #### 实现对应的代理
 
+- 在来需要告诉我 滑模块 的内容 需要对应父类的`contents`对象
+
+```objective-c
+//NSString 数据源
+self.slideBackgroungView.contents=self.dataSouce;
+```
+
 - 现在你需要显示多少数据 告诉`<HPSlideSegmentBackgroundDataSource>`代理
 
 ```objective-c
@@ -108,15 +115,6 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
   这个属性 showViewController 上面显示的UIScrollView 这个用于处理手势冲突(如果没有手势冲突问题这个需要传)
 
-
-```
-
-- 在来需要告诉我 滑模块 的内容 需要对应父类的`contents`对象
-
-```objective-c
-//NSString 数据源
-self.slideBackgroungView.contents=self.dataSouce;
-```
 
 
 
