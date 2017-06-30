@@ -75,6 +75,7 @@ self.slideBackgroungView.dataSource=self;
 
 ```
 
+
 - 在需要你要在对应模块中显示什么 告诉`<HPSlideSegmentViewDataSouce>`代理
 
 ```objective-c
@@ -89,6 +90,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
     slideSegmentView.mainSlideScrollView=aViewController.tabelView;
     slideSegmentView.showViewController=aViewController;
 }
+```
 
 - 还有需要注意的是在`<HPSlideSegmentViewDataSouce>`代理中
 
