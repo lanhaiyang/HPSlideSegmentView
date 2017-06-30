@@ -61,7 +61,7 @@ HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgro
 
 ### 实现
 
-#### 实现对应的代理
+#### 数据设置
 
 - 告诉我滑模块的内容 告诉父类的`contents`对象
 
@@ -69,6 +69,8 @@ HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgro
 //NSString 数据源
 self.slideBackgroungView.contents=self.dataSouce;
 ```
+
+#### 实现对应的代理
 
 - 现在你需要显示多少数据 告诉`<HPSlideSegmentBackgroundDataSource>`代理
 
