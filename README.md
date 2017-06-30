@@ -103,12 +103,10 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 -(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 {
-	    HomeGoodsDetailsWebViewController *webViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"HomeGoodsDetailsWebViewController"];
-	
-        [webViewController.view layoutIfNeeded];//更新一下
-        webViewController.webContent=self.detaiModel.content;
-        slideSegmentView.mainSlideScrollView=webViewController.introductionWebView.scrollView;
-        slideSegmentView.showViewController=webViewController;
+HomeViewController *homeViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        [homeViewController.view layoutIfNeeded];//更新一下
+  slideSegmentView.mainSlideScrollView=homeViewController.scrollView;
+        slideSegmentView.showViewController=homeViewController;
 
 }
 
