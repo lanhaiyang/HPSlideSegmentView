@@ -27,8 +27,7 @@
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets=NO;
-
-    [self creatLayout];
+     [self creatLayout];
 }
 
 -(void)creatLayout
@@ -125,6 +124,12 @@
 
 #pragma mark - 懒加载
 
+-(void)setHeadeView:(UIView *)headeView
+{
+    _headeView=headeView;
+    [self creatLayout];
+}
+
 -(HPScrollView *)slideScrollerView
 {
     if (_slideScrollerView==nil) {
@@ -155,7 +160,6 @@
 {
     if (_slideBackgroungView==nil) {
         CGFloat y=self.headeView.height;
-         CGFloat navY=self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height;
         _slideBackgroungView=[[HPSlideSegmentBackgroundView alloc] initWithFrame:CGRectMake(0, y, self.slideScrollerView.width,self.view.height)];
         _slideBackgroungView.frame=CGRectMake(0, y, _slideBackgroungView.width, _slideBackgroungView.slideSegmenView.y+_slideBackgroungView.slideSegmenView.height);
         _slideBackgroungView.slideSegmenView.upDelegate=self;

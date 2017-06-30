@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
     
+    [super viewDidLoad];
+    
     self.headeView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
     self.headeView.backgroundColor=[UIColor blueColor];
     
@@ -29,8 +31,6 @@
     
     self.slideBackgroungView.dataSource=self;
     self.slideBackgroungView.slideSegmenView.dataSource=self;
-    
-    [super viewDidLoad];
 }
 
 -(NSUInteger)hp_slideListWithCount
