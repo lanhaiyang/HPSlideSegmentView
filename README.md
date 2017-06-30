@@ -113,7 +113,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
   这个用于显示对应UIViewController
 - mainSlideScrollView 
 
-  这个属性 showViewController 上面显示的UIScrollView 这个用于处理手势冲突(如果没有手势冲突问题这个需要传)
+  这个属性 showViewController 上面显示的UIScrollView 这个用于处理手势冲突(如果没有手势冲突问题这个不需要传)
 
 
 
