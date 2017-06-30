@@ -55,13 +55,7 @@
     
 }
 
--(void)hp_slideModuleView:(UIView *)slideModuleView
-        nowLoadSlideModel:(UIButton *)nowButton
-               readyModel:(UIButton *)readly
-              slideOffset:(CGPoint)offset
-{
-    
-}
+
 
 -(void)slideAction
 {
@@ -93,6 +87,12 @@
 -(void)setDataSource:(id<HPSlideSegmentBackgroundDataSource>)dataSource
 {
     _dataSource=dataSource;
+    [self updateLayout];
+}
+
+-(void)setContents:(NSArray<NSString *> *)contents
+{
+    _contents=contents;
     [self updateLayout];
 }
 

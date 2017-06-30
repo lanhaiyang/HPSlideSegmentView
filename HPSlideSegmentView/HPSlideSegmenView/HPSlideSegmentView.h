@@ -34,6 +34,7 @@
  */
 -(void)hp_slideWithNowIndex:(NSUInteger)nowIndex readyIndex:(NSUInteger)readyIndex movePercent:(CGFloat)movePercent;
 
+
 @end
 
 @protocol HPSlideUpViewDelegate <NSObject>

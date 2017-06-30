@@ -67,6 +67,7 @@
     
 }
 
+
 -(void)slideModuleLayout
 {
     UIButton *defaultButton=nil;
@@ -134,15 +135,15 @@
     
     UIButton *nowButton=_arrayButtons[nowIndex];
     UIButton *readyButton=_arrayButtons[readyIndex];
-    
-    [self slideBetweenWithButton:nowButton];
 
-    
     [HPSlideSegmentLogic animationSlideView:self.slideModuleView
                            slideModuleWidht:_slideModeuleWidth
                                    nowPoint:HPPointMake(nowButton.x, nowButton.width)
                                 readyButton:HPPointMake(readyButton.x, readyButton.width)
                                 movePercent:movePercent];
+    
+    [HPSlideSegmentLogic slideModuleAlignCenter:self.scrollView
+                               slideModuleWithX:self.slideModuleView.x];
     
 }
 

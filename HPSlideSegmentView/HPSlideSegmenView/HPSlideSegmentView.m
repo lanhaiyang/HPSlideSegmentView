@@ -71,7 +71,7 @@
                                                 right:nil
                                 scrollerViewWithWidth:self.viewContrllerScrollerView.width];
     }
-    else if (self.showCount==3)
+    else if (self.showCount>3)
     {
         [HPSlideSegmentView layoutWithScrollerAddView:self.backgroundView
                                                  left:self.slideLeft
@@ -196,6 +196,7 @@
                                 [self currenSlideScrollView];
                                 
                             }];
+
     
 }
 

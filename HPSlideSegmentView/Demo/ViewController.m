@@ -26,10 +26,10 @@
     
     HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgroundView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     
+    
     slideSegmentBackgroundView.dataSource=self;
     slideSegmentBackgroundView.slideSegmenView.dataSource=self;
     slideSegmentBackgroundView.contents=self.dataSouce;
-    
     [self.view addSubview:slideSegmentBackgroundView];
     
     
@@ -54,7 +54,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"A",@"B",@"C"];
+        _dataSouce=@[@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii",@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii",@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii"];
     }
     return _dataSouce;
 }

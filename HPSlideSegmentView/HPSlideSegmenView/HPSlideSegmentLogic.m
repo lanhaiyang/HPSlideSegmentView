@@ -341,4 +341,23 @@
     }
 }
 
++(void)slideModuleAlignCenter:(UIScrollView *)currentScrollerView
+             slideModuleWithX:(CGFloat)slideModuleX
+{
+    
+    CGFloat rightSide=currentScrollerView.contentSize.width-currentScrollerView.bounds.size.width;
+    CGFloat centerHalf=currentScrollerView.bounds.size.width/2;
+
+    if (slideModuleX>centerHalf  && slideModuleX<rightSide+centerHalf+10) {
+
+        CGFloat centerWidth=slideModuleX-currentScrollerView.contentOffset.x;
+        
+        CGFloat center=centerWidth-centerHalf;
+        
+        currentScrollerView.contentOffset=CGPointMake(currentScrollerView.contentOffset.x+(center/2), 0);
+        
+    }
+    
+}
+
 @end

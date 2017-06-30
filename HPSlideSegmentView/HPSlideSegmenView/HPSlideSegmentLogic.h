@@ -184,4 +184,15 @@ typedef void (^ENDBLOCK)();
      slideSuperView:(CGFloat)slideViewWidth
         changeIndex:(CHANGEINDEXBLOCK)changeBlock;
 
+
+/**
+ 滑块居中逻辑
+
+ @param currentScrollerView 当前的scrollview
+ @param slideModuleX 滑块的X位置
+ */
++(void)slideModuleAlignCenter:(UIScrollView *)currentScrollerView
+             slideModuleWithX:(CGFloat)slideModuleX;
+
+
 @end
