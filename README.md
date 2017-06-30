@@ -23,7 +23,7 @@
 
 ``` objective-c
 
-\# import "HPSlideSegmentControllerView.h"
+# import "HPSlideSegmentControllerView.h"
 
 @interface DemoViewController : HPSlideSegmentControllerView
 
