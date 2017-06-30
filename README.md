@@ -2,7 +2,6 @@
 
 ### 创建悬浮效果
 
-![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentControllerView.gif)
 
 在下面的可以看到`HPSlideSegmentControllerView`对应的属性的用途:
 
@@ -17,7 +16,9 @@
 - slideModuleView 文字滑动模块
 - slideSegmenView 视图滑动模块
 
-#### 初始化HPSlideSegmentControllerView
+### 第一种样式初始化HPSlideSegmentControllerView
+
+![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentControllerView.gif)
 
 #### 在 ViewController.h 
 
@@ -44,7 +45,7 @@ self.headeView=headerView;
 ```
 
 
-#### 初始化HPSlideSegmentBackgroundView
+### 第二种样式初始化HPSlideSegmentBackgroundView
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentBackgroundView.gif)
 
