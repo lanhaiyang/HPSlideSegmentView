@@ -47,6 +47,12 @@
 
 
 /**
+ slideModuleView 的高度
+ */
+@property(nonatomic,assign) CGFloat slideModuleViewHeight;
+
+
+/**
  更新布局
  */
 -(void)updateLayout;

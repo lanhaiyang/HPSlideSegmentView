@@ -31,6 +31,7 @@
     
     self.slideBackgroungView.dataSource=self;
     self.slideBackgroungView.slideSegmenView.dataSource=self;
+    self.slideBackgroungView.slideModuleViewHeight=50;
 }
 
 -(NSUInteger)hp_slideListWithCount

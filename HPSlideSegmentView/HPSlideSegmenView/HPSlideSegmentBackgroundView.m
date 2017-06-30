@@ -84,6 +84,22 @@
 
 #pragma mark - 懒加载
 
+-(void)setSlideModuleViewHeight:(CGFloat)slideModuleViewHeight
+{
+    
+    if (slideModuleViewHeight<30) {
+        slideModuleViewHeight=30;
+    }
+    
+    _slideModuleViewHeight=slideModuleViewHeight;
+
+    _slideModuleView.frame=CGRectMake(0, 0, self.width, slideModuleViewHeight);
+    CGFloat y=self.slideModuleView.x+self.slideModuleView.height;
+    _slideSegmenView.frame=CGRectMake(0, y, self.width, self.height);
+    [self updateLayout];
+}
+
+
 -(void)setDataSource:(id<HPSlideSegmentBackgroundDataSource>)dataSource
 {
     _dataSource=dataSource;
