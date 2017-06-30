@@ -63,7 +63,7 @@ HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgro
 
 #### 实现对应的代理
 
-- 在来需要告诉我 滑模块 的内容 需要对应父类的`contents`对象
+- 告诉我滑模块的内容 告诉父类的`contents`对象
 
 ```objective-c
 //NSString 数据源
@@ -84,7 +84,7 @@ self.slideBackgroungView.dataSource=self;
 ```
 
 
-- 在需要你要在对应模块中显示什么 告诉`<HPSlideSegmentViewDataSouce>`代理
+- 在来需要你要在对应模块中显示什么 告诉`<HPSlideSegmentViewDataSouce>`代理
 
 ```objective-c
 self.slideBackgroungView.slideSegmenView.dataSource=self;
@@ -98,7 +98,22 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
     slideSegmentView.mainSlideScrollView=aViewController.tabelView;
     slideSegmentView.showViewController=aViewController;
 }
+
+如果是使用storyboard
+
+-(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
+{
+	    HomeGoodsDetailsWebViewController *webViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"HomeGoodsDetailsWebViewController"];
+	
+        [webViewController.view layoutIfNeeded];//更新一下
+        webViewController.webContent=self.detaiModel.content;
+        slideSegmentView.mainSlideScrollView=webViewController.introductionWebView.scrollView;
+        slideSegmentView.showViewController=webViewController;
+
+}
+
 ```
+
 
 - 还有需要注意的是在`<HPSlideSegmentViewDataSouce>`代理中
 
