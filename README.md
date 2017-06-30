@@ -19,7 +19,7 @@
 
 #### 初始化HPSlideSegmentControllerView
 
-##### 在 ViewController.h 
+#### 在 ViewController.h 
 
 ``` objective-c
 
@@ -39,7 +39,7 @@
 UIView *headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
 headerView.backgroundColor=[UIColor blueColor];
 
-self.header=headerView;
+self.headeView=headerView;
 
 ```
 
