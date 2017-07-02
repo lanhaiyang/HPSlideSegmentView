@@ -107,12 +107,13 @@
 
         
         CGFloat x=button.x;
-        x=x+(button.width-self.slideModuleView.width)/2;
-        
-        self.slideModuleView.frame=CGRectMake(x, self.slideModuleView.y, self.slideModuleView.width, self.slideModuleView.height);
+
+        self.slideModuleView.frame=CGRectMake(x, self.slideModuleView.y, button.width, self.slideModuleView.height);
         _hpActionBlock(_hpWeakObj,button.index);
         
-        [self slideBetweenWithButton:button];
+        
+        [HPSlideSegmentLogic slideModuleAlignCenter:self.scrollView
+                                   slideModuleWithX:self.slideModuleView.x];
     }
 }
 

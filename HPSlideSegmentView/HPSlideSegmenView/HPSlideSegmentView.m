@@ -109,6 +109,7 @@
     self.showCount=arrayCount;
     
     [self layoutWithView];
+    [self updateLayout:_pageIndex];
     [self slideSegmentLayout];
 }
 

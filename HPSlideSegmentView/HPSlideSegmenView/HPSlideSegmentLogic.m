@@ -357,6 +357,14 @@
         currentScrollerView.contentOffset=CGPointMake(currentScrollerView.contentOffset.x+(center/2), 0);
         
     }
+    else if (slideModuleX<centerHalf)
+    {
+        currentScrollerView.contentOffset=CGPointMake(0, 0);
+    }
+    else if (slideModuleX>rightSide+centerHalf+10)
+    {
+        currentScrollerView.contentOffset=CGPointMake(rightSide, 0);
+    }
     
 }
 
