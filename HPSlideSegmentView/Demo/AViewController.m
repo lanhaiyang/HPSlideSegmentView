@@ -43,13 +43,19 @@ static NSString *ID = @"cell";
     if (!cell) {
         
         //单元格样式设置为UITableViewCellStyleDefault
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    
-    cell.backgroundColor=[UIColor blueColor];
+    cell.textLabel.text=self.titleView;
+    cell.textLabel.textColor=[UIColor blackColor];
+    cell.backgroundColor=[UIColor grayColor];
     
     return cell;
 }
+
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat
 {

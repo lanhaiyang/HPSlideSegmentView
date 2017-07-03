@@ -77,6 +77,8 @@
  */
 -(void)updateLayout:(NSUInteger)pageIndex;
 
+
+
 @end
 
 @interface HPSlideModel : UIView

@@ -46,7 +46,7 @@
 {
     AViewController *aViewController=[[AViewController alloc] init];
     
-    aViewController.title=self.dataSouce[index];
+    aViewController.titleView=self.dataSouce[index];
     
     slideSegmentView.showViewController=aViewController;
 }

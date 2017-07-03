@@ -11,7 +11,6 @@
 #import "HPSlideSegmentManage.h"
 #import "HPScrollView.h"
 
-
 @interface HPSlideSegmentControllerView ()<UIScrollViewDelegate,HPSlideUpViewDelegate>
 
 @property(nonatomic,strong) HPScrollView *slideScrollerView;
@@ -96,14 +95,21 @@
     if (mainSlideScrollView==nil) {
         return;
     }
-    [_centreScrollerView removeObserver:self forKeyPath:@"contentOffset"];
 
+       [_centreScrollerView removeObserver:self forKeyPath:@"contentOffset"];
+    
+    _centreScrollerView=mainSlideScrollView;
+
+    
     _centreScrollerView=mainSlideScrollView;
     [_centreScrollerView addObserver:self
                           forKeyPath:@"contentOffset"
                              options:NSKeyValueObservingOptionNew
                              context:nil];
+    
+    
 }
+
 
 -(void)updateBackgroundHeight:(CGSize)size
 {
@@ -121,6 +127,7 @@
         
     }
 }
+
 
 #pragma mark - 懒加载
 

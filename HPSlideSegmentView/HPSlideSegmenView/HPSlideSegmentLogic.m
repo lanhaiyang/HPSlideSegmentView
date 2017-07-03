@@ -143,15 +143,15 @@
     
     *currentIndex=currentNumber;
     
-    if (endBlock!=nil) {
-        endBlock();
-    }
-    
     [self currentIndex:currentNumber
             arrayCount:arrayDataCount
             scrollView:scrollView
         slideSuperView:slideViewWidth
            changeIndex:changeBlock];
+    
+    if (endBlock!=nil) {
+        endBlock();
+    }
     
 }
 

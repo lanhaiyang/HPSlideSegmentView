@@ -81,7 +81,6 @@
     CGPoint topPoint=CGPointMake(0, 0);
 
     if (offsetHeight<0) {
-        centreScrollerView.contentOffset=CGPointMake(0, 0);
         topPoint=CGPointMake(0, 0);
     }
     else if (offsetHeight==0)
@@ -102,6 +101,7 @@
         }
         
     }
+
     
     if (upBlock!=nil) {
         upBlock(topPoint);

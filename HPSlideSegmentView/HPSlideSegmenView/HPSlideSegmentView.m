@@ -10,7 +10,7 @@
 #import "UIView+HPSlideSegmentRect.h"
 #import "HPSlideSegmentLogic.h"
 
-@interface HPSlideSegmentView ()<UIScrollViewDelegate>
+@interface HPSlideSegmentView ()<UIScrollViewDelegate,NSCacheDelegate>
 
 @property(nonatomic,strong) UIScrollView *viewContrllerScrollerView;
 @property(nonatomic,strong) UIView *backgroundView;
@@ -133,8 +133,7 @@
                                   
                               }
                               
-                               [self currenSlideScrollView];
-                              
+                              [self currenSlideScrollView];
                               
                               
                           }];
@@ -201,6 +200,7 @@
     
 }
 
+
 -(void)currenSlideScrollView
 {
     
@@ -240,7 +240,7 @@
 
 -(void)changeStatusLeft:(HPNumber)left centre:(HPNumber)centre right:(HPNumber)right
 {
-    
+
     if (left.error==nil) {
         
         if (_slideLeft==nil) {
@@ -286,6 +286,7 @@
         [HPSlideSegmentView releateViewController:_slideRight];
     }
 }
+
 
 +(void)releateViewController:(HPSlideModel *)slideModel
 {
@@ -350,6 +351,7 @@
     }
     return _backgroundView;
 }
+
 
 -(UIScrollView *)viewContrllerScrollerView
 {

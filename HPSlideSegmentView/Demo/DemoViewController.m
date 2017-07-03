@@ -43,7 +43,7 @@
 {
     AViewController *aViewController=[[AViewController alloc] init];
     
-    aViewController.title=self.dataSouce[index];
+    aViewController.titleView=self.dataSouce[index];
     slideSegmentView.mainSlideScrollView=aViewController.tabelView;
     slideSegmentView.showViewController=aViewController;
 }
@@ -51,7 +51,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"A",@"B"];
+        _dataSouce=@[@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii",@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii",@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii"];
     }
     return _dataSouce;
 }
