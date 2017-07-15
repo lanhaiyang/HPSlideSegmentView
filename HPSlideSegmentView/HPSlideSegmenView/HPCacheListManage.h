@@ -48,7 +48,7 @@ typedef id (^CreatBlock)(id weakObj,NSUInteger key);
 @interface HPCacheListManage : NSObject
 
 /**
- 默认小于3默认为3
+ 小于3默认为3
  */
 @property(nonatomic,assign) NSUInteger cacheListMax;
 @property(nonatomic,weak) id<HPCacheListManageDelegate> delegate;

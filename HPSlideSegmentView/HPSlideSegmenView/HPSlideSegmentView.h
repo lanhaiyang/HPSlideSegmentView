@@ -60,7 +60,7 @@
 
 /**
  缓存个数
- 默认小于3默认为3
+ 小于3默认为3
  */
 @property(nonatomic,assign) NSUInteger cacheMaxCount;
 
