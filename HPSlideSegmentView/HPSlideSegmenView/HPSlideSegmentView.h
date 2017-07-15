@@ -45,7 +45,9 @@
 
  @param mainSlideScrollView 当前的scrollView
  */
--(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView;
+//-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView;
+
+-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView changeWithOffset:(CGPoint)moreOffset;
 
 @end
 
@@ -55,6 +57,12 @@
 @property(nonatomic,weak) id<HPSlideSegmentViewDelegate> delegate;
 @property(nonatomic,weak) id<HPSlideUpViewDelegate> upDelegate;
 
+
+/**
+ 缓存个数
+ 默认小于3默认为3
+ */
+@property(nonatomic,assign) NSUInteger cacheMaxCount;
 
 /**
  更新布局
@@ -79,6 +87,9 @@
 
 
 
+
+
+
 @end
 
 @interface HPSlideModel : UIView
@@ -94,5 +105,7 @@
  ViewController 上面 的scrollView
  */
 @property(nonatomic,strong) UIScrollView *mainSlideScrollView;
+
+@property(nonatomic,strong) NSString *name;
 
 @end

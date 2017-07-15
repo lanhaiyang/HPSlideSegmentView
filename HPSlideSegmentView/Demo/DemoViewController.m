@@ -32,6 +32,7 @@
     self.slideBackgroungView.dataSource=self;
     self.slideBackgroungView.slideSegmenView.dataSource=self;
     self.slideBackgroungView.slideModuleViewHeight=50;
+    self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
 }
 
 -(NSUInteger)hp_slideListWithCount
@@ -44,6 +45,7 @@
     AViewController *aViewController=[[AViewController alloc] init];
     
     aViewController.titleView=self.dataSouce[index];
+    slideSegmentView.name=self.dataSouce[index];
     slideSegmentView.mainSlideScrollView=aViewController.tabelView;
     slideSegmentView.showViewController=aViewController;
 }

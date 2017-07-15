@@ -9,8 +9,10 @@
 #import "HPSlideSegmentView.h"
 #import "UIView+HPSlideSegmentRect.h"
 #import "HPSlideSegmentLogic.h"
+#import "HPCacheListManage.h"
 
-@interface HPSlideSegmentView ()<UIScrollViewDelegate,NSCacheDelegate>
+
+@interface HPSlideSegmentView ()<UIScrollViewDelegate,NSCacheDelegate,HPCacheListManageDelegate>
 
 @property(nonatomic,strong) UIScrollView *viewContrllerScrollerView;
 @property(nonatomic,strong) UIView *backgroundView;
@@ -25,7 +27,22 @@
 
 @property(nonatomic,assign) BOOL scrollViewMove;
 
+@property(nonatomic,strong) HPCacheListManage *cacheListMange;
+
+
+
+
+@property(nonatomic,weak) UIScrollView *centreScrollerView;//滑动到中间
+
 @end
+
+@interface HPSlideModel ()
+
+@property(nonatomic,assign) BOOL observse;
+@property(nonatomic,assign) NSUInteger xxx;
+
+@end
+
 
 @implementation HPSlideSegmentView
 {
@@ -200,103 +217,206 @@
     
 }
 
+#pragma mark - <HPCacheListManageDelegate>
+-(void)removeWithCacheObj:(id)Obj
+{
+    HPSlideModel *cacheSlideModel=Obj;
+    
+    if (cacheSlideModel==nil) {
+        return;
+    }
+    
+    if (cacheSlideModel.observse==YES) {
+        [cacheSlideModel.mainSlideScrollView removeObserver:self forKeyPath:@"contentOffset"];
+    }
+    
+    [cacheSlideModel.showViewController.view removeFromSuperview];
+    cacheSlideModel.showViewController=nil;
+    [cacheSlideModel.mainSlideScrollView removeFromSuperview];
+    cacheSlideModel.mainSlideScrollView=nil;
+    cacheSlideModel.observse=NO;
+    cacheSlideModel=nil;
+    
+}
+
+-(void)removeWithLayout:(HPSlideModel *)slideView
+{
+    
+    if (slideView==nil) {
+        return;
+    }
+    
+    [slideView.showViewController.view removeFromSuperview];
+    slideView.showViewController=nil;   
+}
+
 
 -(void)currenSlideScrollView
 {
     
-    if (![self.upDelegate respondsToSelector:@selector(hp_currentMainSlideScrollView:)]) {
-        
-        return;
-        
-        
-    }
     
     if (_showCount==2) {
         
         if (_pageIndex==0) {
-            [self.upDelegate hp_currentMainSlideScrollView:_slideLeft.mainSlideScrollView];
+            [self addObserver:_slideLeft pageIndex:_pageIndex];
+
         }
         else if (_pageIndex==self.showCount-1)
         {
-            [self.upDelegate hp_currentMainSlideScrollView:_slideCentre.mainSlideScrollView];
+            [self addObserver:_slideCentre pageIndex:_pageIndex];
+
         }
         
     }
     else
     {
         if (_pageIndex==0) {
-            [self.upDelegate hp_currentMainSlideScrollView:_slideLeft.mainSlideScrollView];
+            [self addObserver:_slideLeft pageIndex:_pageIndex];
+
+            
         }
         else if (_pageIndex==self.showCount-1)
         {
-            [self.upDelegate hp_currentMainSlideScrollView:_slideRight.mainSlideScrollView];
+            [self addObserver:_slideRight pageIndex:_pageIndex];
+
         }
         else
         {
-            [self.upDelegate hp_currentMainSlideScrollView:_slideCentre.mainSlideScrollView];
+            [self addObserver:_slideCentre pageIndex:_pageIndex];
+
         }
     }
+    
+
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    UIScrollView *scrollView = (UIScrollView *)object;
+    if (self.centreScrollerView == scrollView && [@"contentOffset" isEqualToString:keyPath]) {
+        
+//        [self scrollViewDidScroll:scrollView];
+        
+        if ([self.upDelegate respondsToSelector:@selector(hp_currentMainSlideScrollView:changeWithOffset:)]) {
+            
+            [self.upDelegate hp_currentMainSlideScrollView:self.centreScrollerView changeWithOffset:scrollView.contentOffset];
+            
+        }
+        
+    }
+}
+
+-(void)addObserver:(HPSlideModel *)slideModel pageIndex:(NSUInteger)index
+{
+    
+    _centreScrollerView = slideModel.mainSlideScrollView;
+    
+    if (slideModel.observse==YES) {
+        return;
+    }
+    
+    if (_centreScrollerView==nil) {
+        return;
+    }
+    
+    
+    
+    [_centreScrollerView addObserver:self
+                          forKeyPath:@"contentOffset"
+                             options:NSKeyValueObservingOptionNew
+                             context:nil];
+    
+    slideModel.observse=YES;
+    [self updateWithViewCacheSlideModel:slideModel keyIndex:index];
 }
 
 -(void)changeStatusLeft:(HPNumber)left centre:(HPNumber)centre right:(HPNumber)right
 {
 
-    if (left.error==nil) {
-        
-        if (_slideLeft==nil) {
-            return;
-        }
-        
-        [HPSlideSegmentView releateViewController:_slideLeft];
-        
-        [self.dataSource hp_slideListWithViewController:_slideLeft index:left.number];
-    }
-    else
-    {
-        [HPSlideSegmentView releateViewController:_slideLeft];
-    }
+
     
-    if (centre.error==nil) {
-        
-        if (_slideCentre==nil) {
-            return;
-        }
-        
-        [HPSlideSegmentView releateViewController:_slideCentre];
-        
-        [self.dataSource hp_slideListWithViewController:_slideCentre index:centre.number];
-    }
-    else
-    {
-        [HPSlideSegmentView releateViewController:_slideCentre];
-    }
+    [HPSlideSegmentView numberWithLessThanZero:left];
+    [HPSlideSegmentView numberWithLessThanZero:centre];
+    [HPSlideSegmentView numberWithLessThanZero:right];
     
-    if (right.error==nil) {
-        
-        if (_slideRight==nil) {
-            return;
-        }
-        
-        [HPSlideSegmentView releateViewController:_slideRight];
-        
-        [self.dataSource hp_slideListWithViewController:_slideRight index:right.number];
-    }
-    else
-    {
-        [HPSlideSegmentView releateViewController:_slideRight];
-    }
+    [self removeWithLayout:_slideLeft];
+    [self removeWithLayout:_slideCentre];
+    [self removeWithLayout:_slideRight];
+    
+    [self.cacheListMange addCacheWithLeft:ObjcWithKeyStructMake(left.number, LEFTTYPE)
+                                   Centre:ObjcWithKeyStructMake(centre.number, CENTRETYPE)
+                                    Right:ObjcWithKeyStructMake(right.number, RIGHTTYPE)
+                                  weakObj:self
+                              layoutBlock:^(HPSlideSegmentView *weakObj, id cacheObje, DirectionType direction, NSUInteger key) {
+                                  
+                                  HPSlideModel *cacheSlideModel=cacheObje;
+                                  
+                                  switch (direction) {
+                                      case LEFTTYPE:
+                                      {
+                                          [HPSlideSegmentView layoutWithView:weakObj.slideLeft cacheSlideModel:cacheSlideModel];
+                                      }
+                                          break;
+                                      case CENTRETYPE:
+                                      {
+                                          [HPSlideSegmentView layoutWithView:weakObj.slideCentre cacheSlideModel:cacheSlideModel];
+                                      }
+                                          break;
+                                      case RIGHTTYPE:
+                                      {
+                                          [HPSlideSegmentView layoutWithView:weakObj.slideRight cacheSlideModel:cacheSlideModel];
+                                      }
+                                          break;
+                                      default:
+                                          break;
+                                  }
+                                  
+                                  
+                              } notCahceCreatBlock:^id(HPSlideSegmentView *weakObj, NSUInteger key) {
+                                  
+                                  HPSlideModel *cacheSlideModel=nil;
+                                  
+                                  if ([weakObj.dataSource respondsToSelector:@selector(hp_slideListWithViewController:index:)]) {
+                                      
+                                      cacheSlideModel=[[HPSlideModel alloc] init];
+                                      
+                                      [weakObj.dataSource hp_slideListWithViewController:cacheSlideModel index:key];
+                                  }
+                                  
+                                  return cacheSlideModel;
+                                  
+                              }];
+    
+    
 }
 
-
-+(void)releateViewController:(HPSlideModel *)slideModel
++(void)layoutWithView:(HPSlideModel *)slideModel cacheSlideModel:(HPSlideModel *)cacheSlideModel
 {
-    if (slideModel==nil) {
+    
+    [slideModel setShowViewController:cacheSlideModel.showViewController];
+    slideModel.mainSlideScrollView=cacheSlideModel.mainSlideScrollView;
+    slideModel.observse=cacheSlideModel.observse;
+    slideModel.name=cacheSlideModel.name;
+}
+
+-(void)updateWithViewCacheSlideModel:(HPSlideModel *)slideModel keyIndex:(NSUInteger)index
+{
+    
+    HPSlideModel *cacheSlideModel=[self.cacheListMange cacheWithKey:@(index)];
+    
+    if (cacheSlideModel==nil) {
         return;
     }
-    [slideModel.showViewController.view removeFromSuperview];
-    slideModel.showViewController=nil;
-    [slideModel.mainSlideScrollView removeFromSuperview];
-    slideModel.mainSlideScrollView=nil;
+    cacheSlideModel.observse=slideModel.observse;
+}
+
++(void)numberWithLessThanZero:(HPNumber)number
+{
+    if (number.error!=nil) {
+        
+        number.number=-1;
+        
+    }
+    
 }
 
 
@@ -315,6 +435,12 @@
     _upDelegate=upDelegate;
     
     [self updateLayout:_pageIndex];
+}
+
+-(void)setCacheMaxCount:(NSUInteger )cacheMaxCount
+{
+    _cacheMaxCount=cacheMaxCount;
+    self.cacheListMange.cacheListMax=cacheMaxCount;
 }
 
 -(HPSlideModel *)slideLeft
@@ -344,6 +470,7 @@
     return _slideRight;
 }
 
+
 -(UIView *)backgroundView
 {
     if (_backgroundView==nil) {
@@ -352,6 +479,14 @@
     return _backgroundView;
 }
 
+-(HPCacheListManage *)cacheListMange
+{
+    if (_cacheListMange==nil) {
+        _cacheListMange=[[HPCacheListManage alloc] init];
+        _cacheListMange.delegate=self;
+    }
+    return _cacheListMange;
+}
 
 -(UIScrollView *)viewContrllerScrollerView
 {

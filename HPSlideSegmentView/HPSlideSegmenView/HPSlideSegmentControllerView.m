@@ -83,32 +83,65 @@
 //判断屏幕触碰状态
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    NSLog(@"接触屏幕");
+//    NSLog(@"接触屏幕");
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    NSLog(@"离开屏幕");
+//    NSLog(@"离开屏幕");
 }
--(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView
+
+-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView changeWithOffset:(CGPoint)moreOffset
 {
-    if (mainSlideScrollView==nil) {
-        return;
-    }
-
-       [_centreScrollerView removeObserver:self forKeyPath:@"contentOffset"];
-    
     _centreScrollerView=mainSlideScrollView;
-
     
-    _centreScrollerView=mainSlideScrollView;
-    [_centreScrollerView addObserver:self
-                          forKeyPath:@"contentOffset"
-                             options:NSKeyValueObservingOptionNew
-                             context:nil];
-    
+    [self scrollViewDidScroll:_centreScrollerView];
     
 }
+
+//-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView
+//{
+//    if (mainSlideScrollView==nil) {
+//        return;
+//    }
+//
+////       [_centreScrollerView removeObserver:self forKeyPath:@"contentOffset"];
+////    
+////    _centreScrollerView=mainSlideScrollView;
+////
+//
+//    
+////    [_centreScrollerView addObserver:self
+////                          forKeyPath:@"contentOffset"
+////                             options:NSKeyValueObservingOptionNew
+////                             context:nil];
+//    
+//    
+////    _centreScrollerView=mainSlideScrollView;
+////    
+////    if (![HPSlideSegmentControllerView isObserver:mainSlideScrollView viewController:self]) {
+////        
+////        
+////        [_centreScrollerView addObserver:self
+////                              forKeyPath:@"contentOffset"
+////                                 options:NSKeyValueObservingOptionNew
+////                                 context:nil];
+////        
+////    }
+//    
+//    
+//}
+
+//+(BOOL)isObserver:(UIScrollView *)mainSlideScrollView viewController:(HPSlideSegmentControllerView *)slideControllerView
+//{
+//    @try {
+//       [mainSlideScrollView removeObserver:slideControllerView forKeyPath:@"contentOffset"];
+//    } @catch (NSException *exception) {
+//        
+//    }
+//    
+//    return NO;
+//}
 
 
 -(void)updateBackgroundHeight:(CGSize)size
@@ -119,14 +152,14 @@
     _slideBackground.frame=CGRectMake(0, 0, _slideScrollerView.contentSize.width, _slideScrollerView.contentSize.height);
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    UIScrollView *scrollView = (UIScrollView *)object;
-    if (self.centreScrollerView == scrollView && [@"contentOffset" isEqualToString:keyPath]) {
-        
-        [self scrollViewDidScroll:scrollView];
-        
-    }
-}
+//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//    UIScrollView *scrollView = (UIScrollView *)object;
+//    if (self.centreScrollerView == scrollView && [@"contentOffset" isEqualToString:keyPath]) {
+//        
+//        [self scrollViewDidScroll:scrollView];
+//        
+//    }
+//}
 
 
 #pragma mark - 懒加载
