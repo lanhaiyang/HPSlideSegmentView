@@ -16,6 +16,16 @@
 - slideModuleView 文字滑动模块
 - slideSegmenView 视图滑动模块
 
+#### slideSegmenView 里面的 `cacheMaxCount` 属性
+
+ 缓存个数
+ 默认小于3默认为3
+
+```
+@property(nonatomic,assign) NSUInteger cacheMaxCount;
+```
+
+
 ### 第一种样式初始化HPSlideSegmentControllerView
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentControllerView.gif)
