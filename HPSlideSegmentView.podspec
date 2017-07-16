@@ -115,6 +115,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
+    s.framework  = "Foundation"
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
