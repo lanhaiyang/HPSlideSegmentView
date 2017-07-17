@@ -21,7 +21,7 @@
  缓存个数
  小于3默认为3
 
-```
+``` objective-c
 @property(nonatomic,assign) NSUInteger cacheMaxCount;
 ```
 
