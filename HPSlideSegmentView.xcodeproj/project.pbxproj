@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6505E5261EECE4F500AE4120 /* HPSlideSegmentControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6505E5251EECE4F500AE4120 /* HPSlideSegmentControllerView.m */; };
-		650C66C31F03D6F30028FC18 /* HPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 650C66C21F03D6F30028FC18 /* HPScrollView.m */; };
 		651301D31F04CD7800DEF81F /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 651301CC1F04CD7800DEF81F /* AViewController.m */; };
 		651301D41F04CD7800DEF81F /* DemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 651301CE1F04CD7800DEF81F /* DemoTableViewCell.m */; };
 		651301D51F04CD7800DEF81F /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 651301D01F04CD7800DEF81F /* DemoViewController.m */; };
@@ -20,14 +18,15 @@
 		65374D0A1EEC3D94005B5C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65374D081EEC3D94005B5C38 /* LaunchScreen.storyboard */; };
 		65374D151EEC3D94005B5C38 /* HPSlideSegmentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374D141EEC3D94005B5C38 /* HPSlideSegmentViewTests.m */; };
 		65374D201EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374D1F1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m */; };
-		657F12771F1878A30097998B /* HPCacheListManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 657F12761F1878A30097998B /* HPCacheListManage.m */; };
-		657F12781F187FD10097998B /* HPCacheListManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 657F12761F1878A30097998B /* HPCacheListManage.m */; };
-		658F596D1EF27810001E864A /* UIView+HPSlideSegmentRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 658F596C1EF27810001E864A /* UIView+HPSlideSegmentRect.m */; };
-		659BDF411EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDF401EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m */; };
-		65D2AC7C1EF0D5AA004398AD /* HPSlideSegmentManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D2AC7B1EF0D5AA004398AD /* HPSlideSegmentManage.m */; };
-		65D2AC7F1EF0D7E7004398AD /* HPSlideSegmentLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D2AC7E1EF0D7E7004398AD /* HPSlideSegmentLogic.m */; };
-		65EAC5791EEE83BB0092CB50 /* HPSlideSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EAC5781EEE83BB0092CB50 /* HPSlideSegmentView.m */; };
-		65EAC57C1EEE85910092CB50 /* HPSlideModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EAC57B1EEE85910092CB50 /* HPSlideModuleView.m */; };
+		6568D0111F1FD13100E82BF1 /* HPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568CFFE1F1FD13100E82BF1 /* HPScrollView.m */; };
+		6568D0121F1FD13100E82BF1 /* HPSlideModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0001F1FD13100E82BF1 /* HPSlideModuleView.m */; };
+		6568D0131F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0021F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m */; };
+		6568D0141F1FD13100E82BF1 /* HPSlideSegmentControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0041F1FD13100E82BF1 /* HPSlideSegmentControllerView.m */; };
+		6568D0151F1FD13100E82BF1 /* HPSlideSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0061F1FD13100E82BF1 /* HPSlideSegmentView.m */; };
+		6568D0161F1FD13100E82BF1 /* HPCacheListManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0091F1FD13100E82BF1 /* HPCacheListManage.m */; };
+		6568D0171F1FD13100E82BF1 /* HPSlideSegmentLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D00B1F1FD13100E82BF1 /* HPSlideSegmentLogic.m */; };
+		6568D0181F1FD13100E82BF1 /* HPSlideSegmentManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D00D1F1FD13100E82BF1 /* HPSlideSegmentManage.m */; };
+		6568D0191F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0101F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,10 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6505E5241EECE4F500AE4120 /* HPSlideSegmentControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentControllerView.h; path = HPSlideSegmenView/HPSlideSegmentControllerView.h; sourceTree = "<group>"; };
-		6505E5251EECE4F500AE4120 /* HPSlideSegmentControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentControllerView.m; path = HPSlideSegmenView/HPSlideSegmentControllerView.m; sourceTree = "<group>"; };
-		650C66C11F03D6F30028FC18 /* HPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPScrollView.h; path = HPSlideSegmenView/HPScrollView.h; sourceTree = "<group>"; };
-		650C66C21F03D6F30028FC18 /* HPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPScrollView.m; path = HPSlideSegmenView/HPScrollView.m; sourceTree = "<group>"; };
 		651301CB1F04CD7800DEF81F /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
 		651301CC1F04CD7800DEF81F /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
 		651301CD1F04CD7800DEF81F /* DemoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewCell.h; sourceTree = "<group>"; };
@@ -74,20 +69,24 @@
 		65374D1B1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HPSlideSegmentViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65374D1F1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentViewUITests.m; sourceTree = "<group>"; };
 		65374D211EEC3D94005B5C38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		657F12751F1878A30097998B /* HPCacheListManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPCacheListManage.h; path = HPSlideSegmenView/HPCacheListManage.h; sourceTree = "<group>"; };
-		657F12761F1878A30097998B /* HPCacheListManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPCacheListManage.m; path = HPSlideSegmenView/HPCacheListManage.m; sourceTree = "<group>"; };
-		658F596B1EF27810001E864A /* UIView+HPSlideSegmentRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HPSlideSegmentRect.h"; path = "HPSlideSegmenView/Tool/UIView+HPSlideSegmentRect.h"; sourceTree = "<group>"; };
-		658F596C1EF27810001E864A /* UIView+HPSlideSegmentRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HPSlideSegmentRect.m"; path = "HPSlideSegmenView/Tool/UIView+HPSlideSegmentRect.m"; sourceTree = "<group>"; };
-		659BDF3F1EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentBackgroundView.h; path = HPSlideSegmenView/HPSlideSegmentBackgroundView.h; sourceTree = "<group>"; };
-		659BDF401EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentBackgroundView.m; path = HPSlideSegmenView/HPSlideSegmentBackgroundView.m; sourceTree = "<group>"; };
-		65D2AC7A1EF0D5AA004398AD /* HPSlideSegmentManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentManage.h; path = HPSlideSegmenView/HPSlideSegmentManage.h; sourceTree = "<group>"; };
-		65D2AC7B1EF0D5AA004398AD /* HPSlideSegmentManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentManage.m; path = HPSlideSegmenView/HPSlideSegmentManage.m; sourceTree = "<group>"; };
-		65D2AC7D1EF0D7E7004398AD /* HPSlideSegmentLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentLogic.h; path = HPSlideSegmenView/HPSlideSegmentLogic.h; sourceTree = "<group>"; };
-		65D2AC7E1EF0D7E7004398AD /* HPSlideSegmentLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentLogic.m; path = HPSlideSegmenView/HPSlideSegmentLogic.m; sourceTree = "<group>"; };
-		65EAC5771EEE83BB0092CB50 /* HPSlideSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideSegmentView.h; path = HPSlideSegmenView/HPSlideSegmentView.h; sourceTree = "<group>"; };
-		65EAC5781EEE83BB0092CB50 /* HPSlideSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideSegmentView.m; path = HPSlideSegmenView/HPSlideSegmentView.m; sourceTree = "<group>"; };
-		65EAC57A1EEE85910092CB50 /* HPSlideModuleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideModuleView.h; path = HPSlideSegmenView/HPSlideModuleView.h; sourceTree = "<group>"; };
-		65EAC57B1EEE85910092CB50 /* HPSlideModuleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideModuleView.m; path = HPSlideSegmenView/HPSlideModuleView.m; sourceTree = "<group>"; };
+		6568CFFD1F1FD13100E82BF1 /* HPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPScrollView.h; sourceTree = "<group>"; };
+		6568CFFE1F1FD13100E82BF1 /* HPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPScrollView.m; sourceTree = "<group>"; };
+		6568CFFF1F1FD13100E82BF1 /* HPSlideModuleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSlideModuleView.h; sourceTree = "<group>"; };
+		6568D0001F1FD13100E82BF1 /* HPSlideModuleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideModuleView.m; sourceTree = "<group>"; };
+		6568D0011F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSlideSegmentBackgroundView.h; sourceTree = "<group>"; };
+		6568D0021F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentBackgroundView.m; sourceTree = "<group>"; };
+		6568D0031F1FD13100E82BF1 /* HPSlideSegmentControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSlideSegmentControllerView.h; sourceTree = "<group>"; };
+		6568D0041F1FD13100E82BF1 /* HPSlideSegmentControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentControllerView.m; sourceTree = "<group>"; };
+		6568D0051F1FD13100E82BF1 /* HPSlideSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSlideSegmentView.h; sourceTree = "<group>"; };
+		6568D0061F1FD13100E82BF1 /* HPSlideSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentView.m; sourceTree = "<group>"; };
+		6568D0081F1FD13100E82BF1 /* HPCacheListManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPCacheListManage.h; sourceTree = "<group>"; };
+		6568D0091F1FD13100E82BF1 /* HPCacheListManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPCacheListManage.m; sourceTree = "<group>"; };
+		6568D00A1F1FD13100E82BF1 /* HPSlideSegmentLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSlideSegmentLogic.h; sourceTree = "<group>"; };
+		6568D00B1F1FD13100E82BF1 /* HPSlideSegmentLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentLogic.m; sourceTree = "<group>"; };
+		6568D00C1F1FD13100E82BF1 /* HPSlideSegmentManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSlideSegmentManage.h; sourceTree = "<group>"; };
+		6568D00D1F1FD13100E82BF1 /* HPSlideSegmentManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentManage.m; sourceTree = "<group>"; };
+		6568D00F1F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HPSlideSegmentRect.h"; sourceTree = "<group>"; };
+		6568D0101F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HPSlideSegmentRect.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,30 +114,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6505E5231EECE4D300AE4120 /* HPSlideSegmentView */ = {
-			isa = PBXGroup;
-			children = (
-				658F596A1EF277BE001E864A /* Tool */,
-				6505E5241EECE4F500AE4120 /* HPSlideSegmentControllerView.h */,
-				6505E5251EECE4F500AE4120 /* HPSlideSegmentControllerView.m */,
-				650C66C11F03D6F30028FC18 /* HPScrollView.h */,
-				650C66C21F03D6F30028FC18 /* HPScrollView.m */,
-				659BDF3F1EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.h */,
-				659BDF401EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m */,
-				65EAC5771EEE83BB0092CB50 /* HPSlideSegmentView.h */,
-				65EAC5781EEE83BB0092CB50 /* HPSlideSegmentView.m */,
-				65EAC57A1EEE85910092CB50 /* HPSlideModuleView.h */,
-				65EAC57B1EEE85910092CB50 /* HPSlideModuleView.m */,
-				65D2AC7D1EF0D7E7004398AD /* HPSlideSegmentLogic.h */,
-				65D2AC7E1EF0D7E7004398AD /* HPSlideSegmentLogic.m */,
-				65D2AC7A1EF0D5AA004398AD /* HPSlideSegmentManage.h */,
-				65D2AC7B1EF0D5AA004398AD /* HPSlideSegmentManage.m */,
-				657F12751F1878A30097998B /* HPCacheListManage.h */,
-				657F12761F1878A30097998B /* HPCacheListManage.m */,
-			);
-			name = HPSlideSegmentView;
-			sourceTree = "<group>";
-		};
 		651301CA1F04CD7800DEF81F /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +154,7 @@
 			children = (
 				65374CFD1EEC3D94005B5C38 /* AppDelegate.h */,
 				65374CFE1EEC3D94005B5C38 /* AppDelegate.m */,
-				6505E5231EECE4D300AE4120 /* HPSlideSegmentView */,
+				6568CFFB1F1FD13100E82BF1 /* HPSlideSegmenView */,
 				651301CA1F04CD7800DEF81F /* Demo */,
 				65374D031EEC3D94005B5C38 /* Main.storyboard */,
 				65374D061EEC3D94005B5C38 /* Assets.xcassets */,
@@ -216,13 +191,53 @@
 			path = HPSlideSegmentViewUITests;
 			sourceTree = "<group>";
 		};
-		658F596A1EF277BE001E864A /* Tool */ = {
+		6568CFFB1F1FD13100E82BF1 /* HPSlideSegmenView */ = {
 			isa = PBXGroup;
 			children = (
-				658F596B1EF27810001E864A /* UIView+HPSlideSegmentRect.h */,
-				658F596C1EF27810001E864A /* UIView+HPSlideSegmentRect.m */,
+				6568CFFF1F1FD13100E82BF1 /* HPSlideModuleView.h */,
+				6568D0001F1FD13100E82BF1 /* HPSlideModuleView.m */,
+				6568D0011F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.h */,
+				6568D0021F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m */,
+				6568D0031F1FD13100E82BF1 /* HPSlideSegmentControllerView.h */,
+				6568D0041F1FD13100E82BF1 /* HPSlideSegmentControllerView.m */,
+				6568D0051F1FD13100E82BF1 /* HPSlideSegmentView.h */,
+				6568D0061F1FD13100E82BF1 /* HPSlideSegmentView.m */,
+				6568CFFC1F1FD13100E82BF1 /* BaseView */,
+				6568D0071F1FD13100E82BF1 /* Manage */,
+				6568D00E1F1FD13100E82BF1 /* Tool */,
 			);
-			name = Tool;
+			path = HPSlideSegmenView;
+			sourceTree = "<group>";
+		};
+		6568CFFC1F1FD13100E82BF1 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				6568CFFD1F1FD13100E82BF1 /* HPScrollView.h */,
+				6568CFFE1F1FD13100E82BF1 /* HPScrollView.m */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		6568D0071F1FD13100E82BF1 /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+				6568D0081F1FD13100E82BF1 /* HPCacheListManage.h */,
+				6568D0091F1FD13100E82BF1 /* HPCacheListManage.m */,
+				6568D00A1F1FD13100E82BF1 /* HPSlideSegmentLogic.h */,
+				6568D00B1F1FD13100E82BF1 /* HPSlideSegmentLogic.m */,
+				6568D00C1F1FD13100E82BF1 /* HPSlideSegmentManage.h */,
+				6568D00D1F1FD13100E82BF1 /* HPSlideSegmentManage.m */,
+			);
+			path = Manage;
+			sourceTree = "<group>";
+		};
+		6568D00E1F1FD13100E82BF1 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				6568D00F1F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.h */,
+				6568D0101F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,21 +374,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6568D0121F1FD13100E82BF1 /* HPSlideModuleView.m in Sources */,
+				6568D0111F1FD13100E82BF1 /* HPScrollView.m in Sources */,
+				6568D0131F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m in Sources */,
 				651301D61F04CD7800DEF81F /* ViewController.m in Sources */,
+				6568D0171F1FD13100E82BF1 /* HPSlideSegmentLogic.m in Sources */,
 				65374CFF1EEC3D94005B5C38 /* AppDelegate.m in Sources */,
-				65D2AC7F1EF0D7E7004398AD /* HPSlideSegmentLogic.m in Sources */,
+				6568D0181F1FD13100E82BF1 /* HPSlideSegmentManage.m in Sources */,
+				6568D0151F1FD13100E82BF1 /* HPSlideSegmentView.m in Sources */,
 				651301D41F04CD7800DEF81F /* DemoTableViewCell.m in Sources */,
+				6568D0161F1FD13100E82BF1 /* HPCacheListManage.m in Sources */,
 				651301D31F04CD7800DEF81F /* AViewController.m in Sources */,
 				651301D51F04CD7800DEF81F /* DemoViewController.m in Sources */,
-				658F596D1EF27810001E864A /* UIView+HPSlideSegmentRect.m in Sources */,
-				657F12771F1878A30097998B /* HPCacheListManage.m in Sources */,
-				65EAC5791EEE83BB0092CB50 /* HPSlideSegmentView.m in Sources */,
-				650C66C31F03D6F30028FC18 /* HPScrollView.m in Sources */,
-				6505E5261EECE4F500AE4120 /* HPSlideSegmentControllerView.m in Sources */,
-				65D2AC7C1EF0D5AA004398AD /* HPSlideSegmentManage.m in Sources */,
-				65EAC57C1EEE85910092CB50 /* HPSlideModuleView.m in Sources */,
-				659BDF411EEF9DE60045F3D5 /* HPSlideSegmentBackgroundView.m in Sources */,
+				6568D0141F1FD13100E82BF1 /* HPSlideSegmentControllerView.m in Sources */,
 				65374CFC1EEC3D94005B5C38 /* main.m in Sources */,
+				6568D0191F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +397,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65374D151EEC3D94005B5C38 /* HPSlideSegmentViewTests.m in Sources */,
-				657F12781F187FD10097998B /* HPCacheListManage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
