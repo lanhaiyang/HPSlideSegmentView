@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HPSlideSegmentView"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "HPSlideSegmentView 滑动悬停和侧滑框架"
 
 
@@ -22,16 +22,32 @@ Pod::Spec.new do |s|
   s.author       = { "lanhaiyang" => "1002230810@qq.com" }
 
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "7.0"
 
 
   s.source       = { :git => "https://github.com/lanhaiyang/HPSlideSegmentView.git", :tag => s.version.to_s }
 
 
 
-  s.source_files  = "HPSlideSegmentView/HPSlideSegmenView/**/*.{h,m}"
+  s.source_files  = "HPSlideSegmentView/HPSlideSegmenView"
 
 
   s.requires_arc = true
+
+
+  s.subspec 'BaseView' do |ss|
+    ss.source_files = "HPSlideSegmentView/HPSlideSegmenView/BaseView"
+   
+  end
+
+  s.subspec 'Manage' do |ss|
+    ss.source_files = "HPSlideSegmentView/HPSlideSegmenView/Manage"
+   
+  end
+
+  s.subspec 'Tool' do |ss|
+    ss.source_files = "HPSlideSegmentView/HPSlideSegmenView/Tool"
+   
+  end
 
 end
