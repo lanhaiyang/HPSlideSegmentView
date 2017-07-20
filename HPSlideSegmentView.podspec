@@ -36,18 +36,20 @@ Pod::Spec.new do |s|
 
 
   s.subspec 'BaseView' do |ss|
-    ss.public_header_files = "HPSlideSegmentView/HPSlideSegmenView/BaseView/*.{h,m}"
-   
-  end
-
-  s.subspec 'Manage' do |ss|
-    ss.public_header_files = "HPSlideSegmentView/HPSlideSegmenView/Manage/*.{h,m}"
+    ss.source_files = "HPSlideSegmentView/HPSlideSegmenView/BaseView/*.{h,m}"
    
   end
 
   s.subspec 'Tool' do |ss|
-    ss.public_header_files = "HPSlideSegmentView/HPSlideSegmenView/Tool/*.{h,m}"
+    ss.source_files = "HPSlideSegmentView/HPSlideSegmenView/Tool/*.{h,m}"
    
   end
+
+  s.subspec 'Manage' do |ss|
+    ss.resource = "HPSlideSegmentView/HPSlideSegmenView/Tool/*.{h,m}"
+    ss.source_files = "HPSlideSegmentView/HPSlideSegmenView/Manage/*.{h,m}"
+   
+  end
+
 
 end
