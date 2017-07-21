@@ -1,5 +1,19 @@
 # HPSlideSegmentView
 
+### Pods 
+
+```
+#在podfile 中添加
+
+# iOS 版本要7.0 :platform :ios, ‘7.0’
+
+```
+```
+pod 'HPSlideSegmentView', '~> 0.1.2’
+
+```
+
+
 ### 创建悬浮效果
 
 
