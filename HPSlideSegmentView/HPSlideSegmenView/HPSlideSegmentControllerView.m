@@ -17,6 +17,7 @@
 @property(nonatomic,weak) UIScrollView *centreScrollerView;
 @property(nonatomic,strong) UIView *slideBackground;
 
+@property(nonatomic,assign) CGFloat autoTopHeight;
 
 @end
 
@@ -25,7 +26,6 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets=NO;
      [self creatLayout];
 }
 
@@ -53,11 +53,13 @@
 {
     [super viewDidLayoutSubviews];
     
+    self.autoTopHeight=self.slideScrollerView.contentOffset.y;
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat height=self.slideBackgroungView.y;
+    CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
     
     if (scrollView==self.centreScrollerView) {
         [HPSlideSegmentManage slideUpSegmentWithMainScrollerView:self.slideScrollerView
@@ -99,50 +101,6 @@
     
 }
 
-//-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView
-//{
-//    if (mainSlideScrollView==nil) {
-//        return;
-//    }
-//
-////       [_centreScrollerView removeObserver:self forKeyPath:@"contentOffset"];
-////    
-////    _centreScrollerView=mainSlideScrollView;
-////
-//
-//    
-////    [_centreScrollerView addObserver:self
-////                          forKeyPath:@"contentOffset"
-////                             options:NSKeyValueObservingOptionNew
-////                             context:nil];
-//    
-//    
-////    _centreScrollerView=mainSlideScrollView;
-////    
-////    if (![HPSlideSegmentControllerView isObserver:mainSlideScrollView viewController:self]) {
-////        
-////        
-////        [_centreScrollerView addObserver:self
-////                              forKeyPath:@"contentOffset"
-////                                 options:NSKeyValueObservingOptionNew
-////                                 context:nil];
-////        
-////    }
-//    
-//    
-//}
-
-//+(BOOL)isObserver:(UIScrollView *)mainSlideScrollView viewController:(HPSlideSegmentControllerView *)slideControllerView
-//{
-//    @try {
-//       [mainSlideScrollView removeObserver:slideControllerView forKeyPath:@"contentOffset"];
-//    } @catch (NSException *exception) {
-//        
-//    }
-//    
-//    return NO;
-//}
-
 
 -(void)updateBackgroundHeight:(CGSize)size
 {
@@ -151,16 +109,6 @@
     
     _slideBackground.frame=CGRectMake(0, 0, _slideScrollerView.contentSize.width, _slideScrollerView.contentSize.height);
 }
-
-//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-//    UIScrollView *scrollView = (UIScrollView *)object;
-//    if (self.centreScrollerView == scrollView && [@"contentOffset" isEqualToString:keyPath]) {
-//        
-//        [self scrollViewDidScroll:scrollView];
-//        
-//    }
-//}
-
 
 #pragma mark - 懒加载
 
@@ -174,8 +122,7 @@
 {
     if (_slideScrollerView==nil) {
         _slideScrollerView=[[HPScrollView alloc] init];
-        CGFloat y=self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height;
-        _slideScrollerView.frame=CGRectMake(0, y, self.view.width, self.view.height-self.bottomSpaceHeight-y);
+        _slideScrollerView.frame=CGRectMake(0, 0, self.view.width, self.view.height-self.bottomSpaceHeight);
         _slideScrollerView.contentSize=CGSizeMake(0, 0);
         _slideScrollerView.delegate=self;
         _slideScrollerView.showsVerticalScrollIndicator=NO;
