@@ -112,6 +112,15 @@
 
 #pragma mark - 懒加载
 
+-(void)setBottomSpaceHeight:(CGFloat)bottomSpaceHeight
+{
+    _bottomSpaceHeight=bottomSpaceHeight;
+    _slideScrollerView.contentSize=CGSizeMake(_slideScrollerView.width, 0);
+    _slideScrollerView.frame=CGRectMake(0, 0, self.view.width, self.view.height-bottomSpaceHeight);
+    _slideBackground.frame=CGRectMake(0, 0, self.slideScrollerView.width, self.slideScrollerView.height);
+    [self creatLayout];
+}
+
 -(void)setHeadeView:(UIView *)headeView
 {
     _headeView=headeView;
@@ -122,7 +131,7 @@
 {
     if (_slideScrollerView==nil) {
         _slideScrollerView=[[HPScrollView alloc] init];
-        _slideScrollerView.frame=CGRectMake(0, 0, self.view.width, self.view.height-self.bottomSpaceHeight);
+        _slideScrollerView.frame=CGRectMake(0, 0, self.view.width, self.view.height);
         _slideScrollerView.contentSize=CGSizeMake(0, 0);
         _slideScrollerView.delegate=self;
         _slideScrollerView.showsVerticalScrollIndicator=NO;

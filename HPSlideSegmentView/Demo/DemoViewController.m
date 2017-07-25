@@ -33,6 +33,7 @@
     self.slideBackgroungView.slideSegmenView.dataSource=self;
     self.slideBackgroungView.slideModuleViewHeight=50;
     self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
+    self.bottomSpaceHeight=100;
 }
 
 -(NSUInteger)hp_slideListWithCount
