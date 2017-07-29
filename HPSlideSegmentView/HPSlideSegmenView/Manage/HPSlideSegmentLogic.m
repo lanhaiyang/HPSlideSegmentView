@@ -166,18 +166,30 @@
     if (endOffsetX<0) {
         //right
         
-        NSInteger currenNumber=*currentIndex+1;
-        currenNumber=[self arraCount:arrayDataCount index:currenNumber];
-        return currenNumber;
+        if (off.x<0 || startOffset.x<0) {
+            return *currentIndex;
+            
+        }
         
+        NSUInteger currenNumber=*currentIndex+1;
+        currenNumber=[self arraCount:arrayDataCount index:currenNumber];
+        NSLog(@"right = %ld, startOffset = %lf , end=%lf",*currentIndex,startOffset.x,endOffsetX);
+        return currenNumber;
+    
         
     }
     if (endOffsetX>0)
     {
         //left
         
+        if (off.x>scrollView.contentSize.width-scrollView.width || startOffset.x>scrollView.contentSize.width-scrollView.width) {
+            return *currentIndex;
+            
+        }
+        
         NSInteger currenNumber=*currentIndex-1;
         currenNumber=[self arraCount:arrayDataCount index:currenNumber];
+        NSLog(@"left = %ld, startOffset = %lf, end=%lf",*currentIndex,startOffset.x,endOffsetX);
         return currenNumber;
     }
 
@@ -249,8 +261,8 @@
     else if (arrayCount==1)
     {
         HPNumber numberLeft=HPNumberMake(0, nil);
-        HPNumber numberCentre=HPNumberMake(0, "Error:arrayCount very max");
-        HPNumber numberRight=HPNumberMake(0, "Error:arrayCount very max");
+        HPNumber numberCentre=HPNumberMake(-1, "Error:arrayCount very max");
+        HPNumber numberRight=HPNumberMake(-1, "Error:arrayCount very max");
         changeBlock(numberLeft,numberCentre,numberRight,scrollView.contentOffset);
         return;
     }
@@ -258,7 +270,7 @@
     {
         HPNumber numberLeft=HPNumberMake(0, nil);
         HPNumber numberCentre=HPNumberMake(1, nil);
-        HPNumber numberRight=HPNumberMake(0, "Error:arrayCount very max");
+        HPNumber numberRight=HPNumberMake(-1, "Error:arrayCount very max");
         changeBlock(numberLeft,numberCentre,numberRight,scrollView.contentOffset);
         return;
     }

@@ -34,6 +34,13 @@
     self.slideBackgroungView.slideModuleViewHeight=50;
     self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
     self.bottomSpaceHeight=100;
+    self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
+    
+    UIView *redView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
+    redView.backgroundColor=[UIColor redColor];
+//    self.slideBackgroungView.slideModuleView.slideModuleView=redView;
+    
+    
 }
 
 -(NSUInteger)hp_slideListWithCount
@@ -54,7 +61,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii",@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii",@"A",@"B",@"C",@"BBBB",@"AAAAA",@"CCCCCC",@"dddddd",@"uuu",@"iii"];
+        _dataSouce=@[@"A",@"B"];
     }
     return _dataSouce;
 }

@@ -19,6 +19,8 @@
 
 @property(nonatomic,assign) CGFloat autoTopHeight;
 
+@property(nonatomic,assign) BOOL statcStyle;
+
 @end
 
 @implementation HPSlideSegmentControllerView
@@ -26,7 +28,9 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-     [self creatLayout];
+    
+    self.bottomSpaceHeight=_bottomSpaceHeight;
+    
 }
 
 -(void)creatLayout
@@ -53,7 +57,11 @@
 {
     [super viewDidLayoutSubviews];
     
-    self.autoTopHeight=self.slideScrollerView.contentOffset.y;
+    if (self.statcStyle==NO) {
+        
+        self.autoTopHeight=self.slideScrollerView.contentOffset.y;
+        self.statcStyle=YES;
+    }
     
 }
 
@@ -124,7 +132,7 @@
 -(void)setHeadeView:(UIView *)headeView
 {
     _headeView=headeView;
-    [self creatLayout];
+    self.bottomSpaceHeight=_bottomSpaceHeight;
 }
 
 -(HPScrollView *)slideScrollerView

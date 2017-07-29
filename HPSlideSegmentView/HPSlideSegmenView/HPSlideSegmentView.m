@@ -88,7 +88,7 @@
                                                 right:nil
                                 scrollerViewWithWidth:self.viewContrllerScrollerView.width];
     }
-    else if (self.showCount>3)
+    else if (self.showCount>=3)
     {
         [HPSlideSegmentView layoutWithScrollerAddView:self.backgroundView
                                                  left:self.slideLeft
@@ -190,6 +190,7 @@
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+
     _scrollViewMove=NO;
     [HPSlideSegmentLogic slideSuperView:_viewContrllerScrollerView.width
                              scrollView:_viewContrllerScrollerView
@@ -332,11 +333,6 @@
 -(void)changeStatusLeft:(HPNumber)left centre:(HPNumber)centre right:(HPNumber)right
 {
 
-
-    
-    [HPSlideSegmentView numberWithLessThanZero:left];
-    [HPSlideSegmentView numberWithLessThanZero:centre];
-    [HPSlideSegmentView numberWithLessThanZero:right];
     
     [self removeWithLayout:_slideLeft];
     [self removeWithLayout:_slideCentre];
@@ -409,15 +405,7 @@
     cacheSlideModel.observse=slideModel.observse;
 }
 
-+(void)numberWithLessThanZero:(HPNumber)number
-{
-    if (number.error!=nil) {
-        
-        number.number=-1;
-        
-    }
-    
-}
+
 
 
 #pragma mark -懒加载

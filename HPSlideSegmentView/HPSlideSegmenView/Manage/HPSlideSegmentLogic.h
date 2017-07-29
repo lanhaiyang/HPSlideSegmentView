@@ -16,7 +16,7 @@ typedef struct{
 }HPPoint;
 
 typedef struct {
-    NSUInteger number;
+    NSInteger number;
     char *error;
 }HPNumber;
 

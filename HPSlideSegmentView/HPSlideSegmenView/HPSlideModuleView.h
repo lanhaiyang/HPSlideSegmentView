@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 @class HPSlideModuleView;
 
+typedef enum {
+
+    ENUM_HP_AUTOSIZE=1,// 自动设置大小
+    ENUM_HP_DEFINESIZE=2,//只需要设置为默认大小
+    ENUM_HP_AUTOMINSIZE=3 //自动设置大小 默认最小为minWidth
+    
+}AutoSizeType;
+
 typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 
 @protocol SlideModuleViewDelegate <NSObject>
@@ -55,12 +63,18 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 /**
  滑块view
  */
-@property(nonatomic,strong) UIView *slideModuleView;
+@property(nonatomic,strong) UIView *slideModuleView;//废弃
 
 /**
  滑块的宽度
  */
-@property(nonatomic,assign) CGFloat slideModeuleWidth;
+@property(nonatomic,assign) CGFloat slideModeuleWidth;//废弃
+
+@property(nonatomic,assign) UIEdgeInsets edgeInsets;
+
+-(void)viewMinSizeWidth:(CGFloat)minWidth style:(AutoSizeType)type;
+
+
 
 
 /**
