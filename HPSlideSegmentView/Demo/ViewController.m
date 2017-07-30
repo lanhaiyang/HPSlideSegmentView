@@ -31,7 +31,7 @@
     slideSegmentBackgroundView.slideSegmenView.dataSource=self;
     slideSegmentBackgroundView.contents=self.dataSouce;
     [self.view addSubview:slideSegmentBackgroundView];
-    
+    self.view.backgroundColor=[UIColor redColor];
     
 }
 

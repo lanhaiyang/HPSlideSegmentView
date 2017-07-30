@@ -36,9 +36,6 @@
     self.bottomSpaceHeight=100;
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
     
-    UIView *redView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
-    self.slideBackgroungView.slideModuleView.slideModuleView=redView;
-    
     
 }
 
@@ -60,7 +57,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"A",@"B"];
+        _dataSouce=@[@"A",@"B",@"C",@"D"];
     }
     return _dataSouce;
 }

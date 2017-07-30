@@ -55,8 +55,6 @@
     
 }
 
-
-
 -(void)slideAction
 {
     [self.slideModuleView hp_weak:self
@@ -95,7 +93,7 @@
 
     _slideModuleView.frame=CGRectMake(0, 0, self.width, slideModuleViewHeight);
     CGFloat y=self.slideModuleView.x+self.slideModuleView.height;
-    _slideSegmenView.frame=CGRectMake(0, y, self.width, self.height);
+    _slideSegmenView.frame=CGRectMake(0, y, self.width, self.height-y);
     [self updateLayout];
 }
 

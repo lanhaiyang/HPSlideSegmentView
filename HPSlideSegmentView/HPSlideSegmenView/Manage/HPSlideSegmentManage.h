@@ -38,4 +38,5 @@ typedef void (^SlideUpSegmentBlock)(CGPoint upPoint);
                      upHeight:(CGFloat)topHeight
           slideUpSegmentBlock:(SlideUpSegmentBlock)upBlock;
 
+
 @end

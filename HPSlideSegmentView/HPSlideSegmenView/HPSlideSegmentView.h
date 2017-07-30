@@ -34,20 +34,30 @@
  */
 -(void)hp_slideWithNowIndex:(NSUInteger)nowIndex readyIndex:(NSUInteger)readyIndex movePercent:(CGFloat)movePercent;
 
-
 @end
 
 @protocol HPSlideUpViewDelegate <NSObject>
 
 
+
 /**
- 返回当前的ScrollView
+ 获取当前显示view上面显示的mainScrollview
 
- @param mainSlideScrollView 当前的scrollView
+ @param mainSlideScrollView 存储当前显示的mainScrollview
  */
-//-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView;
+-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView;
 
--(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView changeWithOffset:(CGPoint)moreOffset;
+@end
+
+@protocol HPSlideUpViewGestureClashDelegate <NSObject>
+
+
+/**
+ 防止手势冲突
+
+ @param gesture 返回当左右滑动时停止 多手势返回NO 当上下滑动时返回YES
+ */
+-(void)hp_slideWithGestureClash:(BOOL)gesture;
 
 @end
 
@@ -56,6 +66,7 @@
 @property(nonatomic,weak) id<HPSlideSegmentViewDataSouce> dataSource;
 @property(nonatomic,weak) id<HPSlideSegmentViewDelegate> delegate;
 @property(nonatomic,weak) id<HPSlideUpViewDelegate> upDelegate;
+@property(nonatomic,weak) id<HPSlideUpViewGestureClashDelegate> gestrueClashDelegate;
 
 
 /**

@@ -11,7 +11,7 @@
 #import "HPSlideSegmentManage.h"
 #import "HPScrollView.h"
 
-@interface HPSlideSegmentControllerView ()<UIScrollViewDelegate,HPSlideUpViewDelegate>
+@interface HPSlideSegmentControllerView ()<UIScrollViewDelegate,HPSlideUpViewDelegate,HPSlideUpViewGestureClashDelegate>
 
 @property(nonatomic,strong) HPScrollView *slideScrollerView;
 @property(nonatomic,weak) UIScrollView *centreScrollerView;
@@ -65,6 +65,11 @@
     
 }
 
+-(void)hp_slideWithGestureClash:(BOOL)gesture
+{
+    self.slideScrollerView.gestureClash=gesture;
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
@@ -101,7 +106,7 @@
 //    NSLog(@"离开屏幕");
 }
 
--(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView changeWithOffset:(CGPoint)moreOffset
+-(void)hp_currentMainSlideScrollView:(UIScrollView *)mainSlideScrollView
 {
     _centreScrollerView=mainSlideScrollView;
     
@@ -142,6 +147,7 @@
         _slideScrollerView.frame=CGRectMake(0, 0, self.view.width, self.view.height);
         _slideScrollerView.contentSize=CGSizeMake(0, 0);
         _slideScrollerView.delegate=self;
+        _slideScrollerView.bounces=YES;
         _slideScrollerView.showsVerticalScrollIndicator=NO;
         _slideScrollerView.showsHorizontalScrollIndicator=NO;
         [self.view addSubview:_slideScrollerView];
@@ -167,6 +173,7 @@
         _slideBackgroungView=[[HPSlideSegmentBackgroundView alloc] initWithFrame:CGRectMake(0, y, self.slideScrollerView.width,self.view.height)];
         _slideBackgroungView.frame=CGRectMake(0, y, _slideBackgroungView.width, _slideBackgroungView.slideSegmenView.y+_slideBackgroungView.slideSegmenView.height);
         _slideBackgroungView.slideSegmenView.upDelegate=self;
+        _slideBackgroungView.slideSegmenView.gestrueClashDelegate=self;
         [self.slideBackground addSubview:_slideBackgroungView];
     }
     return _slideBackgroungView;

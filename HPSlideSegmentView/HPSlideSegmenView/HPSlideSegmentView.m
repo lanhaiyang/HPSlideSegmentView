@@ -154,6 +154,12 @@
                               
                               
                           }];
+    
+    if ([self.gestrueClashDelegate respondsToSelector:@selector(hp_slideWithGestureClash:)]) {
+        
+        [self.gestrueClashDelegate hp_slideWithGestureClash:YES];
+        
+    }
 }
 
 #pragma mark - scrollerViewDelegate
@@ -177,6 +183,18 @@
         CGFloat percent=fabs(scrollView.contentOffset.x-self.startOffset.x)/self.width;
         
         [self.delegate hp_slideWithNowIndex:_pageIndex readyIndex:index movePercent:percent];
+        
+        if ([self.gestrueClashDelegate respondsToSelector:@selector(hp_slideWithGestureClash:)]) {
+            
+            if (percent==0) {
+                [self.gestrueClashDelegate hp_slideWithGestureClash:YES];
+            }
+            else
+            {
+                [self.gestrueClashDelegate hp_slideWithGestureClash:NO];
+            }
+            
+        }
         
     }
 }
@@ -294,12 +312,10 @@
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     UIScrollView *scrollView = (UIScrollView *)object;
     if (self.centreScrollerView == scrollView && [@"contentOffset" isEqualToString:keyPath]) {
-        
-//        [self scrollViewDidScroll:scrollView];
-        
-        if ([self.upDelegate respondsToSelector:@selector(hp_currentMainSlideScrollView:changeWithOffset:)]) {
+
+        if ([self.upDelegate respondsToSelector:@selector(hp_currentMainSlideScrollView:)]) {
             
-            [self.upDelegate hp_currentMainSlideScrollView:self.centreScrollerView changeWithOffset:scrollView.contentOffset];
+            [self.upDelegate hp_currentMainSlideScrollView:self.centreScrollerView];
             
         }
         

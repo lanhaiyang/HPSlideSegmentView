@@ -60,15 +60,17 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 @property(nonatomic,strong) UIColor *slideModuleColor;
 
 
-///**
-// 滑块view
-// */
-@property(nonatomic,strong) UIView *slideModuleView;//废弃
-//
-///**
-// 滑块的宽度
-// */
-@property(nonatomic,assign) CGFloat slideModeuleWidth;//废弃
+/**
+ 滑块view 该属性在维护动作
+ */
+@property(nonatomic,strong) UIView *slideModuleView;
+
+/**
+ 滑块的宽度 该属性在维护动作
+ */
+@property(nonatomic,assign) CGFloat slideModeuleWidth;
+
+
 //
 //@property(nonatomic,assign) UIEdgeInsets edgeInsets;
 //

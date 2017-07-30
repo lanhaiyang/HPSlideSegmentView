@@ -173,7 +173,6 @@
         
         NSUInteger currenNumber=*currentIndex+1;
         currenNumber=[self arraCount:arrayDataCount index:currenNumber];
-        NSLog(@"right = %ld, startOffset = %lf , end=%lf",*currentIndex,startOffset.x,endOffsetX);
         return currenNumber;
     
         
