@@ -63,12 +63,12 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 ///**
 // 滑块view
 // */
-//@property(nonatomic,strong) UIView *slideModuleView;//废弃
+@property(nonatomic,strong) UIView *slideModuleView;//废弃
 //
 ///**
 // 滑块的宽度
 // */
-//@property(nonatomic,assign) CGFloat slideModeuleWidth;//废弃
+@property(nonatomic,assign) CGFloat slideModeuleWidth;//废弃
 //
 //@property(nonatomic,assign) UIEdgeInsets edgeInsets;
 //
