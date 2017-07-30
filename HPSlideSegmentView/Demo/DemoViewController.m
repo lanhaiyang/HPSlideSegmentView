@@ -37,8 +37,7 @@
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
     
     UIView *redView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
-    redView.backgroundColor=[UIColor redColor];
-//    self.slideBackgroungView.slideModuleView.slideModuleView=redView;
+    self.slideBackgroungView.slideModuleView.slideModuleView=redView;
     
     
 }
