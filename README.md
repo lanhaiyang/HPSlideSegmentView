@@ -8,7 +8,7 @@
 # iOS 版本要7.0 :platform :ios, ‘7.0’
 ```
 ```
-pod 'HPSlideSegmentView', '~> 0.1.4’
+pod 'HPSlideSegmentView', '~> 0.1.6'
 ```
 
 
