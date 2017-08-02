@@ -186,13 +186,14 @@
         
         if ([self.gestrueClashDelegate respondsToSelector:@selector(hp_slideWithGestureClash:)]) {
             
-            if (percent==0) {
+            if (percent==0 || percent==1) {
                 [self.gestrueClashDelegate hp_slideWithGestureClash:YES];
             }
             else
             {
                 [self.gestrueClashDelegate hp_slideWithGestureClash:NO];
             }
+            
             
         }
         

@@ -33,7 +33,7 @@
     self.slideBackgroungView.slideSegmenView.dataSource=self;
     self.slideBackgroungView.slideModuleViewHeight=50;
     self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
-    self.bottomSpaceHeight=100;
+    self.bottomSpaceHeight=46;//底部高度
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
     
     
