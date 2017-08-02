@@ -61,6 +61,8 @@
                                     moduleHeight:self.bounds.size.height];
     
     self.backgroundColor=[UIColor whiteColor];
+    self.slideModuleColor=_slideModuleColor;
+    self.slideModuleView=_slideModuleView;
     
     [self buttonAction:_arrayButtons];
     [self slideModuleLayout];
@@ -80,7 +82,14 @@
                                                            defauleWidth:defaultButton.bounds.size.width
                                                             buttonWithX:defaultButton.x];
     
-    [self.backgroundView addSubview:_slideModuleView];
+    [HPSlideSegmentLogic animationSlideView:self.slideModuleView
+                           slideModuleWidht:_slideModeuleWidth
+                                   nowPoint:HPPointMake(defaultButton.x, defaultButton.width)
+                                readyButton:HPPointMake(defaultButton.x, defaultButton.width)
+                                movePercent:0];
+    
+    
+    [self.backgroundView insertSubview:_slideModuleView atIndex:0];
     
 }
 
@@ -106,9 +115,16 @@
         [self selectButton:button];
 
         
-        CGFloat x=button.x;
-
-        self.slideModuleView.frame=CGRectMake(x, self.slideModuleView.y, button.width, self.slideModuleView.height);
+        [HPSlideSegmentLogic animationSlideView:self.slideModuleView
+                               slideModuleWidht:_slideModeuleWidth
+                                       nowPoint:HPPointMake(button.x, button.width)
+                                    readyButton:HPPointMake(button.x, button.width)
+                                    movePercent:0];
+        
+        
+//        CGFloat x=button.x;
+//
+//        self.slideModuleView.frame=CGRectMake(x, self.slideModuleView.y, button.width, self.slideModuleView.height);
         _hpActionBlock(_hpWeakObj,button.index);
         
         
@@ -256,22 +272,54 @@
     return _scrollView;
 }
 
--(UIView *)slideModuleView
+//-(UIView *)slideModuleView
+//{
+//    if (_slideModuleView==nil) {
+//        _slideModuleView=[[UIView alloc] init];
+//        self.slideModuleColor=_slideModuleColor;
+//        _slideModuleView.backgroundColor=self.slideModuleColor;
+//        _slideModuleView.frame=CGRectMake(0, 0, 10, 3);
+//    }
+//    return _slideModuleView;
+//}
+
+-(void)setSlideModuleView:(UIView *)slideModuleView
 {
-    if (_slideModuleView==nil) {
+    if (slideModuleView==nil) {
+        
         _slideModuleView=[[UIView alloc] init];
+        self.slideModuleColor=_slideModuleColor;
         _slideModuleView.backgroundColor=self.slideModuleColor;
         _slideModuleView.frame=CGRectMake(0, 0, 10, 3);
+        
     }
-    return _slideModuleView;
+    else
+    {
+        [_slideModuleView removeFromSuperview];
+        _slideModuleView=nil;
+        _slideModuleView=slideModuleView;
+        [self slideModuleLayout];
+    }
 }
 
--(UIColor *)slideModuleColor
+//-(UIColor *)slideModuleColor
+//{
+//    if (_slideModuleColor==nil) {
+//        _slideModuleColor=[UIColor redColor];
+//    }
+//    return _slideModuleColor;
+//}
+
+-(void)setSlideModuleColor:(UIColor *)slideModuleColor
 {
-    if (_slideModuleColor==nil) {
+    if (slideModuleColor==nil) {
         _slideModuleColor=[UIColor redColor];
     }
-    return _slideModuleColor;
+    else
+    {
+        _slideModuleColor=slideModuleColor;
+        [self slideModuleLayout];
+    }
 }
 
 -(UIView *)backgroundView

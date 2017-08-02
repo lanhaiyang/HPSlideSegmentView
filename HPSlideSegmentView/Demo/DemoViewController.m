@@ -33,8 +33,17 @@
     self.slideBackgroungView.slideSegmenView.dataSource=self;
     self.slideBackgroungView.slideModuleViewHeight=50;
     self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
-    self.bottomSpaceHeight=46;//底部高度
+//    self.bottomSpaceHeight=46;//底部高度
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
+//    self.slideBackgroungView.slideModuleView.slideModuleColor=[UIColor blueColor];
+    
+    
+    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 3)];
+    view.backgroundColor=[UIColor blueColor];
+    view.layer.masksToBounds=YES;
+    view.layer.cornerRadius=1.5;
+    
+    self.slideBackgroungView.slideModuleView.slideModuleView=view;
     
     
 }
@@ -57,7 +66,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"A",@"B",@"C",@"D"];
+        _dataSouce=@[@"AAAAAAAAAA",@"BBBBB",@"CCC",@"DDD"];
     }
     return _dataSouce;
 }

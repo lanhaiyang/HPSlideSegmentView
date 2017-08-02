@@ -281,16 +281,35 @@
                 readyButton:(HPPoint)readyPoint
                 movePercent:(CGFloat)movePercent
 {
+    CGFloat nowX=0;
+    CGFloat nowWidth=0;
     
-    if (slideModuleWith==0) {
-        slideModuleWith=nowPoint.width;
+    CGFloat readyX=0;
+    CGFloat readyWidth=0;
+    
+    if (slideModuleWith!=0) {
+        nowX=nowPoint.x+((nowPoint.width-slideModuleWith)/2);
+        nowWidth=slideModuleWith;
+        
+        readyX=readyPoint.x+((readyPoint.width-slideModuleWith)/2);
+        readyWidth=slideModuleWith;
+        
+    }
+    else
+    {
+        nowX=nowPoint.x;//+((nowPoint.width-slideModuleWith)/2);
+        nowWidth=nowPoint.width;
+        
+        readyX=readyPoint.x;//+((readyPoint.width-slideModuleWith)/2);
+        readyWidth=readyPoint.width;
+        
     }
     
-    CGFloat nowX=nowPoint.x;//+((nowPoint.width-slideModuleWith)/2);
-    CGFloat nowWidth=nowPoint.width;
+//    CGFloat nowX=nowPoint.x;//+((nowPoint.width-slideModuleWith)/2);
+//    CGFloat nowWidth=nowPoint.width;
     
-    CGFloat readyX=readyPoint.x;//+((readyPoint.width-slideModuleWith)/2);
-    CGFloat readyWidth=readyPoint.width;
+//    CGFloat readyX=readyPoint.x;//+((readyPoint.width-slideModuleWith)/2);
+//    CGFloat readyWidth=readyPoint.width;
 
     
     CGFloat speace=fabs(readyX-nowX);
@@ -307,12 +326,14 @@
         
         if (nowX>readyX) {
             move=(nowX-readyX)*movePercent;
-            slideNowX=nowPoint.x-move;
+//            slideNowX=nowPoint.x-move;
+            slideNowX=nowX-move;
         }
         else
         {
             move=((speace-nowWidth)+readyWidth)*movePercent;
-            slideNowX=nowPoint.x;
+//            slideNowX=nowPoint.x;
+            slideNowX=nowX;
         }
         
         width=nowWidth+move;
@@ -371,7 +392,7 @@
     {
         currentScrollerView.contentOffset=CGPointMake(0, 0);
     }
-    else if (slideModuleX>rightSide+centerHalf+10)
+    else if (slideModuleX>rightSide+centerHalf+10 && currentScrollerView.contentSize.width>currentScrollerView.width)
     {
         currentScrollerView.contentOffset=CGPointMake(rightSide, 0);
     }
