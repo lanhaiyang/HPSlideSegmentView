@@ -432,16 +432,24 @@
         
         CGFloat center=centerWidth-centerHalf;
         
-        currentScrollerView.contentOffset=CGPointMake(currentScrollerView.contentOffset.x+(center/2), 0);
+        [UIView animateWithDuration:0.25 animations:^{
+            currentScrollerView.contentOffset=CGPointMake(currentScrollerView.contentOffset.x+(center/2), 0);
+        }];
         
     }
     else if (slideModuleX<centerHalf)
     {
-        currentScrollerView.contentOffset=CGPointMake(0, 0);
+        [UIView animateWithDuration:0.25 animations:^{
+            currentScrollerView.contentOffset=CGPointMake(0, 0);
+        }];
+    
     }
     else if (slideModuleX>rightSide+centerHalf+10 && currentScrollerView.contentSize.width>currentScrollerView.width)
     {
-        currentScrollerView.contentOffset=CGPointMake(rightSide, 0);
+        [UIView animateWithDuration:0.25 animations:^{
+            currentScrollerView.contentOffset=CGPointMake(rightSide, 0);
+        }];
+
     }
     
 }

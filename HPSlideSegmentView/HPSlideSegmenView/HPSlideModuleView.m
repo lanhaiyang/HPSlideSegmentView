@@ -186,7 +186,7 @@
         
 
         if (count-1==i) {
-            CGFloat widthAddY=module.width+module.x+10;
+            CGFloat widthAddY=module.width+module.x;
             
             moduleView.scrollView.contentSize=CGSizeMake(widthAddY, 0);
             
