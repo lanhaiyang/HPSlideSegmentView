@@ -44,8 +44,10 @@
     view.layer.cornerRadius=1.5;
     
     self.slideBackgroungView.slideModuleView.slideModuleView=view;
-    
-    
+    self.slideBackgroungView.slideModuleView.edgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+    self.slideBackgroungView.slideModuleView.minWidth=SCREEN_WIDTH/4;
+    self.slideBackgroungView.slideModuleView.type=ENUM_HP_AUTOMINSIZE;
+    self.slideBackgroungView.slideModuleView.hiddenModule=NO;
 }
 
 -(NSUInteger)hp_slideListWithCount

@@ -13,17 +13,52 @@
 
 +(CGRect)oldButtonPoint:(HPPoint)oldpoint
         slideViewHeight:(CGFloat)slideViewHeight
+               isModule:(BOOL)isModule
                 content:(NSString *)text
                fontSize:(CGFloat)fontSize
-             spaceWidth:(CGFloat)spaceWidth
+             edgeInsets:(UIEdgeInsets)edgeInsets
+               minWidth:(CGFloat)minWidth
+               autoType:(AutoSizeType)type;
 {
-    CGFloat x=oldpoint.x+oldpoint.width+spaceWidth;
+    CGFloat x=oldpoint.x+oldpoint.width;
     CGFloat y=0;
     CGFloat width=[self widthForText:slideViewHeight content:text fontSize:fontSize];
-    CGFloat height=slideViewHeight-3;
+    CGFloat height=slideViewHeight-(isModule==YES?3:0);
+    
+    if (oldpoint.width!=0) {
+        x=x+edgeInsets.left+edgeInsets.right;
+    }
+    else
+    {
+        x=x+edgeInsets.left;
+    }
+    y=y+edgeInsets.top;
+    height=height-edgeInsets.bottom-edgeInsets.top;
+    
+    switch (type) {
+        case ENUM_HP_AUTOSIZE:
+        {
+            
+        }
+            break;
+        case ENUM_HP_DEFINESIZE:
+        {
+            width=minWidth;
+        }
+            break;
+        case ENUM_HP_AUTOMINSIZE:
+        {
+            width=width>minWidth?width:minWidth;
+
+        }
+            break;
+        default:
+            break;
+    }
     
     return CGRectMake(x, y, width, height);
 }
+
 
 
 +(id)arrayCount:(NSArray *)arrays index:(NSInteger)index
@@ -40,6 +75,18 @@
     
     if (indexType>arrays.count-1) {
         return arrays[arrays.count-1];
+    }
+    
+    return arrays[index];
+}
+
++(id)isArrayWithNil:(NSArray *)arrays index:(NSInteger)index
+{
+    if (arrays.count==0) {
+        return nil;
+    }
+    else if (index>arrays.count-1) {
+        return nil;
     }
     
     return arrays[index];

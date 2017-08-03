@@ -36,13 +36,13 @@
 
 -(void)updateLayout
 {
-    for (int i=0; i<self.arrayButtons.count; i++) {
-        
-        UIButton *button=_arrayButtons[i];
-        [button removeFromSuperview];
-        
-    }
-    [self.arrayButtons removeAllObjects];
+//    for (int i=0; i<self.arrayButtons.count; i++) {
+//        
+//        UIButton *button=_arrayButtons[i];
+//        [button removeFromSuperview];
+//        
+//    }
+//    [self.arrayButtons removeAllObjects];
     self.scrollView.contentSize=CGSizeMake(0, 0);
     [self layoutSlideModule];
 }
@@ -54,15 +54,16 @@
 
     [_scrollView addSubview:self.backgroundView];
     
-    [HPSlideModuleView scrollViewLayoutWithCount:self.showCount
-                                      casheArray:self.arrayButtons
-                                 delegateContent:_delegate
-                                      layoutView:self
-                                    moduleHeight:self.bounds.size.height];
+    [self scrollViewLayoutWithCount:self.showCount
+                         casheArray:self.arrayButtons
+                    delegateContent:_delegate
+                         layoutView:self
+                       moduleHeight:self.bounds.size.height];
     
     self.backgroundColor=[UIColor whiteColor];
     self.slideModuleColor=_slideModuleColor;
     self.slideModuleView=_slideModuleView;
+    self.hiddenModule=YES;
     
     [self buttonAction:_arrayButtons];
     [self slideModuleLayout];
@@ -165,7 +166,7 @@
 }
 
 
-+(void)scrollViewLayoutWithCount:(NSUInteger )count
+-(void)scrollViewLayoutWithCount:(NSUInteger )count
                       casheArray:(NSMutableArray<UIButton *> *)arrayButtons
                  delegateContent:(id)delegate
                       layoutView:(HPSlideModuleView *)moduleView
@@ -173,10 +174,15 @@
 {
     for (int i=0; i<count; i++) {
         
-        UIButton *module=[self creatModule:i
-                                casheArray:arrayButtons
-                           delegateContent:delegate
-                              moduleHeight:height];
+//        UIButton *module=[self creatModule:i
+//                                casheArray:arrayButtons
+//                           delegateContent:delegate
+//                              moduleHeight:height];
+        
+         UIButton *module=[self cacheButton:arrayButtons
+                             getCacheButton:i
+                            delegateContent:delegate
+                               moduleHeight:height];
         
 
         if (count-1==i) {
@@ -194,7 +200,33 @@
     }
 }
 
-+(UIButton *)creatModule:(NSUInteger)index
+-(UIButton *)cacheButton:(NSMutableArray<UIButton *> *)arrayButtons
+          getCacheButton:(NSUInteger)index
+         delegateContent:(id)delegate
+            moduleHeight:(CGFloat)height
+{
+    
+    UIButton *currenButton=[HPSlideSegmentLogic isArrayWithNil:arrayButtons index:index];
+    
+    if (currenButton==nil) {
+        
+        return [self creatModule:index
+                      casheArray:arrayButtons
+                 delegateContent:delegate
+                    moduleHeight:height];
+        
+    }
+    
+    UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
+    
+    return [self buttonLayoutWithOldButton:oldButton
+                          newButton:currenButton
+                       moduleHeight:height
+                      buttonContent:currenButton.titleLabel.text];
+    
+}
+
+-(UIButton *)creatModule:(NSUInteger)index
               casheArray:(NSMutableArray<UIButton *> *)arrayButtons
          delegateContent:(id)delegate
             moduleHeight:(CGFloat)height
@@ -224,10 +256,16 @@
     
     UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
     
-    module.frame=[HPSlideSegmentLogic oldButtonPoint:HPPointMake(oldButton.frame.origin.x, oldButton.bounds.size.width)
-                                     slideViewHeight:height
-                                             content:content
-                                            fontSize:module.titleLabel.font.pointSize spaceWidth:10];
+//    module.frame=[HPSlideSegmentLogic oldButtonPoint:HPPointMake(oldButton.frame.origin.x, oldButton.bounds.size.width)
+//                                     slideViewHeight:height
+//                                             content:content
+//                                            fontSize:module.titleLabel.font.pointSize
+//                                          spaceWidth:10];
+
+    module = [self buttonLayoutWithOldButton:oldButton
+                                   newButton:module
+                                moduleHeight:height
+                               buttonContent:content];
     
     [arrayButtons addObject:module];
     
@@ -235,6 +273,25 @@
     return module;
 }
 
+-(UIButton *)buttonLayoutWithOldButton:(UIButton *)oldButton
+                             newButton:(UIButton *)module
+                          moduleHeight:(CGFloat)height
+                         buttonContent:(NSString *)content
+{
+    module.frame=CGRectMake(0, 0, 0, 0);
+    
+    module.frame=[HPSlideSegmentLogic oldButtonPoint:HPPointMake(oldButton.frame.origin.x, oldButton.bounds.size.width)
+                                     slideViewHeight:height
+                                            isModule:self.hiddenModule
+                                             content:content
+                                            fontSize:module.titleLabel.font.pointSize
+                                          edgeInsets:self.edgeInsets
+                                            minWidth:self.minWidth
+                                            autoType:self.type];
+    
+    return module;
+    
+}
 
 -(void)selectButton:(UIButton *)selectButton
 {
@@ -251,6 +308,43 @@
 }
 
 #pragma mark - 懒加载
+
+-(void)setHiddenModule:(BOOL)hiddenModule
+{
+    _hiddenModule=hiddenModule;
+    
+    if (hiddenModule==NO) {
+        
+        [_slideModuleView removeFromSuperview];
+        _slideModuleView=nil;
+        [self updateLayout];
+    }
+}
+
+-(void)setEdgeInsets:(UIEdgeInsets)edgeInsets
+{
+    _edgeInsets=edgeInsets;
+    
+    [self updateLayout];
+}
+
+-(void)setMinWidth:(CGFloat)minWidth
+{
+
+    _minWidth=minWidth;
+    
+    [self updateLayout];
+    
+}
+
+-(void)setType:(AutoSizeType)type
+{
+
+    _type=type;
+    
+    [self updateLayout];
+    
+}
 
 -(void)setShowCount:(NSUInteger)showCount
 {
@@ -272,19 +366,13 @@
     return _scrollView;
 }
 
-//-(UIView *)slideModuleView
-//{
-//    if (_slideModuleView==nil) {
-//        _slideModuleView=[[UIView alloc] init];
-//        self.slideModuleColor=_slideModuleColor;
-//        _slideModuleView.backgroundColor=self.slideModuleColor;
-//        _slideModuleView.frame=CGRectMake(0, 0, 10, 3);
-//    }
-//    return _slideModuleView;
-//}
 
 -(void)setSlideModuleView:(UIView *)slideModuleView
 {
+    if (self.hiddenModule==NO) {
+        return;
+    }
+    
     if (slideModuleView==nil) {
         
         _slideModuleView=[[UIView alloc] init];
@@ -298,21 +386,14 @@
         [_slideModuleView removeFromSuperview];
         _slideModuleView=nil;
         _slideModuleView=slideModuleView;
+        self.slideModuleColor=slideModuleView.backgroundColor;
         [self slideModuleLayout];
     }
 }
 
-//-(UIColor *)slideModuleColor
-//{
-//    if (_slideModuleColor==nil) {
-//        _slideModuleColor=[UIColor redColor];
-//    }
-//    return _slideModuleColor;
-//}
-
 -(void)setSlideModuleColor:(UIColor *)slideModuleColor
 {
-    if (slideModuleColor==nil) {
+    if (slideModuleColor==nil ) {
         _slideModuleColor=[UIColor redColor];
     }
     else

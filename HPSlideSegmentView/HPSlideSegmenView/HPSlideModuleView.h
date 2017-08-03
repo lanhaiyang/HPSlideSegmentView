@@ -7,15 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Enum.h"
 @class HPSlideModuleView;
-
-typedef enum {
-
-    ENUM_HP_AUTOSIZE=1,// 自动设置大小
-    ENUM_HP_DEFINESIZE=2,//只需要设置为默认大小
-    ENUM_HP_AUTOMINSIZE=3 //自动设置大小 默认最小为minWidth
-    
-}AutoSizeType;
 
 typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 
@@ -71,12 +64,28 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 @property(nonatomic,assign) CGFloat slideModeuleWidth;
 
 
-//
-//@property(nonatomic,assign) UIEdgeInsets edgeInsets;
-//
-//-(void)viewMinSizeWidth:(CGFloat)minWidth style:(AutoSizeType)type;
-//
+/**
+ 上架左右的边距
+ */
+@property(nonatomic,assign) UIEdgeInsets edgeInsets;
 
+
+/**
+ 最小大小
+ */
+@property(nonatomic,assign) CGFloat minWidth;
+
+
+/**
+ Button的变化样式
+ */
+@property(nonatomic,assign) AutoSizeType type;
+
+
+/**
+ 是否需要显示滑块
+ */
+@property(nonatomic,assign) BOOL hiddenModule;
 
 
 /**

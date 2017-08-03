@@ -27,6 +27,7 @@
 		6568D0171F1FD13100E82BF1 /* HPSlideSegmentLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D00B1F1FD13100E82BF1 /* HPSlideSegmentLogic.m */; };
 		6568D0181F1FD13100E82BF1 /* HPSlideSegmentManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D00D1F1FD13100E82BF1 /* HPSlideSegmentManage.m */; };
 		6568D0191F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0101F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m */; };
+		65AE6C161F32DFBC00AAE8F5 /* HPSlideModuleServe.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AE6C151F32DFBC00AAE8F5 /* HPSlideModuleServe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,9 @@
 		6568D00D1F1FD13100E82BF1 /* HPSlideSegmentManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentManage.m; sourceTree = "<group>"; };
 		6568D00F1F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HPSlideSegmentRect.h"; sourceTree = "<group>"; };
 		6568D0101F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HPSlideSegmentRect.m"; sourceTree = "<group>"; };
+		65AE6C141F32DFBC00AAE8F5 /* HPSlideModuleServe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPSlideModuleServe.h; path = Model/HPSlideModuleServe.h; sourceTree = "<group>"; };
+		65AE6C151F32DFBC00AAE8F5 /* HPSlideModuleServe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HPSlideModuleServe.m; path = Model/HPSlideModuleServe.m; sourceTree = "<group>"; };
+		65AE6C181F32F80F00AAE8F5 /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,7 @@
 				6568D0061F1FD13100E82BF1 /* HPSlideSegmentView.m */,
 				6568CFFC1F1FD13100E82BF1 /* BaseView */,
 				6568D0071F1FD13100E82BF1 /* Manage */,
+				65AE6C131F32DF7D00AAE8F5 /* Model */,
 				6568D00E1F1FD13100E82BF1 /* Tool */,
 			);
 			path = HPSlideSegmenView;
@@ -221,6 +226,7 @@
 		6568D0071F1FD13100E82BF1 /* Manage */ = {
 			isa = PBXGroup;
 			children = (
+				65AE6C181F32F80F00AAE8F5 /* Enum.h */,
 				6568D0081F1FD13100E82BF1 /* HPCacheListManage.h */,
 				6568D0091F1FD13100E82BF1 /* HPCacheListManage.m */,
 				6568D00A1F1FD13100E82BF1 /* HPSlideSegmentLogic.h */,
@@ -238,6 +244,15 @@
 				6568D0101F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		65AE6C131F32DF7D00AAE8F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				65AE6C141F32DFBC00AAE8F5 /* HPSlideModuleServe.h */,
+				65AE6C151F32DFBC00AAE8F5 /* HPSlideModuleServe.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +392,7 @@
 				6568D0121F1FD13100E82BF1 /* HPSlideModuleView.m in Sources */,
 				6568D0111F1FD13100E82BF1 /* HPScrollView.m in Sources */,
 				6568D0131F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m in Sources */,
+				65AE6C161F32DFBC00AAE8F5 /* HPSlideModuleServe.m in Sources */,
 				651301D61F04CD7800DEF81F /* ViewController.m in Sources */,
 				6568D0171F1FD13100E82BF1 /* HPSlideSegmentLogic.m in Sources */,
 				65374CFF1EEC3D94005B5C38 /* AppDelegate.m in Sources */,

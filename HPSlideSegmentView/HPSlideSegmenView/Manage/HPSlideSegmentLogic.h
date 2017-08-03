@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Enum.h"
 
 typedef struct{
     
@@ -43,22 +44,27 @@ typedef void (^ENDBLOCK)();
 
 @interface HPSlideSegmentLogic : NSObject
 
-
 /**
  滑块的布局
 
  @param oldpoint 前一个滑块的位置
  @param slideViewHeight 当前滑块的高度
+ @param isModule 是否需要滑块
  @param text 滑块显示的内容
  @param fontSize 滑块上面label字体的大小
- @param spaceWidth button和button之间的间距
+ @param edgeInsets button的边距
+ @param minWidth button最小距离
+ @param type button的自动大小设置
  @return 返回一个 frame
  */
 +(CGRect)oldButtonPoint:(HPPoint)oldpoint
         slideViewHeight:(CGFloat)slideViewHeight
+           isModule:(BOOL)isModule
                 content:(NSString *)text
                fontSize:(CGFloat)fontSize
-             spaceWidth:(CGFloat)spaceWidth;
+             edgeInsets:(UIEdgeInsets)edgeInsets
+               minWidth:(CGFloat)minWidth
+               autoType:(AutoSizeType)type;
 
 
 /**
@@ -85,6 +91,7 @@ typedef void (^ENDBLOCK)();
  */
 +(id)arrayCount:(NSArray *)arrays index:(NSInteger)index;
 
++(id)isArrayWithNil:(NSArray *)arrays index:(NSInteger)index;
 
 /**
  防止数组越界
