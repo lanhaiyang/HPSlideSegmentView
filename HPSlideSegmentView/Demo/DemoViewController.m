@@ -12,7 +12,7 @@
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
-@interface DemoViewController ()<HPSlideSegmentBackgroundDataSource,HPSlideSegmentViewDataSouce>
+@interface DemoViewController ()<HPSlideSegmentBackgroundDataSource,HPSlideSegmentViewDataSouce,SlideModuleViewDelegate>
 
 @property(nonatomic,strong) NSArray<NSString *> *dataSouce;
 
@@ -28,27 +28,21 @@
     self.headeView.backgroundColor=[UIColor blueColor];
     
     self.slideBackgroungView.contents=self.dataSouce;
-    
     self.slideBackgroungView.dataSource=self;
+    
     self.slideBackgroungView.slideSegmenView.dataSource=self;
-    self.slideBackgroungView.slideModuleViewHeight=50;
     self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
-//    self.bottomSpaceHeight=46;//底部高度
+    
+    self.slideBackgroungView.slideModuleViewHeight=50;
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
-//    self.slideBackgroungView.slideModuleView.slideModuleColor=[UIColor blueColor];
-    
-    
-    UIView *view=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 3)];
-    view.backgroundColor=[UIColor blueColor];
-    view.layer.masksToBounds=YES;
-    view.layer.cornerRadius=1.5;
-    
-//    self.slideBackgroungView.slideModuleView.slideModuleView=view;
-//    self.slideBackgroungView.slideModuleView.edgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+    self.slideBackgroungView.slideModuleView.edgeInsets=UIEdgeInsetsMake(0, 0, 3, 1);
     self.slideBackgroungView.slideModuleView.minWidth=SCREEN_WIDTH/4;
     self.slideBackgroungView.slideModuleView.type=ENUM_HP_AUTOMINSIZE;
-    self.slideBackgroungView.slideModuleView.hiddenModule=YES;
+    self.slideBackgroungView.slideModuleView.hiddenModule=NO;
+    
+    [self.slideBackgroungView updateLayout];
 }
+
 
 -(NSUInteger)hp_slideListWithCount
 {

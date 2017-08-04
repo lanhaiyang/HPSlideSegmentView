@@ -23,7 +23,7 @@
     CGFloat x=oldpoint.x+oldpoint.width;
     CGFloat y=0;
     CGFloat width=[self widthForText:slideViewHeight content:text fontSize:fontSize];
-    CGFloat height=slideViewHeight-(isModule==YES?3:0);
+    CGFloat height=slideViewHeight-(isModule==NO?3:0);
     
     if (oldpoint.width!=0) {
         x=x+edgeInsets.left+edgeInsets.right;

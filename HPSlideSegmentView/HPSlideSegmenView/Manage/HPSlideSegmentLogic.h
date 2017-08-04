@@ -91,6 +91,14 @@ typedef void (^ENDBLOCK)();
  */
 +(id)arrayCount:(NSArray *)arrays index:(NSInteger)index;
 
+
+/**
+ 对象是否越界 如果越界返回nil
+
+ @param arrays 数据源
+ @param index 当前的index
+ @return 返回是否存在改数据
+ */
 +(id)isArrayWithNil:(NSArray *)arrays index:(NSInteger)index;
 
 /**

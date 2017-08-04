@@ -29,6 +29,7 @@
 -(instancetype)initWithFrame:(CGRect)frame 
 {
     if (self=[super initWithFrame:frame]) {
+        self.hiddenModule=NO;
         [self layoutSlideModule];
     }
     return self;
@@ -63,7 +64,6 @@
     self.backgroundColor=[UIColor whiteColor];
     self.slideModuleColor=_slideModuleColor;
     self.slideModuleView=_slideModuleView;
-    self.hiddenModule=YES;
     
     [self buttonAction:_arrayButtons];
     [self slideModuleLayout];
@@ -108,6 +108,14 @@
 {
     _hpWeakObj=weakObj;
     _hpActionBlock=actionBlock;
+}
+
+-(void)updateLayoutWithIndex:(NSUInteger)index
+{
+    UIButton *button=[HPSlideSegmentLogic isArrayWithNil:_arrayButtons index:index];
+    
+    [self actionButton:button];
+    
 }
 
 -(void)actionButton:(UIButton *)button
@@ -163,6 +171,9 @@
     [HPSlideSegmentLogic slideModuleAlignCenter:self.scrollView
                                slideModuleWithX:self.slideModuleView.x];
     
+    
+    [self selectButton:readyButton];
+    
 }
 
 
@@ -192,7 +203,16 @@
             
         }
         
+        if (_backgroundSelectColor!=nil && i==0) {
+            module.backgroundColor=_backgroundSelectColor;
+        }
+        else if(_backgroundDefaultColor!=nil)
+        {
+            module.backgroundColor=_backgroundDefaultColor;
+        }
+        
         moduleView.backgroundView.frame=CGRectMake(0, 0, moduleView.scrollView.contentSize.width,moduleView.scrollView.height);
+        
         [moduleView.backgroundView addSubview:module];
         module.index=i;
         module=nil;
@@ -249,10 +269,11 @@
     else
     {
         module=[[UIButton alloc] init];
-        [module setTitle:content forState:UIControlStateNormal];
-        [module setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        module.titleLabel.font=[UIFont systemFontOfSize:14];
     }
+    
+    [module setTitle:content forState:UIControlStateNormal];
+    [module setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    module.titleLabel.font=[UIFont systemFontOfSize:14];
     
     UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
     
@@ -298,10 +319,20 @@
     for (int i=0; i<_arrayButtons.count; i++) {
         UIButton *button=_arrayButtons[i];
         if (button==selectButton) {
+            
+            if (_backgroundSelectColor!=nil) {
+                button.backgroundColor=_backgroundSelectColor;
+            }
+            
             button.selected=YES;
         }
         else
         {
+            
+            if (_backgroundDefaultColor!=nil) {
+                button.backgroundColor=_backgroundDefaultColor;
+            }
+            
             button.selected=NO;
         }
     }
@@ -309,11 +340,39 @@
 
 #pragma mark - 懒加载
 
+-(void)setBackgroundDefaultColor:(UIColor *)backgroundDefaultColor
+{
+    _backgroundDefaultColor=backgroundDefaultColor;
+    [self updateLayout];
+}
+
+-(void)setBackgroundSelectColor:(UIColor *)backgroundSelectColor
+{
+    _backgroundSelectColor=backgroundSelectColor;
+    [self updateLayout];
+}
+
+-(void)setDelegate:(id<SlideModuleViewDelegate>)delegate
+{
+    
+    _delegate=delegate;
+    
+    for (int i=0; i<self.arrayButtons.count; i++) {
+        
+        UIButton *button=_arrayButtons[i];
+        [button removeFromSuperview];
+        
+    }
+    [self.arrayButtons removeAllObjects];
+    
+    [self updateLayout];
+}
+
 -(void)setHiddenModule:(BOOL)hiddenModule
 {
     _hiddenModule=hiddenModule;
     
-    if (hiddenModule==NO) {
+    if (hiddenModule==YES) {
         
         [_slideModuleView removeFromSuperview];
         _slideModuleView=nil;
@@ -369,7 +428,12 @@
 
 -(void)setSlideModuleView:(UIView *)slideModuleView
 {
-    if (self.hiddenModule==NO) {
+    if (self.hiddenModule==YES) {
+        
+        [_slideModuleView removeFromSuperview];
+        _slideModuleView=nil;
+        _slideModuleView=slideModuleView;
+        
         return;
     }
     
@@ -383,9 +447,7 @@
     }
     else
     {
-        [_slideModuleView removeFromSuperview];
-        _slideModuleView=nil;
-        _slideModuleView=slideModuleView;
+
         self.slideModuleColor=slideModuleView.backgroundColor;
         [self slideModuleLayout];
     }

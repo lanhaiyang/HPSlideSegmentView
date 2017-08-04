@@ -45,6 +45,12 @@
     [self slideSegmentlayout];
 }
 
+-(void)updateLayoutWithIndex:(NSUInteger)index
+{
+    [self.slideSegmenView updateLayout:index];
+    [self.slideModuleView updateLayoutWithIndex:index];
+}
+
 -(void)slideSegmentlayout
 {
     [self.slideSegmenView updateScrollerViewWidthWidth:self.arrayCount];

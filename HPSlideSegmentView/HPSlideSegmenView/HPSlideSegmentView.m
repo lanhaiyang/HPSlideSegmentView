@@ -39,7 +39,6 @@
 @interface HPSlideModel ()
 
 @property(nonatomic,assign) BOOL observse;
-@property(nonatomic,assign) NSUInteger xxx;
 
 @end
 
@@ -133,9 +132,9 @@
 -(void)updateLayout:(NSUInteger)pageIndex
 {
     
-    _pageIndex=pageIndex;
+    _pageIndex=[HPSlideSegmentLogic arraCount:_showCount index:pageIndex];
     
-    [HPSlideSegmentLogic currentIndex:pageIndex
+    [HPSlideSegmentLogic currentIndex:_pageIndex
                            arrayCount:_showCount
                            scrollView:_viewContrllerScrollerView
                        slideSuperView:_viewContrllerScrollerView.width

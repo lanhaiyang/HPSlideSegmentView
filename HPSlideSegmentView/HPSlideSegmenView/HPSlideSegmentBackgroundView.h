@@ -57,4 +57,12 @@
  */
 -(void)updateLayout;
 
+
+/**
+ 更新位置
+
+ @param index 对应的位置
+ */
+-(void)updateLayoutWithIndex:(NSUInteger)index;
+
 @end

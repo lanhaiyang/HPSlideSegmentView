@@ -89,6 +89,26 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 
 
 /**
+ button 没有默认的背景颜色
+ */
+@property(nonatomic,strong) UIColor *backgroundDefaultColor;
+
+
+/**
+ button 选择的背景颜色
+ */
+@property(nonatomic,strong) UIColor *backgroundSelectColor;
+
+
+/**
+ 改变当前module的位置
+
+ @param index 位置
+ */
+-(void)updateLayoutWithIndex:(NSUInteger)index;
+
+
+/**
  点击事件
 
  @param weakObj 需要弱引用对象
@@ -111,6 +131,7 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
  @param movePercent 当前位置到达准备位置的进度
  */
 -(void)slideWithNowIndex:(NSUInteger)nowIndex readyIndex:(NSUInteger)readyIndex movePercent:(CGFloat)movePercent;
+
 
 
 @end
