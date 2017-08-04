@@ -29,11 +29,11 @@
     
     self.slideBackgroungView.contents=self.dataSouce;
     self.slideBackgroungView.dataSource=self;
+    self.slideBackgroungView.slideModuleViewHeight=50;
     
     self.slideBackgroungView.slideSegmenView.dataSource=self;
     self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
     
-    self.slideBackgroungView.slideModuleViewHeight=50;
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
     self.slideBackgroungView.slideModuleView.edgeInsets=UIEdgeInsetsMake(0, 0, 3, 1);
     self.slideBackgroungView.slideModuleView.minWidth=SCREEN_WIDTH/4;

@@ -37,13 +37,7 @@
 
 -(void)updateLayout
 {
-//    for (int i=0; i<self.arrayButtons.count; i++) {
-//        
-//        UIButton *button=_arrayButtons[i];
-//        [button removeFromSuperview];
-//        
-//    }
-//    [self.arrayButtons removeAllObjects];
+
     self.scrollView.contentSize=CGSizeMake(0, 0);
     [self layoutSlideModule];
 }
@@ -131,9 +125,6 @@
                                     movePercent:0];
         
         
-//        CGFloat x=button.x;
-//
-//        self.slideModuleView.frame=CGRectMake(x, self.slideModuleView.y, button.width, self.slideModuleView.height);
         _hpActionBlock(_hpWeakObj,button.index);
         
         
@@ -184,11 +175,7 @@
                     moduleHeight:(CGFloat)height
 {
     for (int i=0; i<count; i++) {
-        
-//        UIButton *module=[self creatModule:i
-//                                casheArray:arrayButtons
-//                           delegateContent:delegate
-//                              moduleHeight:height];
+
         
          UIButton *module=[self cacheButton:arrayButtons
                              getCacheButton:i
@@ -276,12 +263,7 @@
     module.titleLabel.font=[UIFont systemFontOfSize:14];
     
     UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
-    
-//    module.frame=[HPSlideSegmentLogic oldButtonPoint:HPPointMake(oldButton.frame.origin.x, oldButton.bounds.size.width)
-//                                     slideViewHeight:height
-//                                             content:content
-//                                            fontSize:module.titleLabel.font.pointSize
-//                                          spaceWidth:10];
+
 
     module = [self buttonLayoutWithOldButton:oldButton
                                    newButton:module
