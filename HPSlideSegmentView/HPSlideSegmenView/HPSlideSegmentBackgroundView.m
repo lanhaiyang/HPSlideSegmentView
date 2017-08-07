@@ -29,6 +29,15 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    [self updateData];
+    [self slideSegmentlayout];
+    [self slideAction];
+}
+
 -(void)updateData
 {
     if ([self.dataSource respondsToSelector:@selector(hp_slideListWithCount)]) {

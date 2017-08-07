@@ -64,6 +64,12 @@ headerView.backgroundColor=[UIColor blueColor];
 
 self.headeView=headerView;
 
+//...
+//属性设置
+//...
+
+[self.slideBackgroungView updateLayout];
+
 ```
 
 
