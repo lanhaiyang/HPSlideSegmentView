@@ -44,7 +44,7 @@ typedef void (^ENDBLOCK)();
 
 typedef void (^ChangeStartPoint)(CGPoint startPoint,CGPoint endPoint);
 typedef void (^ModuleAnimationBlock)(NSUInteger nowIndex,NSUInteger readyIndex,CGFloat movePercent);
-typedef HPCachePoint (^BoardBlock)();
+typedef void (^BoardBlock)();
 
 
 @interface HPSlideSegmentLogic : NSObject
@@ -138,20 +138,26 @@ typedef HPCachePoint (^BoardBlock)();
              currentIndex:(NSUInteger)currentIndex;
 
 
-//判断方向
-//
-//@param scrollView 滑动scrollview
-//@param currentIndex 当前位置
-//@param startOffset 滑动开始位置
-//@param arrayDataCount 数据源的个数 (不能为0)
-//@return 返回移动的
+
+
+
+/**
+ 判断方向
+
+ @param scrollView 滑动scrollView
+ @param currentIndex 当前的位置
+ @param startOffset  滑动开始的位置
+ @param endOffset 结束的位置
+ @param arrayDataCount 数组的个数
+ @param startPointBlock 改变开始位置和结束位置
+ @param boardBlock 改变左右滑块的内容
+ @param moduleAnimationBlock 执行滑块动画
+ */
 +(void)scrollView:(UIScrollView *)scrollView
            currentIndex:(NSUInteger *)currentIndex
-        changeCahePoint:(CGFloat)changeCahePoint
             startOffset:(CGPoint )startOffset
               endOffset:(CGPoint)endOffset
               dataArray:(NSUInteger )arrayDataCount
-             cachePoint:(HPCachePoint)cachePoint
         startPointBlock:(ChangeStartPoint)startPointBlock
              boardBlock:(BoardBlock)boardBlock
             moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock;
@@ -170,7 +176,6 @@ typedef HPCachePoint (^BoardBlock)();
  */
 +(void)slideSuperView:(CGFloat)slideViewWidth
            scrollView:(UIScrollView *)scrollView
-      changeCahePoint:(CGFloat)changeCahePoint
          currentIndex:(NSUInteger *)currentIndex
           startOffset:(CGPoint )startOffset
             dataArray:(NSUInteger )arrayDataCount

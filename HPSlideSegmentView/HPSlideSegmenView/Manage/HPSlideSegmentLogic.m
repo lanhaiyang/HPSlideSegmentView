@@ -160,7 +160,6 @@
 
 +(void)slideSuperView:(CGFloat)slideViewWidth
            scrollView:(UIScrollView *)scrollView
-      changeCahePoint:(CGFloat)changeCahePoint
          currentIndex:(NSUInteger *)currentIndex
           startOffset:(CGPoint )startOffset
             dataArray:(NSUInteger )arrayDataCount
@@ -200,11 +199,9 @@
 
 +(void)scrollView:(UIScrollView *)scrollView
            currentIndex:(NSUInteger *)currentIndex
-        changeCahePoint:(CGFloat)changeCahePoint
             startOffset:(CGPoint )startOffset
               endOffset:(CGPoint)endOffset
               dataArray:(NSUInteger )arrayDataCount
-             cachePoint:(HPCachePoint)cachePoint
         startPointBlock:(ChangeStartPoint)startPointBlock
              boardBlock:(BoardBlock)boardBlock
             moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock
@@ -250,7 +247,7 @@
 
             
             if (boardBlock!=nil) {
-                cachePoint=boardBlock();
+                boardBlock();
             }
 
             
@@ -304,7 +301,7 @@
             
 
             if (boardBlock!=nil) {
-                cachePoint=boardBlock();
+                boardBlock();
             }
             
         }

@@ -32,7 +32,6 @@
 
 @property(nonatomic,strong) HPCacheListManage *cacheListMange;
 
-@property(nonatomic,assign) HPCachePoint cachePoint;
 
 
 @property(nonatomic,weak) UIScrollView *centreScrollerView;//滑动到中间
@@ -229,20 +228,17 @@
 
     [HPSlideSegmentLogic scrollView:_viewContrllerScrollerView
                        currentIndex:&_pageIndex
-                    changeCahePoint:_privateChangeCahePoint
                         startOffset:_startOffset
                           endOffset:_endOffset
                           dataArray:_showCount
-                         cachePoint:self.cachePoint
                     startPointBlock:^(CGPoint startPoint,CGPoint endPoint) {
                         
                         self.startOffset=startPoint;
                         self.endOffset=endPoint;
                         
-                    } boardBlock:^HPCachePoint{
+                    } boardBlock:^void{
                         
                         [self changeWithScrollView:_viewContrllerScrollerView];
-                        return self.cachePoint;
                         
                     } moduleBlock:^(NSUInteger nowIndex, NSUInteger readyIndex, CGFloat movePercent) {
                     
@@ -264,7 +260,6 @@
     
     [HPSlideSegmentLogic slideSuperView:_viewContrllerScrollerView.width
                              scrollView:_viewContrllerScrollerView
-                        changeCahePoint:_privateChangeCahePoint
                            currentIndex:&_pageIndex
                             startOffset:self.startOffset
                               dataArray:_showCount
@@ -447,7 +442,6 @@
     [self removeWithLayout:_slideCentre];
     [self removeWithLayout:_slideRight];
     
-    self.cachePoint=HPCachePointMake(left.number, centre.number, right.number);
     
     [self.cacheListMange addCacheWithLeft:ObjcWithKeyStructMake(left.number, LEFTTYPE)
                                    Centre:ObjcWithKeyStructMake(centre.number, CENTRETYPE)
