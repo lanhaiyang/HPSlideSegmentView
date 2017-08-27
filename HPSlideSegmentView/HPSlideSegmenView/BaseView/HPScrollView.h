@@ -10,6 +10,5 @@
 
 @interface HPScrollView : UIScrollView<UIGestureRecognizerDelegate>
 
-@property(nonatomic,assign) BOOL gestureClash;
 
 @end

@@ -160,18 +160,15 @@
 
 +(void)slideSuperView:(CGFloat)slideViewWidth
            scrollView:(UIScrollView *)scrollView
+      changeCahePoint:(CGFloat)changeCahePoint
          currentIndex:(NSUInteger *)currentIndex
           startOffset:(CGPoint )startOffset
             dataArray:(NSUInteger )arrayDataCount
           changeIndex:(CHANGEINDEXBLOCK)changeBlock
              endIndex:(ENDBLOCK)endBlock
 {
-    
-    
-    NSUInteger currentNumber=[self scrollView:scrollView
-                                 currentIndex:currentIndex
-                                  startOffset:startOffset
-                                    dataArray:arrayDataCount];
+    NSUInteger currentNumber=*currentIndex;
+
     
     if (arrayDataCount<3) {
         
@@ -188,7 +185,6 @@
     }
 
     
-    *currentIndex=currentNumber;
     
     [self currentIndex:currentNumber
             arrayCount:arrayDataCount
@@ -202,46 +198,136 @@
     
 }
 
-+(NSUInteger)scrollView:(UIScrollView *)scrollView
++(void)scrollView:(UIScrollView *)scrollView
            currentIndex:(NSUInteger *)currentIndex
+        changeCahePoint:(CGFloat)changeCahePoint
             startOffset:(CGPoint )startOffset
+              endOffset:(CGPoint)endOffset
               dataArray:(NSUInteger )arrayDataCount
+             cachePoint:(HPCachePoint)cachePoint
+        startPointBlock:(ChangeStartPoint)startPointBlock
+             boardBlock:(BoardBlock)boardBlock
+            moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock
 {
     CGPoint off=[scrollView contentOffset];
-    CGFloat endOffsetX=startOffset.x-off.x;
+    CGPoint changeStart=startOffset;
+    CGPoint endPoint=endOffset;
+    CGFloat changeOffset=startOffset.x-off.x;
 
-    if (endOffsetX<0) {
-        //right
-        
-        if (off.x<0 || startOffset.x<0) {
-            return *currentIndex;
+    if (changeOffset>0) {
+
+        if (scrollView.contentOffset.x<=startOffset.x && scrollView.contentOffset.x<=endOffset.x) {
+
+            if (*currentIndex==0)
+            {
+                *currentIndex=*currentIndex;
+            }
+            else
+            {
+                *currentIndex=*currentIndex-1;
+            }
+            
+            
+            if (*currentIndex==arrayDataCount-1) {
+                
+                changeStart=CGPointMake(2*scrollView.width, scrollView.contentOffset.y);
+                endPoint=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+                
+            }
+            else
+            {
+                changeStart=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+                endPoint=CGPointMake(0, scrollView.contentOffset.y);
+            }
+            
+            
+            if (startPointBlock!=nil) {
+                
+                startPointBlock(changeStart,endPoint);
+            }
+            
+            
+
+            
+            if (boardBlock!=nil) {
+                cachePoint=boardBlock();
+            }
+
             
         }
-        
-        NSUInteger currenNumber=*currentIndex+1;
-        currenNumber=[self arraCount:arrayDataCount index:currenNumber];
-        return currenNumber;
-    
+        else if (moduleAnimationBlock!=nil) {
+            CGFloat percent=fabs(off.x-changeStart.x)/fabs(endPoint.x-changeStart.x);
+            NSUInteger exchangeIndex=[self arraCount:arrayDataCount index:*currentIndex-1];
+            
+            if (exchangeIndex==*currentIndex) {
+                return;
+            }
+            
+            moduleAnimationBlock(*currentIndex,exchangeIndex,percent);
+        }
+
         
     }
-    if (endOffsetX>0)
+    else if (changeOffset<0)
     {
-        //left
         
-        if (off.x>scrollView.contentSize.width-scrollView.width || startOffset.x>scrollView.contentSize.width-scrollView.width) {
-            return *currentIndex;
+        if (scrollView.contentOffset.x>=startOffset.x && scrollView.contentOffset.x>=endPoint.x) {
+            
+
+            
+            if (*currentIndex==arrayDataCount-1)
+            {
+                *currentIndex=*currentIndex;
+            }
+            else
+            {
+                *currentIndex=*currentIndex+1;
+            }
+            
+            if(*currentIndex == 0)
+            {
+                changeStart=CGPointMake(0, scrollView.contentOffset.y);
+                endPoint=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+            }
+            else
+            {
+                changeStart=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+                
+                endPoint=CGPointMake(2*scrollView.width, scrollView.contentOffset.y);
+            }
+            
+            if (startPointBlock!=nil) {
+                
+                startPointBlock(changeStart,endPoint);
+            }
+
+            
+
+            if (boardBlock!=nil) {
+                cachePoint=boardBlock();
+            }
             
         }
+        else if (moduleAnimationBlock!=nil) {
+            CGFloat percent=fabs(off.x-changeStart.x)/fabs(endPoint.x-changeStart.x);
+            NSUInteger exchangeIndex=[self arraCount:arrayDataCount index:*currentIndex+1];
+            
+            if (exchangeIndex==*currentIndex) {
+                return;
+            }
+            
+            moduleAnimationBlock(*currentIndex,exchangeIndex,percent);
+        }
         
-        NSInteger currenNumber=*currentIndex-1;
-        currenNumber=[self arraCount:arrayDataCount index:currenNumber];
-        return currenNumber;
-    }
+        
 
+        
+    }
     
     
-    return *currentIndex;
+
 }
+
 
 +(void)currentIndex:(NSUInteger)currentIndex
          arrayCount:(NSUInteger)arrayCount
@@ -259,7 +345,8 @@
         [self minIndexJudege:currentIndex
                   arrayCount:arrayCount
                  scrollView:scrollView
-                 changeIndex:changeBlock];
+                 changeIndex:changeBlock
+              slideSuperView:slideViewWidth];
         
         return;
     }
@@ -268,6 +355,7 @@
         HPNumber numberLeft=HPNumberMake(currentIndex, nil);
         HPNumber numberCentre=HPNumberMake(currentIndex+1, nil);
         HPNumber numberRight=HPNumberMake(currentIndex+2, nil);
+        
         
         changeBlock(numberLeft,numberCentre,numberRight,scrollView.contentOffset);
         scrollView.contentOffset=CGPointMake(0, 0);
@@ -281,7 +369,7 @@
         HPNumber numberLeft=HPNumberMake(count-2, nil);
         HPNumber numberCentre=HPNumberMake(count-1, nil);
         HPNumber numberRight=HPNumberMake(count, nil);
-        
+     
         changeBlock(numberLeft,numberCentre,numberRight,scrollView.contentOffset);
         scrollView.contentOffset=CGPointMake(2*slideViewWidth, 0);
         return;
@@ -299,7 +387,17 @@
            arrayCount:(NSUInteger)arrayCount
            scrollView:(UIScrollView *)scrollView
           changeIndex:(CHANGEINDEXBLOCK)changeBlock
+       slideSuperView:(CGFloat)slideViewWidth
 {
+    
+    if (currentIndex<=1) {
+        scrollView.contentOffset=CGPointMake(0, 0);
+    }
+    else
+    {
+        scrollView.contentOffset=CGPointMake(slideViewWidth, 0);
+    }
+    
     if (arrayCount==0) {
         return;
     }
@@ -309,6 +407,7 @@
         HPNumber numberCentre=HPNumberMake(-1, "Error:arrayCount very max");
         HPNumber numberRight=HPNumberMake(-1, "Error:arrayCount very max");
         changeBlock(numberLeft,numberCentre,numberRight,scrollView.contentOffset);
+        
         return;
     }
     else if (arrayCount==2)
@@ -352,12 +451,6 @@
         
     }
     
-//    CGFloat nowX=nowPoint.x;//+((nowPoint.width-slideModuleWith)/2);
-//    CGFloat nowWidth=nowPoint.width;
-    
-//    CGFloat readyX=readyPoint.x;//+((readyPoint.width-slideModuleWith)/2);
-//    CGFloat readyWidth=readyPoint.width;
-
     
     CGFloat speace=fabs(readyX-nowX);
     

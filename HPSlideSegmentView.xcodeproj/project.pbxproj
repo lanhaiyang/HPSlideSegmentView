@@ -87,7 +87,7 @@
 		6568D00D1F1FD13100E82BF1 /* HPSlideSegmentManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentManage.m; sourceTree = "<group>"; };
 		6568D00F1F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HPSlideSegmentRect.h"; sourceTree = "<group>"; };
 		6568D0101F1FD13100E82BF1 /* UIView+HPSlideSegmentRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HPSlideSegmentRect.m"; sourceTree = "<group>"; };
-		65AE6C181F32F80F00AAE8F5 /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
+		65AE6C181F32F80F00AAE8F5 /* HPSegmentEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPSegmentEnum.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +222,7 @@
 		6568D0071F1FD13100E82BF1 /* Manage */ = {
 			isa = PBXGroup;
 			children = (
-				65AE6C181F32F80F00AAE8F5 /* Enum.h */,
+				65AE6C181F32F80F00AAE8F5 /* HPSegmentEnum.h */,
 				6568D0081F1FD13100E82BF1 /* HPCacheListManage.h */,
 				6568D0091F1FD13100E82BF1 /* HPCacheListManage.m */,
 				6568D00A1F1FD13100E82BF1 /* HPSlideSegmentLogic.h */,

@@ -10,6 +10,7 @@
 #import "UIView+HPSlideSegmentRect.h"
 #import "HPSlideSegmentLogic.h"
 #import "HPCacheListManage.h"
+#import "HPSegmentEnum.h"
 
 
 @interface HPSlideSegmentView ()<UIScrollViewDelegate,NSCacheDelegate,HPCacheListManageDelegate>
@@ -18,6 +19,7 @@
 @property(nonatomic,strong) UIView *backgroundView;
 
 @property(nonatomic,assign) CGPoint startOffset;
+@property(nonatomic,assign) CGPoint endOffset;
 
 @property(nonatomic,strong) HPSlideModel *slideLeft;
 @property(nonatomic,strong) HPSlideModel *slideCentre;
@@ -26,13 +28,16 @@
 @property(nonatomic,assign) NSUInteger showCount;
 
 @property(nonatomic,assign) BOOL scrollViewMove;
+@property(nonatomic,assign) BOOL scrollViewMove1;
 
 @property(nonatomic,strong) HPCacheListManage *cacheListMange;
 
-
+@property(nonatomic,assign) HPCachePoint cachePoint;
 
 
 @property(nonatomic,weak) UIScrollView *centreScrollerView;//滑动到中间
+
+@property(nonatomic,assign) CGFloat privateChangeCahePoint;
 
 @end
 
@@ -132,6 +137,8 @@
 -(void)updateLayout:(NSUInteger)pageIndex
 {
     
+//    _scrollViewMove1=YES;
+//    
     _pageIndex=[HPSlideSegmentLogic arraCount:_showCount index:pageIndex];
     
     [HPSlideSegmentLogic currentIndex:_pageIndex
@@ -165,59 +172,104 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
     if (_showCount==0 ) {
         return;
     }
     
-    if (_scrollViewMove==NO) {
-        return;
+    if ([self.gestrueClashDelegate respondsToSelector:@selector(hp_slideWithGestureClash:)]) {
+        
+        [self.gestrueClashDelegate hp_slideWithGestureClash:NO];
+        
     }
+
     
-    NSUInteger index=[HPSlideSegmentLogic scrollView:_viewContrllerScrollerView
-                                        currentIndex:&_pageIndex
-                                         startOffset:_startOffset
-                                           dataArray:_showCount];
-    if ([self.delegate respondsToSelector:@selector(hp_slideWithNowIndex:readyIndex:movePercent:)]) {
+    if (_scrollViewMove==NO) {
+        _scrollViewMove=YES;
         
-        CGFloat percent=fabs(scrollView.contentOffset.x-self.startOffset.x)/self.width;
+        CGFloat changeOffset=_startOffset.x-scrollView.contentOffset.x;
         
-        [self.delegate hp_slideWithNowIndex:_pageIndex readyIndex:index movePercent:percent];
-        
-        if ([self.gestrueClashDelegate respondsToSelector:@selector(hp_slideWithGestureClash:)]) {
-            
-            if (percent==0 || percent==1) {
-                [self.gestrueClashDelegate hp_slideWithGestureClash:YES];
+        if (changeOffset>0 || (changeOffset==0 && scrollView.contentOffset.x==0)) {
+            if (_pageIndex==_showCount-1 && self.showCount>=3) {
+                
+                self.startOffset=CGPointMake(2*scrollView.width, scrollView.contentOffset.y);
+                self.endOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+                
+                
             }
             else
             {
-                [self.gestrueClashDelegate hp_slideWithGestureClash:NO];
+                self.startOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+                self.endOffset=CGPointMake(0, scrollView.contentOffset.y);
             }
             
             
         }
+        else if (changeOffset<0 || (changeOffset==0 && scrollView.contentOffset.x==2*scrollView.width))
+        {
+            if(_pageIndex == 0)
+            {
+                self.startOffset=CGPointMake(0, scrollView.contentOffset.y);
+                self.endOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+            }
+            else
+            {
+                self.startOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
+                
+                self.endOffset=CGPointMake(2*scrollView.width, scrollView.contentOffset.y);
+            }
+            
+        }
         
     }
+    
+    if (_scrollViewMove1==YES) {
+        return;
+    }
+
+    [HPSlideSegmentLogic scrollView:_viewContrllerScrollerView
+                       currentIndex:&_pageIndex
+                    changeCahePoint:_privateChangeCahePoint
+                        startOffset:_startOffset
+                          endOffset:_endOffset
+                          dataArray:_showCount
+                         cachePoint:self.cachePoint
+                    startPointBlock:^(CGPoint startPoint,CGPoint endPoint) {
+                        
+                        self.startOffset=startPoint;
+                        self.endOffset=endPoint;
+                        
+                    } boardBlock:^HPCachePoint{
+                        
+                        [self changeWithScrollView:_viewContrllerScrollerView];
+                        return self.cachePoint;
+                        
+                    } moduleBlock:^(NSUInteger nowIndex, NSUInteger readyIndex, CGFloat movePercent) {
+                    
+                        if ([self.delegate respondsToSelector:@selector(hp_slideWithNowIndex:readyIndex:movePercent:)]) {
+                            
+                            [self.delegate hp_slideWithNowIndex:nowIndex readyIndex:readyIndex movePercent:movePercent];
+                            
+                            
+                        }
+                        
+                        
+                    }];
+
 }
 
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+-(void)changeWithScrollView:(UIScrollView *)scrollView
 {
-    _scrollViewMove=YES;
-    self.startOffset=scrollView.contentOffset;
-}
-
-
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-
-    _scrollViewMove=NO;
+    _scrollViewMove1=YES;
+    
     [HPSlideSegmentLogic slideSuperView:_viewContrllerScrollerView.width
                              scrollView:_viewContrllerScrollerView
+                        changeCahePoint:_privateChangeCahePoint
                            currentIndex:&_pageIndex
-                              startOffset:self.startOffset
+                            startOffset:self.startOffset
                               dataArray:_showCount
                             changeIndex:^(HPNumber left, HPNumber centre, HPNumber right, CGPoint startPoint) {
                                 
-                                self.startOffset=startPoint;
                                 
                                 if ([self.dataSource respondsToSelector:@selector(hp_slideListWithViewController:index:)]) {
                                     
@@ -227,11 +279,52 @@
                                 }
                                 
                                 
-                            }endIndex:^{
                                 
+                            }endIndex:^{
+                                _scrollViewMove1=NO;
                                 [self currenSlideScrollView];
                                 
                             }];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    _scrollViewMove=NO;
+    _scrollViewMove1=NO;
+    _scrollViewMove=NO;
+    
+    
+        int morePage=(int)(scrollView.contentOffset.x/scrollView.width);
+        self.startOffset=CGPointMake(morePage*scrollView.width, scrollView.contentOffset.y);
+
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (_pageIndex>0 && _pageIndex<_showCount-1) {
+        scrollView.contentOffset=CGPointMake(self.startOffset.x, scrollView.contentOffset.y);
+    }
+
+
+    if ([self.delegate respondsToSelector:@selector(hp_slideWithNowIndex:readyIndex:movePercent:)]) {
+        
+        
+        [self.delegate hp_slideWithNowIndex:_pageIndex readyIndex:_pageIndex movePercent:1.0];
+        
+        
+    }
+
+    
+    if ([self.gestrueClashDelegate respondsToSelector:@selector(hp_slideWithGestureClash:)]) {
+        
+            [self.gestrueClashDelegate hp_slideWithGestureClash:YES];
+        
+    }
 
     
 }
@@ -353,6 +446,8 @@
     [self removeWithLayout:_slideLeft];
     [self removeWithLayout:_slideCentre];
     [self removeWithLayout:_slideRight];
+    
+    self.cachePoint=HPCachePointMake(left.number, centre.number, right.number);
     
     [self.cacheListMange addCacheWithLeft:ObjcWithKeyStructMake(left.number, LEFTTYPE)
                                    Centre:ObjcWithKeyStructMake(centre.number, CENTRETYPE)
@@ -498,6 +593,7 @@
         _viewContrllerScrollerView=[[UIScrollView alloc] init];
         _viewContrllerScrollerView.pagingEnabled=YES;
         _viewContrllerScrollerView.delegate=self;
+        _viewContrllerScrollerView.bounces=NO;
         _viewContrllerScrollerView.backgroundColor=[UIColor clearColor];
         _viewContrllerScrollerView.showsVerticalScrollIndicator=NO;
         _viewContrllerScrollerView.showsHorizontalScrollIndicator=NO;

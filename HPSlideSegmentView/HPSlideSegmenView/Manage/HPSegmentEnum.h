@@ -17,5 +17,20 @@ typedef enum {
     
 }AutoSizeType;
 
+typedef struct {
+    NSInteger left;
+    NSInteger centre;
+    NSInteger right;
+}HPCachePoint;
+
+static inline HPCachePoint
+HPCachePointMake(NSInteger left, NSInteger centre,NSInteger right)
+{
+    HPCachePoint point;
+    point.left=left;
+    point.centre=centre;
+    point.right=right;
+    return point;
+}
 
 #endif /* Enum_h */

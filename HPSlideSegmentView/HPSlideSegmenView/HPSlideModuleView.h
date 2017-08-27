@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Enum.h"
+#import "HPSegmentEnum.h"
 @class HPSlideModuleView;
 
 typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);

@@ -13,6 +13,8 @@ typedef void (^SlideUpSegmentBlock)(CGPoint upPoint);
 @interface HPSlideSegmentManage : UIView
 
 
++ (instancetype)sharedSlideManage;
+
 /**
  次scrollview的逻辑
 
@@ -20,7 +22,7 @@ typedef void (^SlideUpSegmentBlock)(CGPoint upPoint);
  @param centreScrollerView 次scrollview
  @param topHeight 左右滑动view距离头部的高度
  */
-+(void)slideUpSegmentWithMainScrollerView:(UIScrollView *)mainScrollerView
+-(void)slideUpSegmentWithMainScrollerView:(UIScrollView *)mainScrollerView
                          showScrollerView:(UIScrollView *)centreScrollerView
                                  upHeight:(CGFloat)topHeight;
 

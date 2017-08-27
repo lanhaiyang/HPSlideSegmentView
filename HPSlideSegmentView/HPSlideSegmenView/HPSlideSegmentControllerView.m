@@ -11,6 +11,7 @@
 #import "HPSlideSegmentManage.h"
 #import "HPScrollView.h"
 
+
 @interface HPSlideSegmentControllerView ()<UIScrollViewDelegate,HPSlideUpViewDelegate,HPSlideUpViewGestureClashDelegate>
 
 @property(nonatomic,strong) HPScrollView *slideScrollerView;
@@ -20,6 +21,10 @@
 @property(nonatomic,assign) CGFloat autoTopHeight;
 
 @property(nonatomic,assign) BOOL statcStyle;
+@property(nonatomic,assign) BOOL isLeftAndRightSlide;
+
+@property(nonatomic,assign) CGFloat slideOffsetY;
+@property(nonatomic,assign) CGFloat childOffsetY;
 
 @end
 
@@ -65,34 +70,57 @@
     
 }
 
+
 -(void)hp_slideWithGestureClash:(BOOL)gesture
 {
-    self.slideScrollerView.gestureClash=gesture;
+    if (gesture==NO  && self.isLeftAndRightSlide==NO) {
+        
+        _slideOffsetY=self.slideScrollerView.contentOffset.y;
+        _childOffsetY=self.centreScrollerView.contentOffset.y;
+        self.isLeftAndRightSlide=YES;
+    }
+    else if (gesture==YES)
+    {
+        self.isLeftAndRightSlide=NO;
+    }
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
+    if (_isLeftAndRightSlide==YES) {
+        
+        if (scrollView==self.centreScrollerView && self.centreScrollerView.contentOffset.y!=_childOffsetY) {
+            self.centreScrollerView.contentOffset=CGPointMake(self.centreScrollerView.contentOffset.x, _childOffsetY);
+            
+        }
+        else if(self.slideScrollerView.contentOffset.y!=_slideOffsetY)
+        {
+            self.slideScrollerView.contentOffset=CGPointMake(self.slideScrollerView.contentOffset.x, _slideOffsetY);
+        }
+        
+        return;
+        
+    }
+    
     CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
     
-    if (scrollView==self.centreScrollerView) {
-        [HPSlideSegmentManage slideUpSegmentWithMainScrollerView:self.slideScrollerView
-                                                showScrollerView:self.centreScrollerView
-                                                        upHeight:height];
-    }
-    else
-    {
-        [HPSlideSegmentManage slidetLogicSrollerView:self.slideScrollerView
-                                    showScrollerView:self.centreScrollerView
-                                            upHeight:height
-                                 slideUpSegmentBlock:^(CGPoint upPoint) {
-                                     
-                                     self.slideBackgroungView.slideModuleView.y=upPoint.y;
-                                     [self.slideBackgroungView addSubview:self.slideBackgroungView.slideModuleView];
-                                     
-                                 }];
-    }
 
     
+    [[HPSlideSegmentManage sharedSlideManage] slideUpSegmentWithMainScrollerView:self.slideScrollerView
+                                            showScrollerView:self.centreScrollerView
+                                                    upHeight:height];
+
+    [HPSlideSegmentManage slidetLogicSrollerView:self.slideScrollerView
+                                showScrollerView:self.centreScrollerView
+                                        upHeight:height
+                             slideUpSegmentBlock:^(CGPoint upPoint) {
+                                 
+                                 self.slideBackgroungView.slideModuleView.y=upPoint.y;
+                                 [self.slideBackgroungView addSubview:self.slideBackgroungView.slideModuleView];
+                                 
+                             }];
 }
 
 //判断屏幕触碰状态
@@ -143,11 +171,12 @@
 -(HPScrollView *)slideScrollerView
 {
     if (_slideScrollerView==nil) {
+        
         _slideScrollerView=[[HPScrollView alloc] init];
         _slideScrollerView.frame=CGRectMake(0, 0, self.view.width, self.view.height);
         _slideScrollerView.contentSize=CGSizeMake(0, 0);
         _slideScrollerView.delegate=self;
-        _slideScrollerView.bounces=YES;
+        _slideScrollerView.bounces=NO;
         _slideScrollerView.showsVerticalScrollIndicator=NO;
         _slideScrollerView.showsHorizontalScrollIndicator=NO;
         [self.view addSubview:_slideScrollerView];

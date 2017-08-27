@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Enum.h"
+#import "HPSegmentEnum.h"
 
 typedef struct{
     
@@ -41,6 +41,11 @@ HPNumberMake(NSUInteger index, char *string)
 
 typedef void (^CHANGEINDEXBLOCK)(HPNumber left,HPNumber centre,HPNumber right,CGPoint startPoint);
 typedef void (^ENDBLOCK)();
+
+typedef void (^ChangeStartPoint)(CGPoint startPoint,CGPoint endPoint);
+typedef void (^ModuleAnimationBlock)(NSUInteger nowIndex,NSUInteger readyIndex,CGFloat movePercent);
+typedef HPCachePoint (^BoardBlock)();
+
 
 @interface HPSlideSegmentLogic : NSObject
 
@@ -133,19 +138,23 @@ typedef void (^ENDBLOCK)();
              currentIndex:(NSUInteger)currentIndex;
 
 
-/**
- 判断方向
-
- @param scrollView 滑动scrollview
- @param currentIndex 当前位置
- @param startOffset 滑动开始位置
- @param arrayDataCount 数据源的个数 (不能为0)
- @return 返回移动的
- */
-+(NSUInteger)scrollView:(UIScrollView *)scrollView
+//判断方向
+//
+//@param scrollView 滑动scrollview
+//@param currentIndex 当前位置
+//@param startOffset 滑动开始位置
+//@param arrayDataCount 数据源的个数 (不能为0)
+//@return 返回移动的
++(void)scrollView:(UIScrollView *)scrollView
            currentIndex:(NSUInteger *)currentIndex
+        changeCahePoint:(CGFloat)changeCahePoint
             startOffset:(CGPoint )startOffset
-              dataArray:(NSUInteger )arrayDataCount;
+              endOffset:(CGPoint)endOffset
+              dataArray:(NSUInteger )arrayDataCount
+             cachePoint:(HPCachePoint)cachePoint
+        startPointBlock:(ChangeStartPoint)startPointBlock
+             boardBlock:(BoardBlock)boardBlock
+            moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock;
 
 
 /**
@@ -161,12 +170,12 @@ typedef void (^ENDBLOCK)();
  */
 +(void)slideSuperView:(CGFloat)slideViewWidth
            scrollView:(UIScrollView *)scrollView
+      changeCahePoint:(CGFloat)changeCahePoint
          currentIndex:(NSUInteger *)currentIndex
-            startOffset:(CGPoint )startOffset
+          startOffset:(CGPoint )startOffset
             dataArray:(NSUInteger )arrayDataCount
           changeIndex:(CHANGEINDEXBLOCK)changeBlock
              endIndex:(ENDBLOCK)endBlock;
-
 
 /**
  滑块动画
