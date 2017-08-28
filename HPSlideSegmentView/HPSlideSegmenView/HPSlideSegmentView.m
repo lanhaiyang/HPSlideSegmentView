@@ -186,39 +186,17 @@
     if (_scrollViewMove==NO) {
         _scrollViewMove=YES;
         
-        CGFloat changeOffset=_startOffset.x-scrollView.contentOffset.x;
-        
-        if (changeOffset>0 || (changeOffset==0 && scrollView.contentOffset.x==0)) {
-            if (_pageIndex==_showCount-1 && self.showCount>=3) {
-                
-                self.startOffset=CGPointMake(2*scrollView.width, scrollView.contentOffset.y);
-                self.endOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
-                
-                
-            }
-            else
-            {
-                self.startOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
-                self.endOffset=CGPointMake(0, scrollView.contentOffset.y);
-            }
-            
-            
-        }
-        else if (changeOffset<0 || (changeOffset==0 && scrollView.contentOffset.x==2*scrollView.width))
-        {
-            if(_pageIndex == 0)
-            {
-                self.startOffset=CGPointMake(0, scrollView.contentOffset.y);
-                self.endOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
-            }
-            else
-            {
-                self.startOffset=CGPointMake(scrollView.width, scrollView.contentOffset.y);
-                
-                self.endOffset=CGPointMake(2*scrollView.width, scrollView.contentOffset.y);
-            }
-            
-        }
+        [HPSlideSegmentLogic scrollViewWithStartPoint:_startOffset
+                                           moveOffset:scrollView.contentOffset
+                                     slideModuleWidht:scrollView.width
+                                         currentIndex:_pageIndex
+                                            dataArray:_showCount
+                                      startPointBlock:^(CGPoint startPoint, CGPoint endPoint) {
+                                          
+                                          self.startOffset=startPoint;
+                                          self.endOffset=endPoint;
+                                          
+                                      }];
         
     }
     

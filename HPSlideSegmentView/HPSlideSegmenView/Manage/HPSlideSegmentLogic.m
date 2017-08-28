@@ -197,6 +197,59 @@
     
 }
 
++(void)scrollViewWithStartPoint:(CGPoint)startOffset
+                     moveOffset:(CGPoint)moveOffset
+               slideModuleWidht:(CGFloat)slideModuleWith
+                   currentIndex:(NSUInteger )currentIndex
+                      dataArray:(NSUInteger)arrayCount
+                startPointBlock:(ChangeStartPoint)startPointBlock
+{
+    
+    CGPoint hp_startOffset=startOffset;
+    CGPoint hp_endOffset=CGPointMake(0, 0);
+    
+    CGFloat changeOffset=startOffset.x-moveOffset.x;
+    
+    if (changeOffset>0 || (changeOffset==0 && moveOffset.x==0)) {
+        if (currentIndex==currentIndex-1 && arrayCount>=3) {
+            
+            hp_startOffset=CGPointMake(2*slideModuleWith, moveOffset.y);
+            hp_endOffset=CGPointMake(slideModuleWith, moveOffset.y);
+            
+            
+        }
+        else
+        {
+            hp_startOffset=CGPointMake(slideModuleWith, moveOffset.y);
+            hp_endOffset=CGPointMake(0, moveOffset.y);
+        }
+        
+        
+    }
+    else if (changeOffset<0 || (changeOffset==0 && moveOffset.x==2*slideModuleWith))
+    {
+        if(currentIndex == 0)
+        {
+            hp_startOffset=CGPointMake(0, moveOffset.y);
+            hp_endOffset=CGPointMake(slideModuleWith, moveOffset.y);
+        }
+        else
+        {
+            hp_startOffset=CGPointMake(slideModuleWith, moveOffset.y);
+            
+            hp_endOffset=CGPointMake(2*slideModuleWith, moveOffset.y);
+        }
+        
+    }
+    
+    if (startPointBlock!=nil) {
+        
+        startPointBlock(hp_startOffset,hp_endOffset);
+        
+    }
+    
+}
+
 +(void)scrollView:(UIScrollView *)scrollView
            currentIndex:(NSUInteger *)currentIndex
             startOffset:(CGPoint )startOffset

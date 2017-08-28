@@ -138,7 +138,12 @@ typedef void (^BoardBlock)();
              currentIndex:(NSUInteger)currentIndex;
 
 
-
++(void)scrollViewWithStartPoint:(CGPoint)startOffset
+                     moveOffset:(CGPoint)moveOffset
+               slideModuleWidht:(CGFloat)slideModuleWith
+                   currentIndex:(NSUInteger )currentIndex
+                      dataArray:(NSUInteger)arrayCount
+                startPointBlock:(ChangeStartPoint)startPointBlock;
 
 
 /**
