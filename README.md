@@ -57,7 +57,7 @@ pod 'HPSlideSegmentView', '~> 0.1.7'
 
 - 创建headeView	
 
-```objective-c
+``` objective-c
 
 UIView *headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
 headerView.backgroundColor=[UIColor blueColor];
@@ -79,7 +79,7 @@ self.headeView=headerView;
 
 ### 创建
 
-```objective-c
+``` objective-c
 
 HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgroundView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
  
@@ -93,7 +93,7 @@ HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgro
 
 - 告诉我滑模块的内容 告诉父类的`contents`对象
 
-```objective-c
+``` objective-c
 //NSString 数据源
 self.slideBackgroungView.contents=self.dataSouce;
 ```
@@ -102,7 +102,7 @@ self.slideBackgroungView.contents=self.dataSouce;
 
 - 现在你需要显示多少数据 告诉`<HPSlideSegmentBackgroundDataSource>`代理
 
-```objective-c
+``` objective-c
 self.slideBackgroungView.dataSource=self;
 
 //代理
@@ -116,7 +116,7 @@ self.slideBackgroungView.dataSource=self;
 
 - 在来需要你要在对应模块中显示什么 告诉`<HPSlideSegmentViewDataSouce>`代理
 
-```objective-c
+``` objective-c
 self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 //代理
@@ -145,7 +145,7 @@ HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:sel
 
 - 还有需要注意的是在`<HPSlideSegmentViewDataSouce>`代理中
 
-```objective-c
+``` objective-c
 -(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 
 ```
