@@ -211,7 +211,7 @@
     CGFloat changeOffset=startOffset.x-moveOffset.x;
     
     if (changeOffset>0 || (changeOffset==0 && moveOffset.x==0)) {
-        if (currentIndex==currentIndex-1 && arrayCount>=3) {
+        if (currentIndex==arrayCount-1 && arrayCount>=3) {
             
             hp_startOffset=CGPointMake(2*slideModuleWith, moveOffset.y);
             hp_endOffset=CGPointMake(slideModuleWith, moveOffset.y);
@@ -266,7 +266,11 @@
 
     if (changeOffset>0) {
 
+        NSLog(@"1--->0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
+        
+
         if (scrollView.contentOffset.x<=startOffset.x && scrollView.contentOffset.x<=endOffset.x) {
+            
 
             if (*currentIndex==0)
             {
@@ -296,7 +300,7 @@
                 startPointBlock(changeStart,endPoint);
             }
             
-            
+            NSLog(@"2--->0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
 
             
             if (boardBlock!=nil) {
@@ -313,6 +317,8 @@
                 return;
             }
             
+            NSLog(@">0 exchangeInde=%ld cxcurrentInde=%ld percent=%lf",exchangeIndex,*currentIndex,percent);
+            
             moduleAnimationBlock(*currentIndex,exchangeIndex,percent);
         }
 
@@ -320,10 +326,12 @@
     }
     else if (changeOffset<0)
     {
-        
-        if (scrollView.contentOffset.x>=startOffset.x && scrollView.contentOffset.x>=endPoint.x) {
-            
 
+        
+        NSLog(@"1---<0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
+        
+        if (scrollView.contentOffset.x>=startOffset.x && scrollView.contentOffset.x>=endPoint.x ) {
+            
             
             if (*currentIndex==arrayDataCount-1)
             {
@@ -351,7 +359,7 @@
                 startPointBlock(changeStart,endPoint);
             }
 
-            
+            NSLog(@"2---<0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
 
             if (boardBlock!=nil) {
                 boardBlock();
@@ -365,6 +373,8 @@
             if (exchangeIndex==*currentIndex) {
                 return;
             }
+            
+            NSLog(@"<0 exchangeInde=%ld cxcurrentInde=%ld percent=%lf",exchangeIndex,*currentIndex,percent);
             
             moduleAnimationBlock(*currentIndex,exchangeIndex,percent);
         }

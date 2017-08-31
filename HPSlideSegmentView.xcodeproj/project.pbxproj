@@ -18,6 +18,7 @@
 		65374D0A1EEC3D94005B5C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65374D081EEC3D94005B5C38 /* LaunchScreen.storyboard */; };
 		65374D151EEC3D94005B5C38 /* HPSlideSegmentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374D141EEC3D94005B5C38 /* HPSlideSegmentViewTests.m */; };
 		65374D201EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65374D1F1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m */; };
+		6564877E1F569E93007DBB73 /* HPKVOMange.m in Sources */ = {isa = PBXBuildFile; fileRef = 6564877D1F569E93007DBB73 /* HPKVOMange.m */; };
 		6568D0111F1FD13100E82BF1 /* HPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568CFFE1F1FD13100E82BF1 /* HPScrollView.m */; };
 		6568D0121F1FD13100E82BF1 /* HPSlideModuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0001F1FD13100E82BF1 /* HPSlideModuleView.m */; };
 		6568D0131F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568D0021F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m */; };
@@ -69,6 +70,8 @@
 		65374D1B1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HPSlideSegmentViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65374D1F1EEC3D94005B5C38 /* HPSlideSegmentViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPSlideSegmentViewUITests.m; sourceTree = "<group>"; };
 		65374D211EEC3D94005B5C38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6564877C1F569E93007DBB73 /* HPKVOMange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPKVOMange.h; sourceTree = "<group>"; };
+		6564877D1F569E93007DBB73 /* HPKVOMange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPKVOMange.m; sourceTree = "<group>"; };
 		6568CFFD1F1FD13100E82BF1 /* HPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPScrollView.h; sourceTree = "<group>"; };
 		6568CFFE1F1FD13100E82BF1 /* HPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPScrollView.m; sourceTree = "<group>"; };
 		6568CFFF1F1FD13100E82BF1 /* HPSlideModuleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSlideModuleView.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 		6568D0071F1FD13100E82BF1 /* Manage */ = {
 			isa = PBXGroup;
 			children = (
+				6564877C1F569E93007DBB73 /* HPKVOMange.h */,
+				6564877D1F569E93007DBB73 /* HPKVOMange.m */,
 				65AE6C181F32F80F00AAE8F5 /* HPSegmentEnum.h */,
 				6568D0081F1FD13100E82BF1 /* HPCacheListManage.h */,
 				6568D0091F1FD13100E82BF1 /* HPCacheListManage.m */,
@@ -383,6 +388,7 @@
 				6568D0171F1FD13100E82BF1 /* HPSlideSegmentLogic.m in Sources */,
 				65374CFF1EEC3D94005B5C38 /* AppDelegate.m in Sources */,
 				6568D0181F1FD13100E82BF1 /* HPSlideSegmentManage.m in Sources */,
+				6564877E1F569E93007DBB73 /* HPKVOMange.m in Sources */,
 				6568D0151F1FD13100E82BF1 /* HPSlideSegmentView.m in Sources */,
 				651301D41F04CD7800DEF81F /* DemoTableViewCell.m in Sources */,
 				6568D0161F1FD13100E82BF1 /* HPCacheListManage.m in Sources */,

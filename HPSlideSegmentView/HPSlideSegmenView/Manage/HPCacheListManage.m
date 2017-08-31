@@ -36,6 +36,7 @@
                  Centre:(ObjcWithKeyStruct)centre
                   Right:(ObjcWithKeyStruct)right
                 weakObj:(id)weakObj
+          updateContent:(BOOL)update
             layoutBlock:(LayoutBlock)layoutBlock
      notCahceCreatBlock:(CreatBlock)creatBlock
 {
@@ -49,16 +50,19 @@
     
     [self isCacheWithObj:left
                  weakObj:weakObj
+           updateContent:update
              layoutBlock:layoutBlock
       notCahceCreatBlock:creatBlock];
     
     [self isCacheWithObj:centre
                  weakObj:weakObj
+           updateContent:update
              layoutBlock:layoutBlock
       notCahceCreatBlock:creatBlock];
     
     [self isCacheWithObj:right
                  weakObj:weakObj
+           updateContent:update
              layoutBlock:layoutBlock
       notCahceCreatBlock:creatBlock];
     
@@ -67,6 +71,7 @@
 
 -(void)isCacheWithObj:(ObjcWithKeyStruct)direction
               weakObj:(id)weakObj
+        updateContent:(BOOL)update
           layoutBlock:(LayoutBlock)layoutBlock
    notCahceCreatBlock:(CreatBlock)creatBlock
 {
@@ -75,6 +80,19 @@
     }
     
     if ([self isCahceWithKey:@(direction.keyNum)]) {
+        
+        if (update==YES) {
+            
+            
+            id cacheValue=creatBlock(weakObj,[self cacheWithKey:@(direction.keyNum)],direction.keyNum);
+            
+            if (cacheValue==nil) {
+                return;
+            }
+            
+            [self.cacheDictionary setObject:cacheValue forKey:@(direction.keyNum)];
+            
+        }
         
         if (layoutBlock!=nil) {
             
@@ -89,7 +107,7 @@
             return;
         }
         
-        id cacheValue=creatBlock(weakObj,direction.keyNum);
+        id cacheValue=creatBlock(weakObj,nil,direction.keyNum);
         
         if (cacheValue==nil) {
             return;
@@ -117,6 +135,7 @@
         
     }
 }
+
 
 -(void)addObjeWithNumber:(NSInteger)number
 {

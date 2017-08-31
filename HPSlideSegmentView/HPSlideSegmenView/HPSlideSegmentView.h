@@ -103,7 +103,15 @@
 
 @end
 
+typedef void (^InitWithActionBlock)(HPSlideModel *model);
+
 @interface HPSlideModel : UIView
+
+
+
+-(id)cacheWithClass:(Class)className cacheIndex:(NSUInteger)index initAction:(InitWithActionBlock)actionBlock;
+
+-(id)cacheWithStoryboard:(UIStoryboard *)storyboard identifier:(NSString *)identifier cacheIndex:(NSUInteger)index;
 
 
 /**

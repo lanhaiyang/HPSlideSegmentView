@@ -42,6 +42,7 @@
     self.slideBackgroungView.slideModuleView.hiddenModule=NO;
     
     [self.slideBackgroungView updateLayout];
+    
 }
 
 
@@ -52,7 +53,9 @@
 
 -(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 {
-    AViewController *aViewController=[[AViewController alloc] init];
+//    AViewController *aViewController=[[AViewController alloc] init];
+
+    AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] cacheIndex:index initAction:nil];
     
     aViewController.titleView=self.dataSouce[index];
     slideSegmentView.name=self.dataSouce[index];
@@ -63,7 +66,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"AAAAAAAAAA",@"BBBBB",@"AAAAAAAAAA",@"BBBBB",@"AAAAAAAAAA",@"BBBBB",@"AAAAAAAAAA",@"BBBBB"];
+        _dataSouce=@[@"AAAAAAAAAA",@"BBBBB",@"AAAAAAAAAA",@"BBBBB"];
     }
     return _dataSouce;
 }

@@ -36,7 +36,7 @@ ObjcWithKeyStructMake(NSInteger keyNum,DirectionType type)
 
 
 typedef void (^LayoutBlock)(id weakObj,id cacheObje,DirectionType direction,NSUInteger key);
-typedef id (^CreatBlock)(id weakObj,NSUInteger key);
+typedef id (^CreatBlock)(id weakObj,id cacheObj,NSUInteger key);
 
 
 @protocol HPCacheListManageDelegate <NSObject>
@@ -61,6 +61,7 @@ typedef id (^CreatBlock)(id weakObj,NSUInteger key);
  @param centre 中间缓存的结构体
  @param right 右边缓存的结构体
  @param weakObj 需要在block中弱引用的对象
+ @param update 是否需要更新创建view的信息
  @param layoutBlock 布局block (weakObj,缓存的对象,位置模块,位置)
  @param creatBlock 创建缓存对象的block (weakObj,位置)
  */
@@ -68,6 +69,7 @@ typedef id (^CreatBlock)(id weakObj,NSUInteger key);
                  Centre:(ObjcWithKeyStruct)centre
                   Right:(ObjcWithKeyStruct)right
                 weakObj:(id)weakObj
+          updateContent:(BOOL)update
             layoutBlock:(LayoutBlock)layoutBlock
      notCahceCreatBlock:(CreatBlock)creatBlock;
 
