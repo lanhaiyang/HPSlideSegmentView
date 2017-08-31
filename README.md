@@ -133,10 +133,10 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 -(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 {
-HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
-        [homeViewController.view layoutIfNeeded];//更新一下
-  slideSegmentView.mainSlideScrollView=homeViewController.scrollView;
-        slideSegmentView.showViewController=homeViewController;
+    HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
+    [homeViewController.view layoutIfNeeded];//更新一下
+    slideSegmentView.mainSlideScrollView=homeViewController.scrollView;
+    slideSegmentView.showViewController=homeViewController;
 
 }
 
