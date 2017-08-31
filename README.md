@@ -122,7 +122,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 //代理
 -(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 {
-    AViewController *aViewController=[[AViewController alloc] init];
+    AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] cacheIndex:index initAction:nil];
     
     aViewController.title=self.dataSouce[index];
     slideSegmentView.mainSlideScrollView=aViewController.tabelView;
@@ -133,7 +133,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 -(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 {
-HomeViewController *homeViewController=[self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
         [homeViewController.view layoutIfNeeded];//更新一下
   slideSegmentView.mainSlideScrollView=homeViewController.scrollView;
         slideSegmentView.showViewController=homeViewController;
