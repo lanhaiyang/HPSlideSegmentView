@@ -21,6 +21,8 @@
 @property(nonatomic,weak) id hpWeakObj;
 @property(nonatomic,strong) HPSLIDEMODULBUTTONBLOCK hpActionBlock;
 
+@property(nonatomic,strong) UIButton *oldActionButton;
+
 @end
 
 @implementation HPSlideModuleView
@@ -114,9 +116,9 @@
 
 -(void)actionButton:(UIButton *)button
 {
-    if (_hpActionBlock!=nil) {
+    if (_hpActionBlock!=nil && button!=_oldActionButton) {
         [self selectButton:button];
-
+        _oldActionButton=button;
         
         [HPSlideSegmentLogic animationSlideView:self.slideModuleView
                                slideModuleWidht:_slideModeuleWidth
@@ -214,7 +216,7 @@
 {
     
     UIButton *currenButton=[HPSlideSegmentLogic isArrayWithNil:arrayButtons index:index];
-    
+    UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
     if (currenButton==nil) {
         
         return [self creatModule:index
@@ -222,9 +224,11 @@
                  delegateContent:delegate
                     moduleHeight:height];
         
+    }else
+    {
+        [self buttonLayoutWithNew:currenButton currentIndex:index oldButton:oldButton];
     }
     
-    UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
     
     return [self buttonLayoutWithOldButton:oldButton
                           newButton:currenButton
@@ -240,13 +244,13 @@
 {
     UIButton *module=nil;
     
-    NSString *content=@"";
+//    NSString *content=@"";
     
-    if ([delegate respondsToSelector:@selector(hp_slideContentWithIndex:)]) {
-        
-        content=[delegate hp_slideContentWithIndex:index];
-        
-    }
+//    if ([delegate respondsToSelector:@selector(hp_slideContentWithIndex:)]) {
+//        
+//        content=[delegate hp_slideContentWithIndex:index];
+//        
+//    }
     
     if ([delegate respondsToSelector:@selector(hp_slideWithIndex:)]) {
         
@@ -258,22 +262,50 @@
         module=[[UIButton alloc] init];
     }
     
+     UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
+    
+    [self buttonLayoutWithNew:module currentIndex:index oldButton:oldButton];
+    
+    [arrayButtons addObject:module];
+    
+//    [module setTitle:content forState:UIControlStateNormal];
+//    [module setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    module.titleLabel.font=[UIFont systemFontOfSize:14];
+//    
+//    UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
+//
+//
+//    module = [self buttonLayoutWithOldButton:oldButton
+//                                   newButton:module
+//                                moduleHeight:height
+//                               buttonContent:content];
+//    
+//    [arrayButtons addObject:module];
+//    
+//    content=nil;
+    return module;
+}
+
+-(void)buttonLayoutWithNew:(UIButton *)module currentIndex:(NSUInteger)index oldButton:(UIButton *)oldButton
+{
+    NSString *content=@"";
+    if ([self.delegate respondsToSelector:@selector(hp_slideContentWithIndex:)]) {
+        
+        content=[self.delegate hp_slideContentWithIndex:index];
+        
+    }
+    
     [module setTitle:content forState:UIControlStateNormal];
     [module setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     module.titleLabel.font=[UIFont systemFontOfSize:14];
     
-    UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
-
-
     module = [self buttonLayoutWithOldButton:oldButton
                                    newButton:module
-                                moduleHeight:height
+                                moduleHeight:self.bounds.size.height
                                buttonContent:content];
     
-    [arrayButtons addObject:module];
     
     content=nil;
-    return module;
 }
 
 -(UIButton *)buttonLayoutWithOldButton:(UIButton *)oldButton

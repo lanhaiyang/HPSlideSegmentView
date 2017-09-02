@@ -10,6 +10,13 @@
 
 typedef void (^SlideUpSegmentBlock)(CGPoint upPoint);
 
+@protocol HPSlideSegmentManageDelegate <NSObject>
+
+-(void)hp_slideUpSegmentWithMain:(BOOL)gesture;
+
+@end
+
+
 @interface HPSlideSegmentManage : UIView
 
 
@@ -24,7 +31,8 @@ typedef void (^SlideUpSegmentBlock)(CGPoint upPoint);
  */
 -(void)slideUpSegmentWithMainScrollerView:(UIScrollView *)mainScrollerView
                          showScrollerView:(UIScrollView *)centreScrollerView
-                                 upHeight:(CGFloat)topHeight;
+                                 upHeight:(CGFloat)topHeight
+                                 delegate:(id<HPSlideSegmentManageDelegate>) delegate;
 
 
 /**

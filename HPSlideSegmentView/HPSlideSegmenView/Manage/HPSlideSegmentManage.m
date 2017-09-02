@@ -45,98 +45,87 @@ static HPSlideSegmentManage *_instance;
 -(void)slideUpSegmentWithMainScrollerView:(UIScrollView *)mainScrollerView
                          showScrollerView:(UIScrollView *)centreScrollerView
                                  upHeight:(CGFloat)topHeight
+                                 delegate:(id<HPSlideSegmentManageDelegate>) delegate;
 {
-//    CGFloat centreY=centreScrollerView.contentOffset.y;
-//    CGFloat mainY=mainScrollerView.contentOffset.y;
-//
-//    
-//    if (centreScrollerView.contentOffset.y==0) {
-//        return;
-//    }
-//    
-//    if (mainY<topHeight) {
-//        mainScrollerView.bounces=YES;
-//        centreScrollerView.contentOffset=CGPointMake(0, 0);
-//    }
-//    else
-//    {
-//        CGFloat bottomMain=mainScrollerView.contentSize.height-mainY;
-//        CGFloat bottomHeight=mainScrollerView.contentSize.height-mainScrollerView.bounds.size.height;
-//        CGFloat close=mainY+mainScrollerView.bounds.size.height-mainScrollerView.contentSize.height;
-//
-//        if (close<0) {
-//            close=0;
-//        }
-//        
-//        
-//        if (bottomMain<=mainScrollerView.bounds.size.height) {
-//            
-//            if (centreY<=0) {
-//                mainScrollerView.bounces=NO;
-//              centreScrollerView.contentOffset=CGPointMake(0, 0);
-//            }
-//            else
-//            {
-//                mainScrollerView.bounces=NO;
-//                mainScrollerView.contentOffset=CGPointMake(0, bottomHeight-close);
-//            }
-//        }
-//        else
-//        {
-//            if (centreY>bottomHeight) {
-//                mainScrollerView.bounces=NO;
-//                mainScrollerView.contentOffset=CGPointMake(0, bottomHeight-close);
-//            }
-//            else
-//            {
-//                mainScrollerView.bounces=NO;
-//                centreScrollerView.contentOffset=CGPointMake(0, 0);
-//            }
-//        }
-//    }
+
     
     mainScrollerView.bounces=NO;
     CGFloat centreY=centreScrollerView.contentOffset.y;
     CGFloat mainY=mainScrollerView.contentOffset.y;
     CGFloat bottomHeight=mainScrollerView.contentSize.height-mainScrollerView.bounds.size.height;
     
-    if (centreScrollerView.contentOffset.y==0) {
+    if (centreScrollerView.contentOffset.y==0 || delegate==nil) {
+        if ([delegate respondsToSelector:@selector(hp_slideUpSegmentWithMain:)]) {
+            
+            [delegate hp_slideUpSegmentWithMain:YES];
+            
+        }
         return;
     }
     
-    if (mainY<=topHeight) {
+    if (mainY<bottomHeight) {
+        
         mainScrollerView.bounces=YES;
         centreScrollerView.contentOffset=CGPointMake(0, 0);
-       
+        
+        
+        if ([delegate respondsToSelector:@selector(hp_slideUpSegmentWithMain:)]) {
+            
+            [delegate hp_slideUpSegmentWithMain:YES];
+            
+        }
         
     }
     else
     {
+        if ([delegate respondsToSelector:@selector(hp_slideUpSegmentWithMain:)]) {
+            
+            [delegate hp_slideUpSegmentWithMain:NO];
+            
+        }
         
-        if (centreY-_lastPoint>=0) {
+        if (centreY-_lastPoint>20) {
             //up
             _lastPoint=centreY;
             
             
-            if (centreY<=0) {
-                
-                centreScrollerView.contentOffset=CGPointMake(0, 0);
-                
-            }
-            else if(centreY>0)
+            if(centreY>0)
             {
                 mainScrollerView.contentOffset=CGPointMake(0, bottomHeight);
             }
+            else
+            {
+                if ([delegate respondsToSelector:@selector(hp_slideUpSegmentWithMain:)]) {
+                    
+                    [delegate hp_slideUpSegmentWithMain:YES];
+                    
+                }
+            }
         }
-        else if (_lastPoint-centreY>=0)
+        else if (_lastPoint-centreY>20)
         {
             //down
             _lastPoint=centreY;
-
+            
+            
+        }
+        else
+        {
+            
+            if (centreY<=0) {
+                
+                centreScrollerView.contentOffset=CGPointMake(0, 0);
+                if ([delegate respondsToSelector:@selector(hp_slideUpSegmentWithMain:)]) {
+                    
+                    [delegate hp_slideUpSegmentWithMain:YES];
+                    
+                }
+            }
             
         }
         
     }
+    
 
     
 }

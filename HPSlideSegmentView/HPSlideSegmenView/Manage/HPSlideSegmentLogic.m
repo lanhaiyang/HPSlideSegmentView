@@ -266,8 +266,6 @@
 
     if (changeOffset>0) {
 
-        NSLog(@"1--->0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
-        
 
         if (scrollView.contentOffset.x<=startOffset.x && scrollView.contentOffset.x<=endOffset.x) {
             
@@ -300,9 +298,6 @@
                 startPointBlock(changeStart,endPoint);
             }
             
-            NSLog(@"2--->0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
-
-            
             if (boardBlock!=nil) {
                 boardBlock();
             }
@@ -317,8 +312,6 @@
                 return;
             }
             
-            NSLog(@">0 exchangeInde=%ld cxcurrentInde=%ld percent=%lf",exchangeIndex,*currentIndex,percent);
-            
             moduleAnimationBlock(*currentIndex,exchangeIndex,percent);
         }
 
@@ -327,8 +320,6 @@
     else if (changeOffset<0)
     {
 
-        
-        NSLog(@"1---<0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
         
         if (scrollView.contentOffset.x>=startOffset.x && scrollView.contentOffset.x>=endPoint.x ) {
             
@@ -359,8 +350,6 @@
                 startPointBlock(changeStart,endPoint);
             }
 
-            NSLog(@"2---<0 scrStart=%lf,scr=%lf, end=%lf->%ld",changeStart.x,scrollView.contentOffset.x,endPoint.x,*currentIndex);
-
             if (boardBlock!=nil) {
                 boardBlock();
             }
@@ -373,8 +362,6 @@
             if (exchangeIndex==*currentIndex) {
                 return;
             }
-            
-            NSLog(@"<0 exchangeInde=%ld cxcurrentInde=%ld percent=%lf",exchangeIndex,*currentIndex,percent);
             
             moduleAnimationBlock(*currentIndex,exchangeIndex,percent);
         }

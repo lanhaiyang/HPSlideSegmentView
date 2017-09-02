@@ -11,8 +11,12 @@
 #import "HPSlideSegmentManage.h"
 #import "HPScrollView.h"
 
+typedef enum {
+   ENUM_GestureClash=1<<0,
+    ENUM_SlideMain=1<<1
+}SlideFixationType;
 
-@interface HPSlideSegmentControllerView ()<UIScrollViewDelegate,HPSlideUpViewDelegate,HPSlideUpViewGestureClashDelegate>
+@interface HPSlideSegmentControllerView ()<UIScrollViewDelegate,HPSlideUpViewDelegate,HPSlideUpViewGestureClashDelegate,HPSlideSegmentManageDelegate>
 
 @property(nonatomic,strong) HPScrollView *slideScrollerView;
 @property(nonatomic,weak) UIScrollView *centreScrollerView;
@@ -25,6 +29,8 @@
 
 @property(nonatomic,assign) CGFloat slideOffsetY;
 @property(nonatomic,assign) CGFloat childOffsetY;
+
+@property(nonatomic,assign) SlideFixationType fixationType;
 
 @end
 
@@ -73,6 +79,7 @@
 
 -(void)hp_slideWithGestureClash:(BOOL)gesture
 {
+    self.fixationType=ENUM_GestureClash;
     if (gesture==NO  && self.isLeftAndRightSlide==NO) {
         
         _slideOffsetY=self.slideScrollerView.contentOffset.y;
@@ -86,12 +93,30 @@
     
 }
 
+#pragma mark - <HPSlideSegmentManageDelegate>
+
+-(void)hp_slideUpSegmentWithMain:(BOOL)gesture
+{
+    self.fixationType=ENUM_SlideMain;
+    if (gesture==NO  && self.isLeftAndRightSlide==NO) {
+        
+        CGFloat bottomHeight=self.slideScrollerView.contentSize.height-self.slideScrollerView.bounds.size.height;
+        
+        _slideOffsetY=bottomHeight;
+        self.isLeftAndRightSlide=YES;
+    }
+    else if (gesture==YES)
+    {
+        self.isLeftAndRightSlide=NO;
+    }
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
     if (_isLeftAndRightSlide==YES) {
         
-        if (scrollView==self.centreScrollerView && self.centreScrollerView.contentOffset.y!=_childOffsetY) {
+        if (scrollView==self.centreScrollerView && self.centreScrollerView.contentOffset.y!=_childOffsetY && self.fixationType!=ENUM_SlideMain) {
             self.centreScrollerView.contentOffset=CGPointMake(self.centreScrollerView.contentOffset.x, _childOffsetY);
             
         }
@@ -104,13 +129,10 @@
         
     }
     
+    
     CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
     
-
     
-    [[HPSlideSegmentManage sharedSlideManage] slideUpSegmentWithMainScrollerView:self.slideScrollerView
-                                            showScrollerView:self.centreScrollerView
-                                                    upHeight:height];
 
     [HPSlideSegmentManage slidetLogicSrollerView:self.slideScrollerView
                                 showScrollerView:self.centreScrollerView
@@ -138,7 +160,16 @@
 {
     _centreScrollerView=mainSlideScrollView;
     
-    [self scrollViewDidScroll:_centreScrollerView];
+//    [self scrollViewDidScroll:_centreScrollerView];
+    
+    CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
+    
+    
+    
+    [[HPSlideSegmentManage sharedSlideManage] slideUpSegmentWithMainScrollerView:self.slideScrollerView
+                                                                showScrollerView:self.centreScrollerView
+                                                                        upHeight:height
+                                                                        delegate:self];
     
 }
 

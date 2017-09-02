@@ -97,6 +97,13 @@
 -(void)updateLayout:(NSUInteger)pageIndex;
 
 
+/**
+ 更新 对应的index
+ 
+ @param pageIndex 对应的index
+ @param update 是否需要更新代理
+ */
+-(void)updateLayout:(NSUInteger)pageIndex updateDelegate:(BOOL)update;
 
 
 

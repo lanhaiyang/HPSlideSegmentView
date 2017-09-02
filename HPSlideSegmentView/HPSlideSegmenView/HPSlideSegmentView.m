@@ -139,8 +139,15 @@
 
 -(void)updateLayout:(NSUInteger)pageIndex
 {
+    [self updateLayout:pageIndex updateDelegate:YES];
+}
+
+-(void)updateLayout:(NSUInteger)pageIndex updateDelegate:(BOOL)update
+{
  
     _pageIndex=[HPSlideSegmentLogic arraCount:_showCount index:pageIndex];
+    
+    _scrollViewMove1=YES;
     
     [HPSlideSegmentLogic currentIndex:_pageIndex
                            arrayCount:_showCount
@@ -381,10 +388,11 @@
 
 }
 
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     UIScrollView *scrollView = (UIScrollView *)object;
     if (self.centreScrollerView == scrollView && [@"contentOffset" isEqualToString:keyPath]) {
-
+       
         if ([self.upDelegate respondsToSelector:@selector(hp_currentMainSlideScrollView:)]) {
             
             [self.upDelegate hp_currentMainSlideScrollView:self.centreScrollerView];

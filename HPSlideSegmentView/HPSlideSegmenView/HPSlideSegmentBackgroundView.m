@@ -75,7 +75,7 @@
     [self.slideModuleView hp_weak:self
                      actionButton:^(HPSlideSegmentBackgroundView *weak, NSUInteger buttonIndex) {
                          
-                         [weak.slideSegmenView updateLayout:buttonIndex];
+                         [weak.slideSegmenView updateLayout:buttonIndex updateDelegate:NO];
                          
                      }];
 }
