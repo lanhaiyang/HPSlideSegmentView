@@ -19,6 +19,34 @@ pod 'HPSlideSegmentView', '~> 0.1.7'
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/fundation.png)
 
+### 类结构介绍
+
+```
+HPSlideSegmentControllerView (悬浮置顶)
+	|
+	|__ HPSlideSegmentBackgroundView (左右侧滑)
+			|
+			|_ HPSlideModuleView  (左右侧滑 管理上面模块)
+			|_ HPSlideSegmentView (左右侧滑 管理下面模块)
+			
+HPSlideSegmentManage (管理两个scrollview滑动)
+	|__ HPSlideSegmentControllerView
+	
+HPSlideSegmentLogic (管理整体逻辑)
+	|__ HPSlideSegmentBackgroundView
+	|__ HPSlideModuleView
+	|__ HPSlideSegmentView
+	
+HPCacheListManage (管理下面模块 view的缓存问题)
+	|__ HPSlideSegmentView
+	
+HPKVOMange	(管理KVO 的创建和删除)
+	|__ HPSlideSegmentView
+	
+
+
+```
+
 #### 属性slideBackgroungView
 
 ```
