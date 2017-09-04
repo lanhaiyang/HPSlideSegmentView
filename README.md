@@ -17,7 +17,10 @@ pod 'HPSlideSegmentView', '~> 0.1.8'
 
 在下面的可以看到`HPSlideSegmentControllerView`对应的属性的用途:
 
-![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/fundation.png)
+
+<p align="center" >
+  <img src="https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/fundation.png" alt="HPSlideSegmentView" title="HPSlideSegmentView">
+</p>
 
 ### 类结构介绍
 
