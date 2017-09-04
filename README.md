@@ -7,10 +7,22 @@
 
 # iOS 版本要7.0 :platform :ios, ‘7.0’
 ```
+
 ```
 pod 'HPSlideSegmentView', '~> 0.1.8'
 ```
+### 如果pod search HPSlideSegmentView 没有找到
 
+```
+打开终端输入
+
+1.pod repo update 	//等待更新完成在输入下一句
+
+2.rm ~/Library/Caches/CocoaPods/search_index.json //等待更新
+
+3.pod search HPSlideSegmentView		//在搜索
+
+```
 
 ### 创建悬浮效果
 
