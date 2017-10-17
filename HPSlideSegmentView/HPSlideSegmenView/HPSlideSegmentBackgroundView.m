@@ -132,17 +132,28 @@
         _slideModuleView=[[HPSlideModuleView alloc] initWithFrame:CGRectMake(0, 0, self.width, 30)];
         _slideModuleView.delegate=self;
     }
+    else
+    {
+        
+        _slideModuleView.frame=CGRectMake(0, 0, self.width, _slideModuleView.height);
+    }
 
     return _slideModuleView;
 }
 
 -(HPSlideSegmentView *)slideSegmenView
 {
+    CGFloat y=self.slideModuleView.x+self.slideModuleView.height;
     if (_slideSegmenView==nil) {
-        CGFloat y=self.slideModuleView.x+self.slideModuleView.height;
         _slideSegmenView=[[HPSlideSegmentView alloc] initWithFrame:CGRectMake(0, y, self.width, self.height)];
         _slideSegmenView.delegate=self;
     }
+    else
+    {
+        CGFloat height=self.height-_slideModuleViewHeight;
+        _slideSegmenView.frame=CGRectMake(0, y, self.width, height);
+    }
+    
     return _slideSegmenView;
 }
 

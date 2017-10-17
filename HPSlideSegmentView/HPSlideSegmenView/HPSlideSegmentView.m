@@ -274,12 +274,11 @@
 {
     _scrollViewMove=NO;
     _scrollViewMove1=NO;
-    _scrollViewMove=NO;
     
     
-        int morePage=(int)(scrollView.contentOffset.x/scrollView.width);
-        self.startOffset=CGPointMake(morePage*scrollView.width, scrollView.contentOffset.y);
-
+    int morePage=(int)(scrollView.contentOffset.x/scrollView.width);
+    self.startOffset=CGPointMake(morePage*scrollView.width, scrollView.contentOffset.y);
+    
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

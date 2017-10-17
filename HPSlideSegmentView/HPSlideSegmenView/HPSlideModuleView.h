@@ -65,7 +65,7 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 
 
 /**
- 上架左右的边距
+ 上滑左右的边距
  */
 @property(nonatomic,assign) UIEdgeInsets edgeInsets;
 

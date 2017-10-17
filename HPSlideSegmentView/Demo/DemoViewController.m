@@ -37,9 +37,9 @@
     
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
     self.slideBackgroungView.slideModuleView.edgeInsets=UIEdgeInsetsMake(0, 0, 3, 1);
-    self.slideBackgroungView.slideModuleView.minWidth=SCREEN_WIDTH/4;
-    self.slideBackgroungView.slideModuleView.type=ENUM_HP_AUTOMINSIZE;
-    self.slideBackgroungView.slideModuleView.hiddenModule=NO;
+    self.slideBackgroungView.slideModuleView.minWidth=SCREEN_WIDTH;
+    self.slideBackgroungView.slideModuleView.type=ENUM_HP_DEFINESIZE;
+    self.slideBackgroungView.slideModuleView.hiddenModule=YES;
     
     [self.slideBackgroungView updateLayout];
     
@@ -66,7 +66,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"AAAAAAAAAA",@"BBBBB",@"AAAAAAAAAA",@"BBBBB"];
+        _dataSouce=@[@"AAAA"];
     }
     return _dataSouce;
 }

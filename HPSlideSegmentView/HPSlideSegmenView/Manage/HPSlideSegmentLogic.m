@@ -437,7 +437,7 @@
        slideSuperView:(CGFloat)slideViewWidth
 {
     
-    if (currentIndex<=1) {
+    if (currentIndex<1) {
         scrollView.contentOffset=CGPointMake(0, 0);
     }
     else

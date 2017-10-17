@@ -37,6 +37,12 @@
     return self;
 }
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self updateLayout];
+}
+
 -(void)updateLayout
 {
 
