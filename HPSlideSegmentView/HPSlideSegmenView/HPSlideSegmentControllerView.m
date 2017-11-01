@@ -114,6 +114,21 @@ typedef enum {
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
+    CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
+    
+    
+    
+    [HPSlideSegmentManage slidetLogicSrollerView:self.slideScrollerView
+                                showScrollerView:self.centreScrollerView
+                                        upHeight:height
+                             slideUpSegmentBlock:^(CGPoint upPoint) {
+                                 
+                                 self.slideBackgroungView.slideModuleView.y=upPoint.y;
+                                 [self.slideBackgroungView addSubview:self.slideBackgroungView.slideModuleView];
+                                 
+                             }];
+    
+    
     if (_isLeftAndRightSlide==YES) {
         
         if (scrollView==self.centreScrollerView && self.centreScrollerView.contentOffset.y!=_childOffsetY && self.fixationType!=ENUM_SlideMain) {
@@ -129,20 +144,6 @@ typedef enum {
         
     }
     
-    
-    CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
-    
-    
-
-    [HPSlideSegmentManage slidetLogicSrollerView:self.slideScrollerView
-                                showScrollerView:self.centreScrollerView
-                                        upHeight:height
-                             slideUpSegmentBlock:^(CGPoint upPoint) {
-                                 
-                                 self.slideBackgroungView.slideModuleView.y=upPoint.y;
-                                 [self.slideBackgroungView addSubview:self.slideBackgroungView.slideModuleView];
-                                 
-                             }];
 }
 
 //判断屏幕触碰状态
@@ -204,7 +205,7 @@ typedef enum {
     if (_slideScrollerView==nil) {
         
         _slideScrollerView=[[HPScrollView alloc] init];
-        _slideScrollerView.frame=CGRectMake(0, 0, self.view.width, self.view.height);
+        _slideScrollerView.frame=CGRectMake(0, 64, self.view.width, self.view.height);
         _slideScrollerView.contentSize=CGSizeMake(0, 0);
         _slideScrollerView.delegate=self;
         _slideScrollerView.bounces=NO;

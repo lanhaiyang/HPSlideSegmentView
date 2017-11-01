@@ -66,7 +66,7 @@
 -(NSArray *)dataSouce
 {
     if (_dataSouce==nil) {
-        _dataSouce=@[@"AAAA"];
+        _dataSouce=@[@"AAAA",@"222"];
     }
     return _dataSouce;
 }

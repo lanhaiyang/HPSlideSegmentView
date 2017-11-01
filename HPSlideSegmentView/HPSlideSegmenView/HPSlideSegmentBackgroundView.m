@@ -135,7 +135,7 @@
     else
     {
         
-        _slideModuleView.frame=CGRectMake(0, 0, self.width, _slideModuleView.height);
+        _slideModuleView.frame=CGRectMake(_slideModuleView.x, _slideModuleView.y, self.width, _slideModuleView.height);
     }
 
     return _slideModuleView;
