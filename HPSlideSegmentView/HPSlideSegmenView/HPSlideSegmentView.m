@@ -63,6 +63,11 @@
     
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    
+}
+
 -(void)updateLayout
 {
     //更新布局
@@ -78,7 +83,7 @@
     
     if (self.showCount==1)
     {
-        [HPSlideSegmentView layoutWithScrollerAddView:self.backgroundView
+        [self layoutWithScrollerAddView:self.backgroundView
                                                  left:self.slideLeft
                                                centre:nil
                                                 right:nil
@@ -86,7 +91,7 @@
     }
     else if(self.showCount==2)
     {
-        [HPSlideSegmentView layoutWithScrollerAddView:self.backgroundView
+        [self layoutWithScrollerAddView:self.backgroundView
                                                  left:self.slideLeft
                                                centre:self.slideCentre
                                                 right:nil
@@ -94,7 +99,7 @@
     }
     else if (self.showCount>=3)
     {
-        [HPSlideSegmentView layoutWithScrollerAddView:self.backgroundView
+        [self layoutWithScrollerAddView:self.backgroundView
                                                  left:self.slideLeft
                                                centre:self.slideCentre
                                                 right:self.slideRight
@@ -105,20 +110,23 @@
 
 
 
-+(void)layoutWithScrollerAddView:(UIView *)addView
+-(void)layoutWithScrollerAddView:(UIView *)addView
                             left:(UIView *)left
                           centre:(UIView *)centre
                            right:(UIView *)right
            scrollerViewWithWidth:(CGFloat)scrollerViewWidth
 {
     
-    left.frame=CGRectMake(0, 0, left.width, left.height);
+    CGFloat width = self.viewContrllerScrollerView.width;
+    CGFloat height = self.viewContrllerScrollerView.height;
+    
+    left.frame=CGRectMake(0, 0, width, height);
     [addView addSubview:left];
     
-    centre.frame=CGRectMake(scrollerViewWidth, 0, centre.width, centre.height);
+    centre.frame=CGRectMake(scrollerViewWidth, 0, width, height);
     [addView addSubview:centre];
     
-    right.frame=CGRectMake(2*scrollerViewWidth, 0, right.width, right.height);
+    right.frame=CGRectMake(2*scrollerViewWidth, 0, width, height);
     [addView addSubview:right];
 }
 

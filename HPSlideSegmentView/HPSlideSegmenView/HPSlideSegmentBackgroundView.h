@@ -42,6 +42,8 @@
 
 /**
  Button显示的内容
+ 
+ 一定要是NSString 不能为 Swift String
  */
 @property(nonatomic,weak) NSArray<NSString *> *contents;
 

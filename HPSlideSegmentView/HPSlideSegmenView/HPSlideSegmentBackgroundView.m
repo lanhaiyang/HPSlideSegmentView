@@ -29,6 +29,16 @@
     return self;
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    
+    _slideModuleView.frame=CGRectMake(_slideModuleView.x, _slideModuleView.y, self.width, _slideModuleView.height);
+    
+    CGFloat y=self.slideModuleView.x+self.slideModuleView.height;
+    CGFloat height=self.height-_slideModuleViewHeight;
+    _slideSegmenView.frame=CGRectMake(0, y, self.width, height);
+}
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
@@ -132,11 +142,6 @@
         _slideModuleView=[[HPSlideModuleView alloc] initWithFrame:CGRectMake(0, 0, self.width, 30)];
         _slideModuleView.delegate=self;
     }
-    else
-    {
-        
-        _slideModuleView.frame=CGRectMake(_slideModuleView.x, _slideModuleView.y, self.width, _slideModuleView.height);
-    }
 
     return _slideModuleView;
 }
@@ -148,12 +153,6 @@
         _slideSegmenView=[[HPSlideSegmentView alloc] initWithFrame:CGRectMake(0, y, self.width, self.height)];
         _slideSegmenView.delegate=self;
     }
-    else
-    {
-        CGFloat height=self.height-_slideModuleViewHeight;
-        _slideSegmenView.frame=CGRectMake(0, y, self.width, height);
-    }
-    
     return _slideSegmenView;
 }
 
