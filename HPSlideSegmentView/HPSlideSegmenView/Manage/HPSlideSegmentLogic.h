@@ -40,11 +40,11 @@ HPNumberMake(NSUInteger index, char *string)
 }
 
 typedef void (^CHANGEINDEXBLOCK)(HPNumber left,HPNumber centre,HPNumber right,CGPoint startPoint);
-typedef void (^ENDBLOCK)();
+typedef void (^ENDBLOCK)(void);
 
 typedef void (^ChangeStartPoint)(CGPoint startPoint,CGPoint endPoint);
 typedef void (^ModuleAnimationBlock)(NSUInteger nowIndex,NSUInteger readyIndex,CGFloat movePercent);
-typedef void (^BoardBlock)();
+typedef void (^BoardBlock)(void);
 
 
 @interface HPSlideSegmentLogic : NSObject
