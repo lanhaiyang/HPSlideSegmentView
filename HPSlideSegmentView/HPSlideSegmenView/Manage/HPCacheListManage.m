@@ -35,10 +35,7 @@
 -(void)addCacheWithLeft:(ObjcWithKeyStruct)left
                  Centre:(ObjcWithKeyStruct)centre
                   Right:(ObjcWithKeyStruct)right
-                weakObj:(id)weakObj
           updateContent:(BOOL)update
-            layoutBlock:(LayoutBlock)layoutBlock
-     notCahceCreatBlock:(CreatBlock)creatBlock
 {
     
     
@@ -49,31 +46,21 @@
     
     
     [self isCacheWithObj:left
-                 weakObj:weakObj
-           updateContent:update
-             layoutBlock:layoutBlock
-      notCahceCreatBlock:creatBlock];
+           updateContent:update];
     
     [self isCacheWithObj:centre
-                 weakObj:weakObj
-           updateContent:update
-             layoutBlock:layoutBlock
-      notCahceCreatBlock:creatBlock];
+           updateContent:update];
     
     [self isCacheWithObj:right
-                 weakObj:weakObj
-           updateContent:update
-             layoutBlock:layoutBlock
-      notCahceCreatBlock:creatBlock];
+           updateContent:update];
     
-    
+    if ([_delegate respondsToSelector:@selector(hp_updateWihtLayotu)]) {
+        [_delegate hp_updateWihtLayotu];
+    }
 }
 
 -(void)isCacheWithObj:(ObjcWithKeyStruct)direction
-              weakObj:(id)weakObj
         updateContent:(BOOL)update
-          layoutBlock:(LayoutBlock)layoutBlock
-   notCahceCreatBlock:(CreatBlock)creatBlock
 {
     if (direction.keyNum<0) {
         return;
@@ -84,7 +71,11 @@
         if (update==YES) {
             
             
-            id cacheValue=creatBlock(weakObj,[self cacheWithKey:@(direction.keyNum)],direction.keyNum);
+            id cacheValue = nil;
+            
+            if ([_delegate respondsToSelector:@selector(hp_notCahceCreat:pageIndex:)]) {
+                cacheValue = [_delegate hp_notCahceCreat:[self cacheWithKey:@(direction.keyNum)] pageIndex:direction.keyNum];
+            }
             
             if (cacheValue==nil) {
                 return;
@@ -93,21 +84,21 @@
             [self.cacheDictionary setObject:cacheValue forKey:@(direction.keyNum)];
             
         }
-        
-        if (layoutBlock!=nil) {
-            
-            layoutBlock(weakObj,[self cacheWithKey:@(direction.keyNum)],direction.directionType,direction.keyNum);
-            
+
+        if ([_delegate respondsToSelector:@selector(hp_cacheWithLayout:direction:page:)]) {
+            [_delegate hp_cacheWithLayout:[self cacheWithKey:@(direction.keyNum)] direction:direction.directionType page:direction.keyNum];
         }
+        
         
     }
     else
     {
-        if (creatBlock==nil) {
-            return;
-        }
+
+        id cacheValue=nil;
         
-        id cacheValue=creatBlock(weakObj,nil,direction.keyNum);
+        if ([_delegate respondsToSelector:@selector(hp_notCahceCreat:pageIndex:)]) {
+            cacheValue = [_delegate hp_notCahceCreat:nil pageIndex:direction.keyNum];
+        }
         
         if (cacheValue==nil) {
             return;
@@ -116,19 +107,16 @@
         if (self.cacheDictionary.count>=self.cacheListMax) {
             
             [self deleWithAddObj:cacheValue
-                         weakObj:weakObj
-                          keyNum:direction
-                     layoutBlock:layoutBlock];
+                          keyNum:direction];
             
             
         }
         else
         {
             [self.cacheDictionary setObject:cacheValue forKey:@(direction.keyNum)];
-            if (layoutBlock!=nil) {
-                
-                layoutBlock(weakObj,[_cacheDictionary objectForKey:@(direction.keyNum)],direction.directionType,direction.keyNum);
-                
+            
+            if ([_delegate respondsToSelector:@selector(hp_cacheWithLayout:direction:page:)]) {
+                [_delegate hp_cacheWithLayout:[_cacheDictionary objectForKey:@(direction.keyNum)] direction:direction.directionType page:direction.keyNum];
             }
         }
         
@@ -145,7 +133,7 @@
     [_currentArray addObject:@(number)];
 }
 
--(void)deleWithAddObj:(id)cacheObj weakObj:(id)weakObj keyNum:(ObjcWithKeyStruct)direction layoutBlock:(LayoutBlock)layoutBlock
+-(void)deleWithAddObj:(id)cacheObj keyNum:(ObjcWithKeyStruct)direction
 {
     
     dispatch_async(self.cahceQueue, ^{
@@ -176,17 +164,22 @@
             [_cacheDictionary removeObjectForKey:numberMax];
             
             if ([_delegate respondsToSelector:@selector(removeWithCacheObj:)]) {
-                [_delegate removeWithCacheObj:selectObj];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [_delegate removeWithCacheObj:selectObj];
+                });
             }
             
             [_cacheDictionary setObject:cacheObj forKey:@(direction.keyNum)];
             
             dispatch_async(dispatch_get_main_queue(), ^{
+               
                 
-                if (layoutBlock!=nil) {
-                    
-                    layoutBlock(weakObj,[_cacheDictionary objectForKey:@(direction.keyNum)],direction.directionType,direction.keyNum);
-                    
+                if ([_delegate respondsToSelector:@selector(hp_cacheWithLayout:direction:page:)]) {
+                    [_delegate hp_cacheWithLayout:[_cacheDictionary objectForKey:@(direction.keyNum)] direction:direction.directionType page:direction.keyNum];
+                }
+                
+                if ([_delegate respondsToSelector:@selector(hp_updateWihtLayotu)]) {
+                    [_delegate hp_updateWihtLayotu];
                 }
                 
                 

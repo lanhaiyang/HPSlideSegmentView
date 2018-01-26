@@ -32,6 +32,14 @@ static NSString *ID = @"cell";
     return self;
 }
 
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    //更新UIViewController上面控件的大小和位置
+    _tabelView.frame = CGRectMake(0, 0, self.view.width, self.view.height);
+    
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 15;

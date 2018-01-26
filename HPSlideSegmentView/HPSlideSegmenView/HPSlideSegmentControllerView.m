@@ -177,7 +177,7 @@ typedef enum {
 
 -(void)updateBackgroundHeight:(CGSize)size
 {
-    CGFloat height=self.slideScrollerView.contentSize.height+size.height;;
+    CGFloat height=self.slideScrollerView.contentSize.height+size.height;
     _slideScrollerView.contentSize=CGSizeMake(size.width, height);
     
     _slideBackground.frame=CGRectMake(0, 0, _slideScrollerView.contentSize.width, _slideScrollerView.contentSize.height);

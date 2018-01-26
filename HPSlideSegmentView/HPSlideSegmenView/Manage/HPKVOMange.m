@@ -38,12 +38,11 @@
         return;
     }
     
-    [_kvos addObject:observerObject];
     
     if (block!=nil) {
         
         block(weakObj);
-        
+        [_kvos addObject:observerObject];
     }
     
 }

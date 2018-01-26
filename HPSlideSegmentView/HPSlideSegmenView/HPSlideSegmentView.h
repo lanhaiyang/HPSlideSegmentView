@@ -120,6 +120,7 @@ typedef void (^InitWithActionBlock)(HPSlideModel *model);
 
 -(id)cacheWithStoryboard:(UIStoryboard *)storyboard identifier:(NSString *)identifier cacheIndex:(NSUInteger)index;
 
+-(void)showViewController:(UIViewController *)showViewController pointIndex:(NSUInteger)index;
 
 /**
  显示的ViewController

@@ -158,14 +158,22 @@ typedef void (^BoardBlock)(void);
  @param boardBlock 改变左右滑块的内容
  @param moduleAnimationBlock 执行滑块动画
  */
+//+(void)scrollView:(UIScrollView *)scrollView
+//           currentIndex:(NSUInteger )currentIndex
+//            startOffset:(CGPoint )startOffset
+//              endOffset:(CGPoint)endOffset
+//              dataArray:(NSUInteger )arrayDataCount
+//        startPointBlock:(ChangeStartPoint)startPointBlock
+//             boardBlock:(BoardBlock)boardBlock
+//            moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock;
+
+
 +(void)scrollView:(UIScrollView *)scrollView
-           currentIndex:(NSUInteger *)currentIndex
-            startOffset:(CGPoint )startOffset
-              endOffset:(CGPoint)endOffset
-              dataArray:(NSUInteger )arrayDataCount
-        startPointBlock:(ChangeStartPoint)startPointBlock
-             boardBlock:(BoardBlock)boardBlock
-            moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock;
+     currentIndex:(NSUInteger)currentIndex
+      startOffset:(CGPoint )startOffset
+        dataArray:(NSUInteger )arrayDataCount
+       boardBlock:(BoardBlock)boardBlock
+      moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock;
 
 
 /**
@@ -177,15 +185,13 @@ typedef void (^BoardBlock)(void);
  @param startOffset       结束的offset
  @param arrayDataCount  数据源的个数 (不能为0)
  @param changeBlock     返回位置信息
- @param endBlock        当currentIndex设置完成介绍
  */
 +(void)slideSuperView:(CGFloat)slideViewWidth
            scrollView:(UIScrollView *)scrollView
-         currentIndex:(NSUInteger *)currentIndex
+         currentIndex:(NSUInteger)currentIndex
           startOffset:(CGPoint )startOffset
             dataArray:(NSUInteger )arrayDataCount
-          changeIndex:(CHANGEINDEXBLOCK)changeBlock
-             endIndex:(ENDBLOCK)endBlock;
+          changeIndex:(CHANGEINDEXBLOCK)changeBlock;
 
 /**
  滑块动画
