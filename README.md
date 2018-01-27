@@ -7,11 +7,12 @@
 
 # iOS 版本要7.0 :platform :ios, ‘7.0’
 ```
+### 最好使用最新版本
 
 ```
 pod 'HPSlideSegmentView', '~> 0.1.14'
 ```
-### 如果pod search HPSlideSegmentView 没有找到
+### 如果pod search HPSlideSegmentView 没有搜索到 和 没有找到最新的版本
 
 ```
 打开终端输入

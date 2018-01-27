@@ -26,12 +26,11 @@
     
     HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgroundView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     
-    
+    slideSegmentBackgroundView.slideModuleViewHeight = 50;
     slideSegmentBackgroundView.dataSource=self;
     slideSegmentBackgroundView.slideSegmenView.dataSource=self;
     slideSegmentBackgroundView.contents=self.dataSouce;
     [self.view addSubview:slideSegmentBackgroundView];
-    self.view.backgroundColor=[UIColor redColor];
     
 }
 

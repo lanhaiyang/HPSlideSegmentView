@@ -86,6 +86,7 @@ static NSString *ID = @"cell";
         //单元格样式设置为UITableViewCellStyleDefault
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text=[NSString stringWithFormat:@"%@ %@",self.titleView,_dataSouce[indexPath.row]];
     cell.textLabel.textColor=[UIColor blackColor];
     cell.backgroundColor=[UIColor grayColor];
