@@ -7,7 +7,7 @@
 
 # iOS 版本要7.0 :platform :ios, ‘7.0’
 ```
-### 最好使用最新版本
+### 尽量使用最新版本
 
 ```
 pod 'HPSlideSegmentView', '~> 0.1.14'
