@@ -114,6 +114,8 @@
     [addView addSubview:right];
 }
 
+
+
 -(void)updateLayout:(NSUInteger)pageIndex
 {
     [self updateLayout:pageIndex updateDelegate:YES];
@@ -141,6 +143,9 @@
         [self.gestrueClashDelegate hp_slideWithGestureClash:NO];
         
     }
+    
+    [_viewContrllerScrollerView setDelaysContentTouches:NO];
+    [_viewContrllerScrollerView setCanCancelContentTouches:NO];
     
     _pageIndex = scrollView.contentOffset.x/_viewContrllerScrollerView.width;
     CGPoint startOffset = CGPointMake(_pageIndex * _viewContrllerScrollerView.width, 0);
@@ -427,6 +432,7 @@
     }
     
 }
+
 
 -(void)setCacheMaxCount:(NSUInteger )cacheMaxCount
 {

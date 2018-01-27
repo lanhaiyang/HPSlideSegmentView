@@ -22,10 +22,7 @@
         case HPScrollView_Filter_GestureCell:
         {
             //UITableViewCell 删除手势
-            if ([NSStringFromClass(otherGestureRecognizer.view.class) isEqualToString:@"UITableViewWrapperView"] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
-                return YES;
-            }
-            return NO;
+            return gestureRecognizer.state != 0 ? YES : NO;
         }
             break;
         default:

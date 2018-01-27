@@ -20,6 +20,7 @@
  */
 -(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index;
 
+
 @end
 
 @protocol HPSlideSegmentViewDelegate <NSObject>
@@ -58,6 +59,8 @@
  @param gesture 返回当左右滑动时停止 多手势返回NO 当上下滑动时返回YES
  */
 -(void)hp_slideWithGestureClash:(BOOL)gesture;
+
+
 
 @end
 

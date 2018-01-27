@@ -13,6 +13,7 @@ static NSString *ID = @"cell";
 
 @interface AViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property(nonatomic,strong) NSMutableArray *dataSouce;
 
 @end
 
@@ -22,14 +23,34 @@ static NSString *ID = @"cell";
 -(instancetype)init
 {
     if (self=[super init]) {
-        _tabelView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0,self.view.width, self.view.height) style:UITableViewStylePlain];
+
         
-        _tabelView.delegate=self;
-        _tabelView.dataSource=self;
-        
-        [self.view addSubview:_tabelView];
+        [self layout];
+        [self createData];
     }
     return self;
+}
+
+-(void)layout{
+    
+    _tabelView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0,self.view.width, self.view.height) style:UITableViewStylePlain];
+    
+    _tabelView.delegate=self;
+    _tabelView.dataSource=self;
+    
+    [self.view addSubview:_tabelView];
+    
+}
+
+-(void)createData{
+    
+    _dataSouce = [NSMutableArray array];
+    
+    for (int i = 0; i < 15; i ++) {
+        [_dataSouce addObject:[NSString stringWithFormat:@"%d",i]];
+    }
+    
+    [_tabelView reloadData];
 }
 
 -(void)viewDidLayoutSubviews{
@@ -37,12 +58,24 @@ static NSString *ID = @"cell";
     
     //更新UIViewController上面控件的大小和位置
     _tabelView.frame = CGRectMake(0, 0, self.view.width, self.view.height);
+
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
     
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 15;
+    return _dataSouce.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat
+{
+    //这里设置成150
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -53,37 +86,47 @@ static NSString *ID = @"cell";
         //单元格样式设置为UITableViewCellStyleDefault
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    cell.textLabel.text=self.titleView;
+    cell.textLabel.text=[NSString stringWithFormat:@"%@ %@",self.titleView,_dataSouce[indexPath.row]];
     cell.textLabel.textColor=[UIColor blackColor];
     cell.backgroundColor=[UIColor grayColor];
     
     return cell;
 }
 
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//
-//}
+#pragma mark - 删除
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat
-{
-    //这里设置成150
-    return 150;
+//先要设Cell可编辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row % 2 == 0) {
+       return YES;
+    }
+    return NO;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
 }
-*/
+
+//设置进入编辑状态时，Cell不会缩进
+- (BOOL)tableView: (UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+//点击删除
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //在这里实现删除操作
+    
+    //删除数据，和删除动画
+    [self.dataSouce removeObjectAtIndex:indexPath.row];
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+}
+
 
 @end
