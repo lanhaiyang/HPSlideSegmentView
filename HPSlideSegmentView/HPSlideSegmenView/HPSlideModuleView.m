@@ -250,13 +250,7 @@
 {
     UIButton *module=nil;
     
-//    NSString *content=@"";
-    
-//    if ([delegate respondsToSelector:@selector(hp_slideContentWithIndex:)]) {
-//        
-//        content=[delegate hp_slideContentWithIndex:index];
-//        
-//    }
+
     
     if ([delegate respondsToSelector:@selector(hp_slideWithIndex:)]) {
         

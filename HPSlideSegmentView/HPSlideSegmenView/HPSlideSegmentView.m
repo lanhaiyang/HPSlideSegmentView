@@ -12,12 +12,12 @@
 #import "HPCacheListManage.h"
 #import "HPSegmentEnum.h"
 #import "HPKVOMange.h"
-
+#import "HPScrollView.h"
 
 
 @interface HPSlideSegmentView ()<UIScrollViewDelegate,NSCacheDelegate,HPCacheListManageDelegate>
 
-@property(nonatomic,strong) UIScrollView *viewContrllerScrollerView;
+@property(nonatomic,strong) HPScrollView *viewContrllerScrollerView;
 
 @property(nonatomic,strong) HPSlideModel *slideLeft;
 @property(nonatomic,strong) HPSlideModel *slideCentre;
@@ -478,10 +478,11 @@
     return _kvoMange;
 }
 //
--(UIScrollView *)viewContrllerScrollerView
+-(HPScrollView *)viewContrllerScrollerView
 {
     if (_viewContrllerScrollerView==nil) {
-        _viewContrllerScrollerView=[[UIScrollView alloc] init];
+        _viewContrllerScrollerView=[[HPScrollView alloc] init];
+        _viewContrllerScrollerView.gestrueType = HPScrollView_Filter_GestureCell;
         _viewContrllerScrollerView.pagingEnabled=YES;
         _viewContrllerScrollerView.delegate=self;
         _viewContrllerScrollerView.bounces=NO;

@@ -152,22 +152,10 @@ typedef void (^BoardBlock)(void);
  @param scrollView 滑动scrollView
  @param currentIndex 当前的位置
  @param startOffset  滑动开始的位置
- @param endOffset 结束的位置
  @param arrayDataCount 数组的个数
- @param startPointBlock 改变开始位置和结束位置
  @param boardBlock 改变左右滑块的内容
  @param moduleAnimationBlock 执行滑块动画
  */
-//+(void)scrollView:(UIScrollView *)scrollView
-//           currentIndex:(NSUInteger )currentIndex
-//            startOffset:(CGPoint )startOffset
-//              endOffset:(CGPoint)endOffset
-//              dataArray:(NSUInteger )arrayDataCount
-//        startPointBlock:(ChangeStartPoint)startPointBlock
-//             boardBlock:(BoardBlock)boardBlock
-//            moduleBlock:(ModuleAnimationBlock)moduleAnimationBlock;
-
-
 +(void)scrollView:(UIScrollView *)scrollView
      currentIndex:(NSUInteger)currentIndex
       startOffset:(CGPoint )startOffset

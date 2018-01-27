@@ -12,7 +12,27 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    return YES;
+    
+    switch (self.gestrueType) {
+        case HPScroll_Open_Define:
+        {
+            return YES;
+        }
+            break;
+        case HPScrollView_Filter_GestureCell:
+        {
+            //UITableViewCell 删除手势
+            if ([NSStringFromClass(otherGestureRecognizer.view.class) isEqualToString:@"UITableViewWrapperView"] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+                return YES;
+            }
+            return NO;
+        }
+            break;
+        default:
+            break;
+    }
+    
+
 }
 
 @end
