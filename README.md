@@ -9,7 +9,7 @@
 ```
 
 ```
-pod 'HPSlideSegmentView', '~> 0.1.13'
+pod 'HPSlideSegmentView', '~> 0.1.14'
 ```
 ### 如果pod search HPSlideSegmentView 没有找到
 
