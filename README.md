@@ -177,6 +177,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 如果是使用storyboard
 -(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
+
 	HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
 	[homeViewController.view layoutIfNeeded];//更新一下
 	
