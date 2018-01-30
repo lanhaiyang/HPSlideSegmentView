@@ -40,6 +40,8 @@ typedef void (^HPSLIDEMODULBUTTONBLOCK)(id weak,NSUInteger buttonIndex);
 
 @property(nonatomic,weak) id<SlideModuleViewDelegate> delegate;
 
+@property(nonatomic,assign) BOOL spaceLine;
+
 
 /**
  当前有多少个数据源

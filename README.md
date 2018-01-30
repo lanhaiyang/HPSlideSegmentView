@@ -10,7 +10,7 @@
 ### 尽量使用最新版本
 
 ```
-pod 'HPSlideSegmentView', '~> 0.1.14'
+pod 'HPSlideSegmentView', '~> 0.1.15'
 ```
 ### 如果pod search HPSlideSegmentView 没有搜索到 和 没有找到最新的版本
 
@@ -168,25 +168,25 @@ self.slideBackgroungView.dataSource=self;
 self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 //代理
--(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
-{
-    AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] cacheIndex:index initAction:nil];
+-(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
     
-    aViewController.title=self.dataSouce[index];
-    slideSegmentView.mainSlideScrollView=aViewController.tabelView;
-    slideSegmentView.showViewController=aViewController;
+    AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] initAction:nil];
+    aViewController.titleView = _dataSouce[index];
+    return aViewController;
 }
 
 如果是使用storyboard
-
--(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
-{
-    HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
+-(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
+    
+ 	HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
     [homeViewController.view layoutIfNeeded];//更新一下
-    slideSegmentView.mainSlideScrollView=homeViewController.scrollView;
-    slideSegmentView.showViewController=homeViewController;
-
+    
+    homeViewController.title = "主页"
+    
+   	return homeViewController;
 }
+
+
 
 ```
 

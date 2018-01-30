@@ -168,9 +168,9 @@ typedef enum {
     
     
     [[HPSlideSegmentManage sharedSlideManage] slideUpSegmentWithMainScrollerView:self.slideScrollerView
-                                                                showScrollerView:self.centreScrollerView
-                                                                        upHeight:height
-                                                                        delegate:self];
+                          showScrollerView:self.centreScrollerView
+                                  upHeight:height
+                                  delegate:self];
     
 }
 

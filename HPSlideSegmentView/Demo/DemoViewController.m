@@ -35,8 +35,9 @@
     self.slideBackgroungView.slideSegmenView.dataSource=self;
     self.slideBackgroungView.slideSegmenView.cacheMaxCount=6;
     
+    self.slideBackgroungView.slideModuleView.spaceLine = YES;
     self.slideBackgroungView.slideModuleView.slideModeuleWidth=10;
-    self.slideBackgroungView.slideModuleView.edgeInsets=UIEdgeInsetsMake(0, 0, 3, 1);
+    self.slideBackgroungView.slideModuleView.edgeInsets=UIEdgeInsetsMake(0, 5, 3, 1);
 //    self.slideBackgroungView.slideModuleView.minWidth=SCREEN_WIDTH;
 //    self.slideBackgroungView.slideModuleView.type=ENUM_HP_DEFINESIZE;
 //    self.slideBackgroungView.slideModuleView.hiddenModule=YES;
@@ -51,17 +52,13 @@
     return self.dataSouce.count;
 }
 
--(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
-{
-//    AViewController *aViewController=[[AViewController alloc] init];
-
-    AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] cacheIndex:index initAction:nil];
+-(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
     
-    aViewController.titleView=self.dataSouce[index];
-    slideSegmentView.name=self.dataSouce[index];
-    slideSegmentView.mainSlideScrollView=aViewController.tabelView;
-    slideSegmentView.showViewController=aViewController;
+    AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] initAction:nil];
+    aViewController.titleView = _dataSouce[index];
+    return aViewController;
 }
+
 
 -(NSArray *)dataSouce
 {

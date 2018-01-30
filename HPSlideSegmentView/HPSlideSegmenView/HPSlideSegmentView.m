@@ -38,6 +38,17 @@
 
 @interface HPSlideModel ()
 
+/**
+ 显示的ViewController
+ */
+@property(nonatomic,strong) UIViewController *showViewController;
+
+
+/**
+ ViewController 上面 的scrollView
+ */
+@property(nonatomic,strong) UIScrollView *mainSlideScrollView;
+
 @end
 
 
@@ -278,10 +289,14 @@
 
 +(void)layoutWithView:(HPSlideModel *)slideModel cacheSlideModel:(HPSlideModel *)cacheSlideModel pointIndex:(NSUInteger)index
 {
-
-    [slideModel showViewController:cacheSlideModel.showViewController pointIndex:index];
-    slideModel.mainSlideScrollView=cacheSlideModel.mainSlideScrollView;
-    slideModel.name=cacheSlideModel.name;
+    if (cacheSlideModel.showViewController!=nil) {
+        slideModel.showViewController=cacheSlideModel.showViewController;
+        slideModel.showViewController.view.frame=CGRectMake(0, 0, slideModel.width, slideModel.height);
+        slideModel.frame = CGRectMake(index * slideModel.width, 0, slideModel.width, slideModel.height);
+        [slideModel addSubview:cacheSlideModel.showViewController.view];
+    }
+//    [slideModel showViewController:cacheSlideModel.showViewController pointIndex:index];
+    slideModel.mainSlideScrollView=cacheSlideModel.mainSlideScrollView;;
 }
 
 -(void)removeWithLayout:(HPSlideModel *)slideView
@@ -374,17 +389,16 @@
     
     if ([self.dataSource respondsToSelector:@selector(hp_slideListWithViewController:index:)]) {
         
-        if (cacheObj==nil) {
+        if (cacheSlideModel==nil) {
             cacheSlideModel=[[HPSlideModel alloc] init];
         }
         
-        [self.dataSource hp_slideListWithViewController:cacheSlideModel index:key];
-        
+        cacheSlideModel.showViewController = [self.dataSource hp_slideListWithViewController:cacheSlideModel index:key];
+        [self getControllerWithScrollView:cacheSlideModel];
         
     }
     
     return cacheSlideModel;
-    
 }
 
 -(void)hp_cacheWithLayout:(id)cacheObje direction:(DirectionType)direction page:(NSUInteger)key{
@@ -417,6 +431,8 @@
     [self currenSlideScrollView];
 }
 
+
+
 #pragma mark - 监听
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -429,6 +445,21 @@
 
         }
 
+    }
+    
+}
+
+-(void)getControllerWithScrollView:(HPSlideModel *)slideModel{
+    
+    for (id object in [slideModel.showViewController.view subviews]) {
+        if ([object isKindOfClass:[UIScrollView class]]) {
+            UIScrollView * scrollView = (UIScrollView *)object;
+            
+            if (scrollView.contentSize.height > slideModel.showViewController.view.height) {
+                slideModel.mainSlideScrollView = scrollView;
+                break;
+            }
+        }
     }
     
 }
@@ -504,7 +535,7 @@
 
 @implementation HPSlideModel
 
--(id)cacheWithClass:(Class)className cacheIndex:(NSUInteger)index initAction:(InitWithActionBlock)actionBlock
+-(id)cacheWithClass:(Class)className initAction:(InitWithActionBlock)actionBlock
 {
     if (className==nil) {
         return nil;
@@ -526,7 +557,7 @@
 
 }
 
--(id)cacheWithStoryboard:(UIStoryboard *)storyboard identifier:(NSString *)identifier cacheIndex:(NSUInteger)index
+-(id)cacheWithStoryboard:(UIStoryboard *)storyboard identifier:(NSString *)identifier
 {
     
     if (storyboard==nil || identifier==nil) {
@@ -545,18 +576,17 @@
     
 }
 
-
--(void)showViewController:(UIViewController *)showViewController pointIndex:(NSUInteger)index
-{
-    if (showViewController==nil) {
-        return;
-    }
-    
-    self.showViewController=showViewController;
-    showViewController.view.frame=CGRectMake(0, 0, self.width, self.height);
-    self.frame = CGRectMake(index * self.width, 0, self.width, self.height);
-    [self addSubview:showViewController.view];
-}
+//-(void)showViewController:(UIViewController *)showViewController pointIndex:(NSUInteger)index
+//{
+//    if (showViewController==nil) {
+//        return;
+//    }
+//
+//    self.showViewController=showViewController;
+//    showViewController.view.frame=CGRectMake(0, 0, self.width, self.height);
+//    self.frame = CGRectMake(index * self.width, 0, self.width, self.height);
+//    [self addSubview:showViewController.view];
+//}
 
 
 @end

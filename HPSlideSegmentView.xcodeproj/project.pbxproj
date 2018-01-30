@@ -133,6 +133,13 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
+		651FE393201EB91E0006DF53 /* ModuleViewStyle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModuleViewStyle;
+			sourceTree = "<group>";
+		};
 		65374CEE1EEC3D94005B5C38 = {
 			isa = PBXGroup;
 			children = (
@@ -198,14 +205,15 @@
 		6568CFFB1F1FD13100E82BF1 /* HPSlideSegmenView */ = {
 			isa = PBXGroup;
 			children = (
-				6568CFFF1F1FD13100E82BF1 /* HPSlideModuleView.h */,
-				6568D0001F1FD13100E82BF1 /* HPSlideModuleView.m */,
 				6568D0011F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.h */,
 				6568D0021F1FD13100E82BF1 /* HPSlideSegmentBackgroundView.m */,
 				6568D0031F1FD13100E82BF1 /* HPSlideSegmentControllerView.h */,
 				6568D0041F1FD13100E82BF1 /* HPSlideSegmentControllerView.m */,
 				6568D0051F1FD13100E82BF1 /* HPSlideSegmentView.h */,
 				6568D0061F1FD13100E82BF1 /* HPSlideSegmentView.m */,
+				6568CFFF1F1FD13100E82BF1 /* HPSlideModuleView.h */,
+				6568D0001F1FD13100E82BF1 /* HPSlideModuleView.m */,
+				651FE393201EB91E0006DF53 /* ModuleViewStyle */,
 				6568CFFC1F1FD13100E82BF1 /* BaseView */,
 				6568D0071F1FD13100E82BF1 /* Manage */,
 				6568D00E1F1FD13100E82BF1 /* Tool */,

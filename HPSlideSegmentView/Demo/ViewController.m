@@ -41,13 +41,12 @@
     return self.dataSouce.count;
 }
 
--(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
+-(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 {
     AViewController *aViewController=[[AViewController alloc] init];
     
     aViewController.titleView=self.dataSouce[index];
-    
-    slideSegmentView.showViewController=aViewController;
+    return aViewController;
 }
 
 -(NSArray *)dataSouce

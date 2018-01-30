@@ -17,6 +17,7 @@
 @property(nonatomic,strong) UIView *backgroundView;
 
 @property(nonatomic,strong) NSMutableArray<UIButton *> *arrayButtons;
+@property(nonatomic,strong) NSMutableArray<UIView *> *arraySpaceLines;
 
 @property(nonatomic,weak) id hpWeakObj;
 @property(nonatomic,strong) HPSLIDEMODULBUTTONBLOCK hpActionBlock;
@@ -58,7 +59,7 @@
     [_scrollView addSubview:self.backgroundView];
     
     [self scrollViewLayoutWithCount:self.showCount
-                         casheArray:self.arrayButtons
+                         cacheArray:self.arrayButtons
                     delegateContent:_delegate
                          layoutView:self
                        moduleHeight:self.bounds.size.height];
@@ -177,7 +178,7 @@
 
 
 -(void)scrollViewLayoutWithCount:(NSUInteger )count
-                      casheArray:(NSMutableArray<UIButton *> *)arrayButtons
+                      cacheArray:(NSMutableArray<UIButton *> *)arrayButtons
                  delegateContent:(id)delegate
                       layoutView:(HPSlideModuleView *)moduleView
                     moduleHeight:(CGFloat)height
@@ -189,12 +190,17 @@
                              getCacheButton:i
                             delegateContent:delegate
                                moduleHeight:height];
-        
+//        UIView *view = nil;
+//        if (_spaceLine == YES) {
+//            view = [self spaceLineWithIndex:i];
+//        }
+//
+//        view.frame = CGRectMake(module.width+module.x + 3, view.y, view.width, view.height);
 
         if (count-1==i) {
             CGFloat widthAddY=module.width+module.x;
             
-            moduleView.scrollView.contentSize=CGSizeMake(widthAddY, 0);
+            moduleView.scrollView.contentSize =CGSizeMake(widthAddY, 0);
             
         }
         
@@ -209,6 +215,7 @@
         moduleView.backgroundView.frame=CGRectMake(0, 0, moduleView.scrollView.contentSize.width,moduleView.scrollView.height);
         
         [moduleView.backgroundView addSubview:module];
+//        [moduleView.backgroundView addSubview:view];
         module.index=i;
         module=nil;
         
@@ -267,23 +274,29 @@
     [self buttonLayoutWithNew:module currentIndex:index oldButton:oldButton];
     
     [arrayButtons addObject:module];
-    
-//    [module setTitle:content forState:UIControlStateNormal];
-//    [module setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    module.titleLabel.font=[UIFont systemFontOfSize:14];
-//    
-//    UIButton *oldButton=[HPSlideSegmentLogic arrayCount:arrayButtons index:index-1];
-//
-//
-//    module = [self buttonLayoutWithOldButton:oldButton
-//                                   newButton:module
-//                                moduleHeight:height
-//                               buttonContent:content];
-//    
-//    [arrayButtons addObject:module];
-//    
-//    content=nil;
+
     return module;
+}
+
+-(UIView *)spaceLineWithIndex:(NSUInteger)index{
+    
+    if (index == _arrayButtons.count-1) {
+        return nil;
+    }
+    UIView *lineView = nil;
+    if (_arraySpaceLines.count > index) {
+        
+        lineView = _arrayButtons[index];
+        return lineView;
+    }
+    else{
+        lineView = [[UIView alloc] init];
+        lineView.backgroundColor = [UIColor blueColor];
+        lineView.frame = CGRectMake(0, 3, 1, self.height - 6);
+        [_arraySpaceLines addObject:lineView];
+    }
+    
+    return lineView;
 }
 
 -(void)buttonLayoutWithNew:(UIButton *)module currentIndex:(NSUInteger)index oldButton:(UIButton *)oldButton
@@ -486,6 +499,13 @@
         _backgroundView.backgroundColor=[UIColor clearColor];
     }
     return _backgroundView;
+}
+
+-(NSMutableArray<UIView *> *)arraySpaceLines{
+    if (_arraySpaceLines==nil) {
+        _arraySpaceLines = [NSMutableArray array];
+    }
+    return _arraySpaceLines;
 }
 
 -(NSMutableArray<UIButton *> *)arrayButtons

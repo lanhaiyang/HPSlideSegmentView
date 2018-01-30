@@ -15,10 +15,11 @@
 /**
  设置滑动内容
 
- @param slideSegmentView 传入对应的ViewController 和 ViewController上面继承scrollview的对象
- @param index 对应的index
+ @param slideSegmentView slideSegmentView 传入对应的ViewController 和 ViewController上面继承scrollview的对象
+ @param index index 对应的index
+ @return 显示的ViewController
  */
--(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index;
+-(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index;
 
 
 @end
@@ -119,23 +120,9 @@ typedef void (^InitWithActionBlock)(HPSlideModel *model);
 
 
 
--(id)cacheWithClass:(Class)className cacheIndex:(NSUInteger)index initAction:(InitWithActionBlock)actionBlock;
+-(id)cacheWithClass:(Class)className initAction:(InitWithActionBlock)actionBlock;
 
--(id)cacheWithStoryboard:(UIStoryboard *)storyboard identifier:(NSString *)identifier cacheIndex:(NSUInteger)index;
+-(id)cacheWithStoryboard:(UIStoryboard *)storyboard identifier:(NSString *)identifier ;
 
--(void)showViewController:(UIViewController *)showViewController pointIndex:(NSUInteger)index;
-
-/**
- 显示的ViewController
- */
-@property(nonatomic,strong) UIViewController *showViewController;
-
-
-/**
- ViewController 上面 的scrollView
- */
-@property(nonatomic,strong) UIScrollView *mainSlideScrollView;
-
-@property(nonatomic,strong) NSString *name;
 
 @end
