@@ -170,7 +170,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 ```
 #### 如果是使用对象名
 
-```
+```objective-c
 -(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
     
     AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] initAction:nil];
@@ -181,7 +181,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 #### 如果是使用storyboard
 
-```
+```objective-c
 -(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
 
     HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
