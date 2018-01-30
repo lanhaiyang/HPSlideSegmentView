@@ -125,7 +125,7 @@ self.headeView=headerView;
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentBackgroundView.gif)
 
-### 创建
+#### 创建
 
 ``` objective-c
 
@@ -146,7 +146,7 @@ HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgro
 self.slideBackgroungView.contents=self.dataSouce;
 ```
 
-#### 实现对应的代理
+### 实现对应的代理
 
 - 现在你需要显示多少数据 告诉`<HPSlideSegmentBackgroundDataSource>`代理
 
@@ -167,15 +167,21 @@ self.slideBackgroungView.dataSource=self;
 ``` objective-c
 self.slideBackgroungView.slideSegmenView.dataSource=self;
 
-//代理
+```
+#### 如果是使用对象名
+
+```
 -(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
     
     AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] initAction:nil];
     aViewController.titleView = _dataSouce[index];
     return aViewController;
 }
+```
 
-如果是使用storyboard
+#### 如果是使用storyboard
+
+```
 -(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index{
 
     HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
@@ -186,8 +192,6 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
     return homeViewController;
 }
 
-
-
 ```
 
 - 还有需要注意的是在`<HPSlideSegmentViewDataSouce>`代理中
@@ -197,7 +201,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 ```
 
-#### HPSlideModel
+### HPSlideModel
 
 - showViewController 
 
