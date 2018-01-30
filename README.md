@@ -187,7 +187,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
     HomeViewController *homeViewController=[slideSegmentView cacheWithStoryboard:self.storyboard identifier:@"HomeViewController" cacheIndex:index];
     [homeViewController.view layoutIfNeeded];//更新一下
 	
-    homeViewController.title = "主页"
+    homeViewController.title = "主页";
 	
     return homeViewController;
 }
