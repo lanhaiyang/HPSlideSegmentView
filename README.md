@@ -1,5 +1,7 @@
 # HPSlideSegmentView
 
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg?style=flat)](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg)     [![Platform](https://img.shields.io/cocoapods/p/HPSlideSegmentView.svg?style=flat)](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg)
+
 ### Pods 
 
 ```
