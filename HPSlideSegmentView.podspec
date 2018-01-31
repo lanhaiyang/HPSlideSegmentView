@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HPSlideSegmentView"
-  s.version      = "0.1.15"
+  s.version      = "0.1.16"
   s.summary      = "HPSlideSegmentView 滑动悬停和侧滑框架"
 
 
