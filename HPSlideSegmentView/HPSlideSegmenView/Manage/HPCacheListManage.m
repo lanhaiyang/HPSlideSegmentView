@@ -16,6 +16,8 @@
 
 @property(nonatomic,strong) NSMutableArray *currentArray;
 
+@property(nonatomic,strong) NSLock *lock;
+
 @end
 
 
@@ -25,7 +27,7 @@
 -(instancetype)init
 {
     if (self=[super init]) {
-        
+        _lock = self.lock;
         _cahceQueue=dispatch_queue_create("hpSlideSegamentView.hepeng.slide", NULL);
         
     }
@@ -138,6 +140,7 @@
     
     dispatch_async(self.cahceQueue, ^{
         
+        [_lock lock];
         id selectObj=nil;
         NSNumber *numberMax=nil;
         NSUInteger maxNumber=0;
@@ -159,6 +162,7 @@
             }
             
         }
+        [_lock unlock];
         
         if (selectObj!=nil && cacheObj!=nil && numberMax!=nil) {
             [_cacheDictionary removeObjectForKey:numberMax];
@@ -230,6 +234,14 @@
 
 
 #pragma mark 懒加载
+
+-(NSLock *)lock{
+    
+    if (_lock == nil) {
+        _lock = [[NSLock alloc] init];
+    }
+    return _lock;
+}
 
 -(NSUInteger)cacheListMax
 {
