@@ -120,8 +120,23 @@ typedef void (^InitWithActionBlock)(HPSlideModel *model);
 
 
 
+/**
+ 通过类名创建ViewController对象
+
+ @param className  ViewController类名
+ @param actionBlock init 后需要执行的操作
+ @return 返回按类名创建的对象
+ */
 -(id)cacheWithClass:(Class)className initAction:(InitWithActionBlock)actionBlock;
 
+
+/**
+ 通过UIStoryboard创建ViewController对象
+
+ @param storyboard ViewController 的 storyboard
+ @param identifier UIStoryboard iidentifier
+ @return 返回创建的对象
+ */
 -(id)cacheWithStoryboard:(UIStoryboard *)storyboard identifier:(NSString *)identifier ;
 
 

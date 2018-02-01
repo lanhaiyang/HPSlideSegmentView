@@ -196,21 +196,6 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 ```
 
-- 还有需要注意的是在`<HPSlideSegmentViewDataSouce>`代理中
-
-``` objective-c
--(void )hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
-
-```
-
-### HPSlideModel
-
-- showViewController 
-
-  这个用于显示对应UIViewController
-- mainSlideScrollView 
-
-  这个属性 showViewController 上面显示的UIScrollView 这个用于处理手势冲突(如果没有手势冲突问题这个不需要传)
 
 ## 注意
 - 如果是非自动布局 创建控件
