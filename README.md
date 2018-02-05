@@ -1,8 +1,7 @@
 # HPSlideSegmentView
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg?style=flat)](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg)                           [![Platform](https://img.shields.io/cocoapods/p/HPSlideSegmentView.svg?style=flat)](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg)
-
-[![platform](https://img.shields.io/badge/mail-1002230810@qq.com-brightgreen.svg)](mailto:1002230810@vip.qq.com?subject=Lanhaiyang&nbspHPSlideSegmentView&body=Hi&nbsp;Lanhaiyang,)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg?style=flat)](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg)                           [![Platform](https://img.shields.io/cocoapods/p/HPSlideSegmentView.svg?style=flat)](https://img.shields.io/cocoapods/v/HPSlideSegmentView.svg)                           
+[![platform](https://img.shields.io/badge/mail-1002230810@qq.com-brightgreen.svg)](mailto:1002230810@vip.qq.com?subject=Lanhaiyang&nbsp;HPSlideSegmentView&body=Hi&nbsp;Lanhaiyang,)
 
 ### Pods 
 
