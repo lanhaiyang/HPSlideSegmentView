@@ -162,7 +162,6 @@
             }
             
         }
-        [_lock unlock];
         
         if (selectObj!=nil && cacheObj!=nil && numberMax!=nil) {
             [_cacheDictionary removeObjectForKey:numberMax];
@@ -190,9 +189,8 @@
             });
             
         }
-        
-        
-        
+    
+        [_lock unlock];
     });
     
 }

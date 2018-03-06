@@ -41,6 +41,17 @@ typedef enum {
     [super viewDidLoad];
     
     self.bottomSpaceHeight=_bottomSpaceHeight;
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (self.statcStyle==NO) {
+        
+        self.autoTopHeight=self.slideScrollerView.contentOffset.y;
+        self.statcStyle=YES;
+    }
     
 }
 
@@ -62,18 +73,6 @@ typedef enum {
     
 
     [self updateBackgroundHeight:CGSizeMake(self.slideScrollerView.width, self.slideBackgroungView.height)];
-}
-
--(void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    if (self.statcStyle==NO) {
-        
-        self.autoTopHeight=self.slideScrollerView.contentOffset.y;
-        self.statcStyle=YES;
-    }
-    
 }
 
 
@@ -185,6 +184,14 @@ typedef enum {
 
 #pragma mark - 懒加载
 
+-(void)setTopSlideExceedEdge:(BOOL)topSlideExceedEdge{
+    
+    _topSlideExceedEdge = topSlideExceedEdge;
+    
+    _slideScrollerView.bounces=topSlideExceedEdge;
+    
+}
+
 -(void)setBottomSpaceHeight:(CGFloat)bottomSpaceHeight
 {
     _bottomSpaceHeight=bottomSpaceHeight;
@@ -208,7 +215,7 @@ typedef enum {
         _slideScrollerView.frame=CGRectMake(0, 64, self.view.width, self.view.height);
         _slideScrollerView.contentSize=CGSizeMake(0, 0);
         _slideScrollerView.delegate=self;
-        _slideScrollerView.bounces=NO;
+        _slideScrollerView.bounces=YES;
         _slideScrollerView.showsVerticalScrollIndicator=NO;
         _slideScrollerView.showsHorizontalScrollIndicator=NO;
         [self.view addSubview:_slideScrollerView];

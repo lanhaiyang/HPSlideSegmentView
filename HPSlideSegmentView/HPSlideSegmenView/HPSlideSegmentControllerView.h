@@ -24,6 +24,10 @@
 @property(nonatomic,assign) CGFloat headeViewHeight;
 
 
+/**
+ 下拉是否可以操出边缘 默认为YES
+ */
+@property(nonatomic,assign) BOOL topSlideExceedEdge;
 
 /**
  距离底部的高

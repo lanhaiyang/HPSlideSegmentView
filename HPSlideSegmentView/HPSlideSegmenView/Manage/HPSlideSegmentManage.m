@@ -49,7 +49,7 @@ static HPSlideSegmentManage *_instance;
 {
 
     
-    mainScrollerView.bounces=NO;
+//    mainScrollerView.bounces=NO;
     CGFloat centreY=centreScrollerView.contentOffset.y;
     CGFloat mainY=mainScrollerView.contentOffset.y;
     CGFloat bottomHeight=mainScrollerView.contentSize.height-mainScrollerView.bounds.size.height;
@@ -65,7 +65,7 @@ static HPSlideSegmentManage *_instance;
     
     if (mainY<bottomHeight) {
         
-        mainScrollerView.bounces=YES;
+//        mainScrollerView.bounces=YES;
         centreScrollerView.contentOffset=CGPointMake(0, 0);
         
         
