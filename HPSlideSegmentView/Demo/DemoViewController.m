@@ -27,6 +27,7 @@
     self.headeView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
     self.headeView.backgroundColor=[UIColor blueColor];
 //    self.bottomSpaceHeight=60;
+//    self.adjustsScrollViewInsets = YES;
     
     self.slideBackgroungView.contents=self.dataSouce;
     self.slideBackgroungView.dataSource=self;

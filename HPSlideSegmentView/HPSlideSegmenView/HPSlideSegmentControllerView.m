@@ -51,7 +51,9 @@ typedef enum {
         
         self.autoTopHeight=self.slideScrollerView.contentOffset.y;
         self.statcStyle=YES;
+        self.adjustsScrollViewInsets = _adjustsScrollViewInsets;
     }
+    
     
 }
 
@@ -73,6 +75,10 @@ typedef enum {
     
 
     [self updateBackgroundHeight:CGSizeMake(self.slideScrollerView.width, self.slideBackgroungView.height)];
+
+    if (self.adjustsScrollViewInsets == YES) {
+        [self updateBackgroundHeight:CGSizeMake(self.slideScrollerView.width, _autoTopHeight)];
+    }
 }
 
 
@@ -83,10 +89,12 @@ typedef enum {
         
         _slideOffsetY=self.slideScrollerView.contentOffset.y;
         _childOffsetY=self.centreScrollerView.contentOffset.y;
+        self.slideScrollerView.scrollEnabled = NO;
         self.isLeftAndRightSlide=YES;
     }
     else if (gesture==YES)
     {
+        self.slideScrollerView.scrollEnabled = YES;
         self.isLeftAndRightSlide=NO;
     }
     
@@ -115,7 +123,9 @@ typedef enum {
     
     CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
     
-    
+    if (_adjustsScrollViewInsets==YES) {
+        height=self.slideBackgroungView.y+self.autoTopHeight-64;
+    }
     
     [HPSlideSegmentManage slidetLogicSrollerView:self.slideScrollerView
                                 showScrollerView:self.centreScrollerView
@@ -140,6 +150,13 @@ typedef enum {
         }
         
         return;
+        
+    }
+    
+    
+    if (scrollView == _slideScrollerView && [self.delegate respondsToSelector:@selector(slideWithScrollView:)]) {
+        
+        [self.delegate slideWithScrollView:scrollView];
         
     }
     
@@ -179,10 +196,23 @@ typedef enum {
     CGFloat height=self.slideScrollerView.contentSize.height+size.height;
     _slideScrollerView.contentSize=CGSizeMake(size.width, height);
     
-    _slideBackground.frame=CGRectMake(0, 0, _slideScrollerView.contentSize.width, _slideScrollerView.contentSize.height);
+    if (_adjustsScrollViewInsets == YES) {
+        _slideBackground.frame=CGRectMake(0, _autoTopHeight, _slideScrollerView.contentSize.width, _slideScrollerView.contentSize.height);
+    }
+    else{
+        _slideBackground.frame=CGRectMake(0, 0, _slideScrollerView.contentSize.width, _slideScrollerView.contentSize.height);
+    }
+    
 }
 
 #pragma mark - 懒加载
+
+-(void)setAdjustsScrollViewInsets:(BOOL)adjustsScrollViewInsets{
+    
+    _adjustsScrollViewInsets = adjustsScrollViewInsets;
+    
+    self.bottomSpaceHeight=_bottomSpaceHeight;
+}
 
 -(void)setTopSlideExceedEdge:(BOOL)topSlideExceedEdge{
     
