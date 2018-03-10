@@ -26,6 +26,7 @@
     
     self.headeView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
     self.headeView.backgroundColor=[UIColor blueColor];
+//    self.headerViewSupendLocation = 64;
 //    self.bottomSpaceHeight=60;
 //    self.adjustsScrollViewInsets = YES;
     

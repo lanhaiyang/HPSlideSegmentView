@@ -124,7 +124,7 @@ typedef enum {
     CGFloat height=self.slideBackgroungView.y+self.autoTopHeight;
     
     if (_adjustsScrollViewInsets==YES) {
-        height=self.slideBackgroungView.y+self.autoTopHeight-64;
+        height=self.slideBackgroungView.y+self.autoTopHeight-_headerViewSupendLocation;
     }
     
     [HPSlideSegmentManage slidetLogicSrollerView:self.slideScrollerView
@@ -206,6 +206,16 @@ typedef enum {
 }
 
 #pragma mark - 懒加载
+
+-(CGFloat)headerViewSupendLocation{
+    
+    if (_headerViewSupendLocation == 0) {
+        return 64;
+    }
+    
+    
+    return _headerViewSupendLocation;
+}
 
 -(void)setAdjustsScrollViewInsets:(BOOL)adjustsScrollViewInsets{
     

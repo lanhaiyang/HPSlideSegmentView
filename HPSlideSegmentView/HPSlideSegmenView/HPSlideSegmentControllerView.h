@@ -49,6 +49,14 @@
  */
 @property(nonatomic,assign) BOOL adjustsScrollViewInsets;
 
+
+/**
+ headerView的悬浮位置
+ 当adjustsScrollViewInsets属性为Yes时有效
+ 默认为64
+ */
+@property(nonatomic,assign) CGFloat headerViewSupendLocation;
+
 /**
  距离底部的高
  */
