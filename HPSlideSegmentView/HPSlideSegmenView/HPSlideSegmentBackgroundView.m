@@ -37,6 +37,8 @@
     CGFloat y=self.slideModuleView.x+self.slideModuleView.height;
     CGFloat height=self.height-_slideModuleViewHeight;
     _slideSegmenView.frame=CGRectMake(0, y, self.width, height);
+    
+    [self slideSegmentlayout];
 }
 
 -(void)awakeFromNib

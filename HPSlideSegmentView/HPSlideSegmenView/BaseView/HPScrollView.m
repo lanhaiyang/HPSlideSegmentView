@@ -21,7 +21,6 @@
             break;
         case HPScrollView_Filter_GestureCell:
         {
-            //UITableViewCell 删除手势
             return gestureRecognizer.state != 0 ? YES : NO;
         }
             break;

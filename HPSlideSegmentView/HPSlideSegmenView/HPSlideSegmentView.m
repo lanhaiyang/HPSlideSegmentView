@@ -61,7 +61,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    
+    [self layoutWithView];
 }
 
 -(void)updateLayout
