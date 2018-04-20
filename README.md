@@ -87,7 +87,7 @@ HPKVOMange	(管理KVO 的创建和删除)
 ``` objective-c
 @property(nonatomic,assign) NSUInteger cacheMaxCount;
 ```
-
+***
 
 ## 第一种样式初始化HPSlideSegmentControllerView
 
@@ -123,6 +123,7 @@ self.headeView=headerView;
 
 ```
 
+***
 
 ## 第二种样式初始化HPSlideSegmentBackgroundView
 
@@ -137,6 +138,8 @@ HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgro
 [self.view addSubview:slideSegmentBackgroundView];  
     
 ```
+
+***
 
 ## 实现
 
