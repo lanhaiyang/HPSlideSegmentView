@@ -89,7 +89,7 @@ HPKVOMange	(管理KVO 的创建和删除)
 ```
 
 
-### 第一种样式初始化HPSlideSegmentControllerView
+## 第一种样式初始化HPSlideSegmentControllerView
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentControllerView.gif)
 
@@ -124,7 +124,7 @@ self.headeView=headerView;
 ```
 
 
-### 第二种样式初始化HPSlideSegmentBackgroundView
+## 第二种样式初始化HPSlideSegmentBackgroundView
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentBackgroundView.gif)
 
