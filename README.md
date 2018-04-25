@@ -205,7 +205,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 ```
 
-<font color=red	 size = 5 face="STCAIYUN"> 注意 </font>
+## <font color=red size = 5 face="STCAIYUN"> 注意 </font>
 
 - 如果是非自动布局 创建控件
 
