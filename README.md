@@ -88,8 +88,8 @@ HPKVOMange	(管理KVO 的创建和删除)
 @property(nonatomic,assign) NSUInteger cacheMaxCount;
 ```
 
-### 第一种样式初始化HPSlideSegmentControllerView
-***
+## <font color=grad>第一种样式  初始化HPSlideSegmentControllerView</font>
+
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentControllerView.gif)
 
@@ -123,7 +123,7 @@ self.headeView=headerView;
 
 ```
 
-### 第二种样式初始化HPSlideSegmentBackgroundView
+## <font color=grad>第二种样式  初始化HPSlideSegmentBackgroundView</font>
 ***
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentBackgroundView.gif)
@@ -199,7 +199,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 ```
 
 
-## 注意
+## <font color=red>注意</font>
 - 如果是非自动布局 创建控件
 
 	- 如果是View 上需要在 `layoutSubviews` 更新控件的大小或者位置
