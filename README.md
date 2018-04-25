@@ -126,10 +126,7 @@ self.headeView=headerView;
 
 ```
 
-<font color=SpringGreen	 size = 5 face="STCAIYUN"> 
-第二种样式:
-</font>
-## 初始化HPSlideSegmentBackgroundView
+## <font color=SpringGreen size = 5 face="STCAIYUN"> 第二种样式: 初始化HPSlideSegmentBackgroundView </font>
 
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentBackgroundView.gif)
