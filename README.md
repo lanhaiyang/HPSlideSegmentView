@@ -124,7 +124,7 @@ self.headeView=headerView;
 ```
 
 ## <font color=grad>第二种样式  初始化HPSlideSegmentBackgroundView</font>
-***
+
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentBackgroundView.gif)
 
