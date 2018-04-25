@@ -92,6 +92,7 @@ HPKVOMange	(管理KVO 的创建和删除)
 <font color=SpringGreen	 size = 5 face="STCAIYUN"> 
 第一种样式: 
 </font>
+
 ## 初始化HPSlideSegmentControllerView
 
 
@@ -204,9 +205,7 @@ self.slideBackgroungView.slideSegmenView.dataSource=self;
 
 ```
 
-<font color=red	 size = 5 face="STCAIYUN"> 
-注意
-</font>
+<font color=red	 size = 5 face="STCAIYUN"> 注意 </font>
 
 - 如果是非自动布局 创建控件
 
