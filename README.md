@@ -91,8 +91,6 @@ HPKVOMange	(管理KVO 的创建和删除)
 
 ## <font color=SpringGreen > 第一种样式: 初始化HPSlideSegmentControllerView </font>
 
-## 初始化HPSlideSegmentControllerView
-
 
 ![image](https://github.com/lanhaiyang/HPSlideSegmentView/blob/master/README/HPSlideSegmentControllerView.gif)
 
