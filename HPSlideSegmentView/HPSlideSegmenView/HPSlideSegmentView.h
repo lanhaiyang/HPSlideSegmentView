@@ -74,6 +74,11 @@
 
 
 /**
+ 当期正在现在的ViewController
+ */
+@property(nonatomic,strong,readonly) UIViewController *currentViewController;
+
+/**
  缓存个数
  小于3默认为3
  */

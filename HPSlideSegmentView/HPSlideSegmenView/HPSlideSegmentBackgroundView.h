@@ -23,7 +23,22 @@
 
 @end
 
-@interface HPSlideSegmentBackgroundView : UIView
+@protocol HPSlideSegmentBackgroundViewState
+
+/*
+ 
+ 监听 视图的状态 传递给子视图
+ 
+ */
+
+- (void)hp_viewWillAppear:(BOOL)animated;
+- (void)hp_viewDidAppear:(BOOL)animated;
+- (void)hp_viewWillDisappear:(BOOL)animated;
+- (void)hp_viewDidDisappear:(BOOL)animated;
+
+@end
+
+@interface HPSlideSegmentBackgroundView : UIView<HPSlideSegmentBackgroundViewState>
 
 @property(nonatomic,weak) id<HPSlideSegmentBackgroundDataSource> dataSource;
 

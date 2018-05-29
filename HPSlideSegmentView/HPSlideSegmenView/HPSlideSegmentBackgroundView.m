@@ -32,13 +32,19 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     
+    if (self.width != _slideModuleView.width || self.width != _slideSegmenView.width){
+        [self slideSegmentlayout];
+    }
+    
     _slideModuleView.frame=CGRectMake(_slideModuleView.x, _slideModuleView.y, self.width, _slideModuleView.height);
     
     CGFloat y=self.slideModuleView.x+self.slideModuleView.height;
     CGFloat height=self.height-_slideModuleViewHeight;
     _slideSegmenView.frame=CGRectMake(0, y, self.width, height);
     
-    [self slideSegmentlayout];
+//    [self slideSegmentlayout];
+
+    
 }
 
 -(void)awakeFromNib
@@ -77,8 +83,8 @@
     [self.slideSegmenView updateScrollerViewWidthWidth:self.arrayCount];
     self.slideModuleView.showCount=self.arrayCount;
     
-    [self addSubview:self.slideModuleView];
     [self addSubview:self.slideSegmenView];
+    [self addSubview:self.slideModuleView];
     
 }
 
@@ -106,6 +112,24 @@
     return self.contents[index];
 }
 
+
+#pragma mark - HPSlideSegmentBackgroundViewState
+
+- (void)hp_viewWillAppear:(BOOL)animated{
+    [_slideSegmenView.currentViewController viewWillAppear:animated];
+}
+
+- (void)hp_viewDidAppear:(BOOL)animated{
+    [_slideSegmenView.currentViewController viewWillDisappear:animated];
+}
+
+- (void)hp_viewWillDisappear:(BOOL)animated{
+    [_slideSegmenView.currentViewController viewWillDisappear:animated];
+}
+
+- (void)hp_viewDidDisappear:(BOOL)animated{
+    [_slideSegmenView.currentViewController viewDidDisappear:animated];
+}
 
 #pragma mark - 懒加载
 

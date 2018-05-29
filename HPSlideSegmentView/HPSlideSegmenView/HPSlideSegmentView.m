@@ -34,6 +34,8 @@
 
 @property(nonatomic,assign) CGFloat privateChangeCahePoint;
 
+@property(nonatomic,strong) UIViewController *currentViewController;
+
 @end
 
 @interface HPSlideModel ()
@@ -174,6 +176,7 @@
                              if ([self.delegate respondsToSelector:@selector(hp_slideWithNowIndex:readyIndex:movePercent:)]) {
                                  
                                  [self.delegate hp_slideWithNowIndex:nowIndex readyIndex:readyIndex movePercent:movePercent];
+                                 
                                  
                              }
                              
@@ -514,6 +517,12 @@
     }
     return _kvoMange;
 }
+
+-(UIViewController *)currentViewController{
+    
+    return _slideCentre.showViewController;
+}
+
 //
 -(HPScrollView *)viewContrllerScrollerView
 {
