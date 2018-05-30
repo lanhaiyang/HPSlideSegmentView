@@ -13,7 +13,7 @@
 ### 尽量使用最新版本
 
 ```
-pod 'HPSlideSegmentView', '~> 0.1.17'
+pod 'HPSlideSegmentView', '~> 0.1.14'
 ```
 ### 如果pod search HPSlideSegmentView 没有搜索到 和 没有找到最新的版本
 
