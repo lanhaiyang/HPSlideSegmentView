@@ -46,7 +46,6 @@
 
 -(void)updateLayout
 {
-
     self.scrollView.contentSize=CGSizeMake(0, 0);
     [self layoutSlideModule];
 }
