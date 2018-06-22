@@ -46,7 +46,6 @@
 
 -(void)updateLayout
 {
-    NSLog(@"SKy");
     self.scrollView.contentSize=CGSizeMake(0, 0);
     [self layoutSlideModule];
 }

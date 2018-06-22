@@ -298,8 +298,8 @@
         slideModel.frame = CGRectMake(index * slideModel.width, 0, slideModel.width, slideModel.height);
         [slideModel addSubview:cacheSlideModel.showViewController.view];
     }
-//    [slideModel showViewController:cacheSlideModel.showViewController pointIndex:index];
-    slideModel.mainSlideScrollView=cacheSlideModel.mainSlideScrollView;;
+    
+    slideModel.mainSlideScrollView=cacheSlideModel.mainSlideScrollView;
 }
 
 -(void)removeWithLayout:(HPSlideModel *)slideView
@@ -374,7 +374,7 @@
                                   blockWeak:self
                                 addObserver:^(HPSlideSegmentView *weakObj) {
 
-                                    [cacheSlideModel.mainSlideScrollView removeObserver:self forKeyPath:@"contentOffset"];
+                                    [cacheSlideModel.mainSlideScrollView removeObserver:weakObj forKeyPath:@"contentOffset"];
 
                                 }];
 
@@ -465,6 +465,11 @@
         }
     }
     
+}
+
+-(void)dealloc{
+    
+    [self.kvoMange removeAllObserverUseObserver:self];
 }
 
 

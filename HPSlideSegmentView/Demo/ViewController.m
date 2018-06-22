@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     HPSlideSegmentBackgroundView *slideSegmentBackgroundView=[[HPSlideSegmentBackgroundView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
-    
+
     slideSegmentBackgroundView.slideModuleViewHeight = 50;
     slideSegmentBackgroundView.dataSource=self;
     slideSegmentBackgroundView.slideSegmenView.dataSource=self;
@@ -44,7 +44,7 @@
 -(UIViewController *)hp_slideListWithViewController:(HPSlideModel *)slideSegmentView index:(NSUInteger)index
 {
     AViewController *aViewController=[[AViewController alloc] init];
-    
+
     aViewController.titleView=self.dataSouce[index];
     return aViewController;
 }

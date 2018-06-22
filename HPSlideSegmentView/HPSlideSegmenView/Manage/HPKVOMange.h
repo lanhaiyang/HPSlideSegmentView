@@ -41,4 +41,12 @@ typedef void (^KVOMangeBlock)(id weakObj);
  */
 -(void)removeObserverWithObject:(id)observerObject blockWeak:(id)weakObj addObserver:(KVOMangeBlock)block;
 
+
+/**
+ 删除所以的监听者
+
+ @param observer 当前使用监听者的类
+ */
+-(void)removeAllObserverUseObserver:(id)observer;
+
 @end

@@ -72,6 +72,19 @@
     
 }
 
+-(void)removeAllObserverUseObserver:(id)observer{
+    if (observer == nil) {return;}
+    
+    for (id object in _kvos) {
+        
+        [object removeObserver:observer forKeyPath:@"contentOffset"];
+        
+    }
+    
+    [_kvos removeAllObjects];
+    
+}
+
 -(NSMutableArray *)kvos
 {
     if (_kvos==nil) {

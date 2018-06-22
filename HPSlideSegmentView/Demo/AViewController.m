@@ -8,6 +8,8 @@
 
 #import "AViewController.h"
 #import "UIView+HPSlideSegmentRect.h"
+#import "ViewController.h"
+#import "UIViewController+HPNavigationController.h"
 
 static NSString *ID = @"cell";
 
@@ -29,6 +31,10 @@ static NSString *ID = @"cell";
         [self createData];
     }
     return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
 }
 
 -(void)layout{
@@ -63,7 +69,8 @@ static NSString *ID = @"cell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    ViewController *testVC = [[ViewController alloc] init];
+    [self.hpNavigationController pushViewController:testVC animated:YES];
     
 }
 

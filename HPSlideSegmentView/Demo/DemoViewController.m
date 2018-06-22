@@ -8,6 +8,7 @@
 
 #import "DemoViewController.h"
 #import "AViewController.h"
+#import "ViewController.h"
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -48,6 +49,20 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.slideBackgroungView hp_viewWillAppear:animated];
+    
+}
+
+- (IBAction)action:(id)sender {
+    
+    ViewController *testVC = [[ViewController alloc] init];
+    [self.navigationController pushViewController:testVC animated:YES];
+    
+}
+
+
 
 -(NSUInteger)hp_slideListWithCount
 {
@@ -59,6 +74,7 @@
     AViewController *aViewController=[slideSegmentView cacheWithClass:[AViewController class] initAction:nil];
     aViewController.titleView = _dataSouce[index];
     return aViewController;
+    
 }
 
 
