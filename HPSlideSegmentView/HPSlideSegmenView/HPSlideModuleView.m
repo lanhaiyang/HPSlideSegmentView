@@ -170,8 +170,9 @@
     [HPSlideSegmentLogic slideModuleAlignCenter:self.scrollView
                                slideModuleWithX:self.slideModuleView.x];
     
-    
-    [self selectButton:readyButton];
+    if (nowIndex == readyIndex) {
+        [self selectButton:nowButton];
+    }
     
 }
 
@@ -304,6 +305,7 @@
     if ([self.delegate respondsToSelector:@selector(hp_slideContentWithIndex:)]) {
         
         content=[self.delegate hp_slideContentWithIndex:index];
+        [self updateLayoutWithIndex:0];
         
     }
     
