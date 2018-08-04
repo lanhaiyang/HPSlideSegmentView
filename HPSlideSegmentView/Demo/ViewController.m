@@ -31,6 +31,7 @@
     slideSegmentBackgroundView.slideSegmenView.dataSource=self;
     slideSegmentBackgroundView.contents=self.dataSouce;
     slideSegmentBackgroundView.slideModuleView.delegate = self;
+//    slideSegmentBackgroundView.slideModuleView.hiddenModule = YES;
     [self.view addSubview:slideSegmentBackgroundView];
     
 }
