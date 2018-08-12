@@ -239,7 +239,7 @@
         
     }else
     {
-        [self buttonLayoutWithNew:currenButton currentIndex:index oldButton:oldButton];
+        currenButton = [self buttonLayoutWithNew:currenButton currentIndex:index oldButton:oldButton];
     }
     
     
@@ -299,7 +299,7 @@
     return lineView;
 }
 
--(void)buttonLayoutWithNew:(UIButton *)module currentIndex:(NSUInteger)index oldButton:(UIButton *)oldButton
+-(UIButton *)buttonLayoutWithNew:(UIButton *)module currentIndex:(NSUInteger)index oldButton:(UIButton *)oldButton
 {
     NSString *content=@"";
     if ([self.delegate respondsToSelector:@selector(hp_slideContentWithIndex:)]) {
@@ -318,8 +318,8 @@
                                 moduleHeight:self.bounds.size.height
                                buttonContent:content];
     
-    
     content=nil;
+    return module;
 }
 
 -(UIButton *)buttonLayoutWithOldButton:(UIButton *)oldButton

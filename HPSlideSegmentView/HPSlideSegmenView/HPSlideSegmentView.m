@@ -117,14 +117,20 @@
     CGFloat width = self.viewContrllerScrollerView.width;
     CGFloat height = self.viewContrllerScrollerView.height;
     
-    left.frame=CGRectMake(0, 0, width, height);
-    [addView addSubview:left];
+    if (left != nil) {
+        left.frame=CGRectMake(0, 0, width, height);
+        [addView addSubview:left];
+    }
     
-    centre.frame=CGRectMake(scrollerViewWidth, 0, width, height);
-    [addView addSubview:centre];
+    if (centre != nil) {
+        centre.frame=CGRectMake(scrollerViewWidth, 0, width, height);
+        [addView addSubview:centre];
+    }
     
-    right.frame=CGRectMake(2*scrollerViewWidth, 0, width, height);
-    [addView addSubview:right];
+    if (right != nil) {
+        right.frame=CGRectMake(2*scrollerViewWidth, 0, width, height);
+        [addView addSubview:right];
+    }
 }
 
 
